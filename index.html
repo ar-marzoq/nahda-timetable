@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>جدول الحصص والمناوبات — أكاديمية نهضة العالمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#812146; --maroon-dk:#5C1732; --maroon-tint:#F3E7EC; --maroon-soft:#EADCE2;
+  --ink:#2E2A2B; --ink-soft:#6B6467; --ink-faint:#9A9295;
+  --paper:#F7F3EC; --card:#FFFFFF; --rule:#E0D6C4; --rule-soft:#EFE8DC;
+  --beige:#E3D2AA; --olive:#7E8020; --olive-tint:#F0F2DE;
+  --orange:#CF8044; --orange-tint:#FBEEE2; --orange-ink:#8A4A16;
+  --sky:#99DAEE; --sky-tint:#EAF7FC; --rose:#A87571;
+  --shadow:0 1px 2px rgba(46,42,43,.05),0 10px 28px -20px rgba(46,42,43,.35);
+  --display:"Reem Kufi";
+}
+html[lang="en"]{--display:"Barlow Condensed"}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans Arabic",system-ui,"Segoe UI",Tahoma,sans-serif;
+  font-size:15px;line-height:1.6;font-variant-numeric:tabular-nums}
+html[lang="en"] body{font-family:"IBM Plex Sans Arabic",system-ui,"Segoe UI",sans-serif;letter-spacing:.005em}
+.wrap{max-width:1400px;margin:0 auto;padding:0 18px 80px}
+.masthead{border-bottom:3px double var(--maroon);padding:22px 0 14px;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px}
+.mark{width:96px;height:auto;flex:none;display:block}
+@media(max-width:700px){.mark{width:70px}}
+@media print{.mark{width:80px}}
+.eyebrow{font-family:var(--display);font-size:11.5px;letter-spacing:.18em;color:var(--maroon);margin:0 0 2px}
+h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;margin:0;color:var(--maroon-dk)}
+html[lang="en"] h1{font-size:36px;letter-spacing:.01em;text-transform:uppercase}
+.sub{margin:3px 0 0;color:var(--ink-soft);font-size:13px}
+.rightcol{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.meta{text-align:end;font-size:12px;color:var(--ink-soft);line-height:1.85}
+.meta b{font-family:var(--display);color:var(--maroon)}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:#fff}
+.lang button{font-family:var(--display);font-size:13px;background:none;border:0;padding:6px 14px;cursor:pointer;color:var(--ink-soft)}
+.lang button[aria-pressed="true"]{background:var(--maroon);color:#fff}
+.lang button:focus-visible{outline:2px solid var(--maroon);outline-offset:-2px}
+nav{display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--rule);margin-bottom:22px;
+  position:sticky;top:0;background:var(--paper);z-index:20;padding-top:6px}
+nav button{font-family:var(--display);font-size:15px;background:none;border:0;border-bottom:3px solid transparent;
+  padding:10px 20px;cursor:pointer;color:var(--ink-soft)}
+nav button[aria-selected="true"]{color:var(--maroon);border-bottom-color:var(--maroon)}
+nav button:hover{color:var(--maroon-dk)}
+nav button:focus-visible{outline:2px solid var(--maroon);outline-offset:-3px}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:3px;box-shadow:var(--shadow);
+  padding:18px 20px;margin-bottom:20px}
+.panel-h{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;flex-wrap:wrap}
+.panel-h h2{font-family:var(--display);font-size:18px;margin:0;color:var(--maroon-dk);font-weight:600}
+.hint{font-size:12.5px;color:var(--ink-soft)}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+label.f{font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:7px}
+select,input[type=search]{font-family:inherit;font-size:14px;padding:6px 10px;border:1px solid var(--rule);
+  border-radius:3px;background:#fff;color:var(--ink)}
+select:focus-visible,input:focus-visible{outline:2px solid var(--maroon);outline-offset:1px}
+.btn{font-family:inherit;font-size:13.5px;border:1px solid var(--rule);background:#fff;color:var(--ink);
+  border-radius:3px;padding:7px 15px;cursor:pointer}
+.btn:hover{border-color:var(--maroon);color:var(--maroon)}
+.btn:focus-visible{outline:2px solid var(--maroon);outline-offset:2px}
+.btn.primary{background:var(--maroon);border-color:var(--maroon);color:#fff}
+.btn.primary:hover{background:var(--maroon-dk);color:#fff}
+.daytabs{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid var(--rule);margin-bottom:14px}
+.daytabs button{font-family:var(--display);font-size:14.5px;background:none;border:0;border-bottom:3px solid transparent;
+  padding:8px 16px;cursor:pointer;color:var(--ink-soft)}
+.daytabs button[aria-selected="true"]{color:var(--maroon);border-bottom-color:var(--maroon)}
+.daytabs .n{font-size:11px;color:var(--ink-faint);margin-inline-start:5px}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:3px}
+table.grid{border-collapse:collapse;width:100%;font-size:13px;min-width:860px}
+table.grid th,table.grid td{border:1px solid var(--rule-soft);padding:0}
+table.grid thead th{background:var(--maroon);color:#fff;font-family:var(--display);font-weight:500;
+  padding:7px 6px;font-size:12.5px;line-height:1.3;position:sticky;top:0}
+table.grid thead th .tm{display:block;font-size:10px;opacity:.78;font-family:"IBM Plex Sans Arabic"}
+table.grid thead th.brk{background:var(--maroon-dk)}
+table.grid th.tname{background:var(--maroon-dk);text-align:start;min-width:190px;padding-inline-start:12px}
+td.tname{background:#FBF8F3;font-weight:600;text-align:start;padding:6px 12px;font-size:13.5px;white-space:nowrap}
+td.tname .s{display:block;font-weight:400;font-size:11px;color:var(--ink-soft)}
+td.cell{text-align:center;height:42px;padding:3px 4px;line-height:1.25}
+td.cell .c{font-weight:600;font-size:13.5px;display:block}
+td.cell .s{font-size:10.5px;color:var(--ink-soft);display:block}
+td.brk{background:#FAF6EE}
+td.off{background:var(--orange-tint)} td.off .c{color:var(--orange-ink)}
+.duty{display:inline-block;font-family:var(--display);font-size:11px;color:#fff;background:var(--maroon);
+  border-radius:2px;padding:2px 8px;letter-spacing:.04em}
+tr.dim td{opacity:.32}
+tr.focus td{background:var(--maroon-tint)!important;box-shadow:inset 0 0 0 1px var(--maroon-soft)}
+tr.focus td.tname{background:var(--maroon)!important;color:#fff}
+tr.focus td.tname .s{color:#EBD3DC}
+tr.focus td.off{background:#F6DFC9!important}
+.numcol{background:#FBF8F3;text-align:center;font-weight:600;width:56px}
+.pstats{display:flex;gap:22px;flex-wrap:wrap;padding:12px 16px;background:var(--maroon-tint);
+  border-inline-start:3px solid var(--maroon);border-radius:2px;font-size:13.5px}
+.pstats b{font-family:var(--display);font-size:22px;color:var(--maroon-dk);margin-inline-end:6px}
+table.pgrid{border-collapse:collapse;width:100%;font-size:13.5px;min-width:780px}
+table.pgrid th{background:var(--maroon);color:#fff;font-family:var(--display);font-weight:500;padding:8px 6px;font-size:12.5px}
+table.pgrid th .tm{display:block;font-size:10px;opacity:.78;font-family:"IBM Plex Sans Arabic"}
+table.pgrid th.dayh{background:var(--maroon-dk);text-align:start;padding-inline-start:14px;min-width:100px}
+table.pgrid td{border:1px solid var(--rule-soft);text-align:center;height:54px;padding:4px;vertical-align:middle}
+table.pgrid td.has{background:var(--sky-tint)}
+table.pgrid td.has .c{font-weight:700;font-size:15px;display:block;color:var(--maroon-dk)}
+table.pgrid td.has .s{font-size:11px;color:var(--ink-soft)}
+table.pgrid td.off{background:var(--orange-tint)}
+table.pgrid td.off .c{color:var(--orange-ink)}
+table.pgrid td.dutyc{background:var(--maroon-tint)}
+table.pgrid td.freec{color:var(--ink-faint);font-size:11.5px}
+table.pgrid td.brkc{background:#FAF6EE;color:var(--ink-faint);font-size:11.5px}
+table.pgrid th.brkh{background:var(--maroon-dk)}
+table.pgrid td.has .s.gap{color:#B32B27;font-weight:600}
+table.pgrid td.has{background:var(--sky-tint)}
+table.pgrid td.multi .row2{display:block;border-top:1px dashed var(--rule);margin-top:3px;padding-top:3px}
+table.list{width:100%;border-collapse:collapse;font-size:14px}
+table.list thead th{font-family:var(--display);font-weight:600;font-size:13px;text-align:start;color:#fff;
+  background:var(--maroon);padding:9px 12px;white-space:nowrap}
+table.list tbody td{border-bottom:1px solid var(--rule);padding:9px 12px;vertical-align:middle}
+table.list tbody tr:hover{background:#FDFAF6}
+.daybar td{background:var(--beige)!important;font-family:var(--display);font-weight:600;color:var(--maroon-dk);padding:6px 12px!important}
+.per{font-family:var(--display);font-size:16px;color:var(--maroon);line-height:1.1;display:block}
+.time{font-size:11px;color:var(--ink-soft)}
+.cls{font-weight:600}.subj{font-size:11.5px;color:var(--ink-soft);display:block}
+.tagoff{display:inline-block;font-size:10.5px;background:var(--orange-tint);color:var(--orange-ink);
+  border:1px solid #EBC9A6;border-radius:2px;padding:0 6px;margin-inline-start:6px}
+select.none{border-color:#C9302C;color:#B32B27;background:#FCEDEC}
+.alt{font-size:12px;color:var(--ink-soft)}
+.roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:8px}
+.chip{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fff;
+  border:1px solid var(--rule);border-radius:3px;padding:8px 11px;cursor:pointer;font-size:14px;
+  text-align:start;font-family:inherit;color:var(--ink);transition:.15s ease}
+.chip:hover{border-color:var(--rose);background:#FDFAF6}
+.chip:focus-visible{outline:2px solid var(--maroon);outline-offset:2px}
+.chip .nm{font-weight:600}
+.chip .mt{font-size:11px;color:var(--ink-soft);display:block;font-weight:400}
+.chip .ld{font-size:11.5px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--rule);
+  border-radius:2px;padding:1px 7px;flex:none}
+.chip[aria-pressed="true"]{background:var(--maroon);border-color:var(--maroon);color:#fff}
+.chip[aria-pressed="true"] .mt{color:#EBD3DC}
+.chip[aria-pressed="true"] .ld{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.3);color:#fff}
+.chip[aria-pressed="true"]::after{content:attr(data-flag);position:absolute;top:-9px;inset-inline-start:9px;
+  font-family:var(--display);font-size:10px;letter-spacing:.12em;color:var(--maroon);background:var(--paper);
+  border:1.5px solid var(--maroon);border-radius:2px;padding:1px 7px;transform:rotate(-3deg)}
+.summary{display:flex;gap:24px;flex-wrap:wrap;padding:12px 16px;background:var(--maroon-tint);
+  border-inline-start:3px solid var(--maroon);border-radius:2px;margin-bottom:16px;font-size:13.5px}
+.summary b{font-family:var(--display);font-size:20px;color:var(--maroon-dk);margin-inline-end:6px}
+.empty{text-align:center;padding:48px 20px;color:var(--ink-soft)}
+.empty .big{font-family:var(--display);font-size:19px;color:var(--maroon-dk);margin-bottom:6px}
+table.dutytbl{width:100%;border-collapse:collapse;font-size:13.5px}
+table.dutytbl th{background:var(--maroon);color:#fff;font-family:var(--display);font-weight:500;padding:9px 10px;font-size:13px}
+table.dutytbl th .tm{display:block;font-size:10.5px;opacity:.8;font-family:"IBM Plex Sans Arabic"}
+table.dutytbl td{border:1px solid var(--rule-soft);padding:9px 10px;vertical-align:top}
+table.dutytbl td.dayc{background:#FBF8F3;font-family:var(--display);font-weight:600;color:var(--maroon-dk);
+  text-align:center;white-space:nowrap}
+.dname{display:inline-block;background:var(--paper);border:1px solid var(--rule);border-radius:2px;
+  padding:2px 9px;margin:2px 3px 2px 0;font-size:13px}
+.dname.me{background:var(--maroon);color:#fff;border-color:var(--maroon);font-weight:600}
+.dname.fixed{background:#fff;border-color:var(--maroon);color:var(--maroon-dk);font-weight:600;
+  box-shadow:inset 2px 0 0 var(--maroon)}
+.dname.fixed.me{background:var(--maroon);color:#fff}
+.legend{font-size:12px;color:var(--ink-soft);margin-top:12px;line-height:1.9}
+footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-soft)}
+[hidden]{display:none!important}
+@media (max-width:700px){h1{font-size:24px}.wrap{padding:0 12px 48px}nav button{padding:9px 12px;font-size:14px}}
+.printhint{font-size:12px;color:#B32B27;margin-inline-start:6px}
+@media print{
+  body{background:#fff}nav,.controls,.daytabs,.no-print,.roster,.lang{display:none!important}
+  .panel{box-shadow:none;border:0;padding:0}.scroll{overflow:visible;border:0}
+  table.grid{min-width:0;font-size:9px}select{border:0;-webkit-appearance:none;appearance:none}
+  @page{size:A4 landscape;margin:10mm}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+  <div class="brand">
+    <img class="mark" src="data:image/png;base64,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" alt="أكاديمية نهضة العالمية">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow"></p>
+      <h1 data-i18n="h1"></h1>
+      <p class="sub" data-i18n="sub"></p>
+    </div>
+  </div>
+  <div class="rightcol">
+    <div class="lang" role="group">
+      <button type="button" data-lang="ar" lang="ar">عربي</button>
+      <button type="button" data-lang="en" lang="en">English</button>
+    </div>
+    <div class="meta">
+      <div data-i18n-html="metaB1"></div>
+      <div data-i18n-html="metaB2"></div>
+      <div data-i18n-html="metaB3"></div>
+    </div>
+  </div>
+</header>
+
+<nav id="nav" role="tablist">
+  <button role="tab" data-v="grid" data-i18n="nav.grid"></button>
+  <button role="tab" data-v="cls" data-i18n="nav.cls"></button>
+  <button role="tab" data-v="me" data-i18n="nav.me"></button>
+  <button role="tab" data-v="duty" data-i18n="nav.duty"></button>
+  <button role="tab" data-v="cover" data-i18n="nav.cover"></button>
+</nav>
+
+<section id="v-grid">
+  <div class="panel">
+    <div class="controls">
+      <label class="f"><span data-i18n="ctl.highlight"></span><select id="hi"></select></label>
+      <label class="f"><input type="checkbox" id="onlyOne"> <span data-i18n="ctl.onlyOne"></span></label>
+      <label class="f"><input type="checkbox" id="showDuty" checked> <span data-i18n="ctl.showDuty"></span></label>
+      <button class="btn" id="printGrid" data-i18n="ctl.print"></button><span class="printhint" data-hint></span>
+    </div>
+    <div class="daytabs" id="gdays"></div>
+    <div class="scroll"><div id="gridBox"></div></div>
+    <p class="legend" data-i18n-html="legend.grid"></p>
+  </div>
+</section>
+
+<section id="v-cls" hidden>
+  <div class="panel">
+    <div class="controls">
+      <label class="f"><span data-i18n="ctl.pickClass"></span><select id="clsSel"></select></label>
+      <button class="btn" id="printCls" data-i18n="ctl.print"></button><span class="printhint" data-hint></span>
+    </div>
+    <div id="clsBox"></div>
+  </div>
+</section>
+
+<section id="v-me" hidden>
+  <div class="panel">
+    <div class="controls">
+      <label class="f"><span data-i18n="ctl.pickMe"></span><select id="meSel"></select></label>
+      <button class="btn" id="printMe" data-i18n="ctl.print"></button><span class="printhint" data-hint></span>
+    </div>
+    <div id="meBox"></div>
+  </div>
+</section>
+
+<section id="v-duty" hidden>
+  <div class="panel">
+    <div class="panel-h"><h2 data-i18n="duty.h"></h2><span class="hint" data-i18n="duty.hint"></span></div>
+    <div class="controls">
+      <label class="f"><span data-i18n="ctl.highlight"></span><select id="dutyHi"></select></label>
+      <button class="btn" id="printDuty" data-i18n="ctl.print"></button><span class="printhint" data-hint></span>
+    </div>
+    <div class="scroll"><div id="dutyBox"></div></div>
+    <div id="dutyCount"></div>
+  </div>
+</section>
+
+<section id="v-cover" hidden>
+  <div class="panel">
+    <div class="panel-h"><h2 data-i18n="cover.h1"></h2><span class="hint" data-i18n="cover.hint1"></span></div>
+    <div class="roster" id="roster"></div>
+    <div class="controls" style="margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule)">
+      <button class="btn primary" id="clear" data-i18n="cover.clear"></button>
+      <button class="btn" id="printCover" data-i18n="ctl.print"></button><span class="printhint" data-hint></span>
+      <span class="hint" id="absHint"></span>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-h"><h2 data-i18n="cover.h2"></h2><span class="hint" data-i18n="cover.hint2"></span></div>
+    <div class="daytabs" id="cdays"></div>
+    <div class="summary" id="csum" hidden></div>
+    <div id="coverBox"></div>
+  </div>
+</section>
+
+<footer data-i18n="footer"></footer>
+</div>
+<script>
+const DATA={"days":["Sunday","Monday","Tuesday","Wednesday","Thursday"],"teachers":{"Abdullah":{"subject":"Islamic","lessons":{"Sunday|B3":{"cls":"8","sub":"Isl","raw":"Y8","off":false},"Sunday|5":{"cls":"7-D","sub":"Isl","raw":"Y7 Dadan","off":true},"Sunday|4":{"cls":"6","sub":"Isl","raw":"Y6 Al Rijal Almaa","off":true},"Sunday|3":{"cls":"7-W","sub":"Isl","raw":"Y7 Al Waha","off":true},"Monday|B3":{"cls":"8","sub":"Isl","raw":"Y8","off":false},"Monday|5":{"cls":"7-D","sub":"Isl","raw":"Y7 Dadan","off":true},"Monday|4":{"cls":"6","sub":"Isl","raw":"Y6 Al Rijal Almaa","off":true},"Monday|3":{"cls":"7-W","sub":"Isl","raw":"Y7 Al Waha","off":true},"Tuesday|B3":{"cls":"8","sub":"Isl","raw":"Y8","off":false},"Tuesday|5":{"cls":"7-W","sub":"Isl","raw":"Y7 Al Waha","off":true},"Tuesday|4":{"cls":"7-D","sub":"Isl","raw":"Y7 Dadan","off":true},"Tuesday|3":{"cls":"6","sub":"Isl","raw":"Y6 Al Rijal Almaa","off":true},"Wednesday|B3":{"cls":"8","sub":"Isl","raw":"Y8","off":false},"Wednesday|5":{"cls":"7-D","sub":"Isl","raw":"Y7 Dadan","off":true},"Wednesday|4":{"cls":"6","sub":"Isl","raw":"Y6 Al Rijal Almaa","off":true},"Wednesday|3":{"cls":"7-W","sub":"Isl","raw":"Y7 Al Waha","off":true},"Thursday|7":{"cls":"8","sub":"Isl","raw":"Y8","off":false},"Thursday|5":{"cls":"6","sub":"Isl","raw":"Y6 Al Rijal Almaa","off":true},"Thursday|4":{"cls":"7-D","sub":"Isl","raw":"Y7 Dadan","off":true},"Thursday|3":{"cls":"7-W","sub":"Isl","raw":"Y7 Al Waha","off":true}},"load":20},"Abdulrahman":{"subject":"Life Skills/ Community Service","lessons":{"Monday|8":{"cls":"12/13","sub":"LS","raw":"Y12/ Y13 Life Skills","off":false},"Wednesday|4":{"cls":"12/13","sub":"CS","raw":"Y12/ Y13 Community Service","off":false}},"load":2},"Ayman":{"subject":"Maths","lessons":{"Sunday|7":{"cls":"12-A","sub":"Maths","raw":"Y12 (A level)","off":false},"Sunday|B2":{"cls":"12-A","sub":"Maths","raw":"Y12 (A level)","off":false},"Sunday|5":{"cls":"11","sub":"Maths","raw":"Y11","off":false},"Sunday|2":{"cls":"7-W","sub":"Maths","raw":"Y7 Al Waha","off":true},"Sunday|1":{"cls":"7-D","sub":"Maths","raw":"Y7 Dadan","off":true},"Monday|7":{"cls":"12-A","sub":"Maths","raw":"Y12 (A level)","off":false},"Monday|5":{"cls":"11","sub":"Maths","raw":"Y11","off":false},"Monday|2":{"cls":"7-W","sub":"Maths","raw":"Y7 Al Waha","off":true},"Monday|1":{"cls":"7-D","sub":"Maths","raw":"Y7 Dadan","off":true},"Tuesday|8":{"cls":"12-A","sub":"Maths","raw":"Y12 (A level)","off":false},"Tuesday|7":{"cls":"11","sub":"Maths","raw":"Y11","off":false},"Tuesday|2":{"cls":"7-W","sub":"Maths","raw":"Y7 Al Waha","off":true},"Tuesday|1":{"cls":"7-D","sub":"Maths","raw":"Y7 Dadan","off":true},"Wednesday|5":{"cls":"12-A","sub":"Maths","raw":"Y12 (A level)","off":false},"Wednesday|2":{"cls":"7-W","sub":"Maths","raw":"Y7 Al Waha","off":true},"Wednesday|1":{"cls":"7-D","sub":"Maths","raw":"Y7 Dadan","off":true},"Thursday|8":{"cls":"12-A","sub":"Maths","raw":"Y12 (A level)","off":false},"Thursday|7":{"cls":"12-A","sub":"Maths","raw":"Y12 (A level)","off":false},"Thursday|B2":{"cls":"11","sub":"Maths","raw":"Y11","off":false},"Thursday|2":{"cls":"7-W","sub":"Maths","raw":"Y7 Al Waha","off":true},"Thursday|1":{"cls":"7-D","sub":"Maths","raw":"Y7 Dadan","off":true}},"load":21},"Ebrahim":{"subject":"English","lessons":{"Sunday|8":{"cls":"11-G2","sub":"Eng","raw":"Y11 Group 2","off":false},"Sunday|5":{"cls":"13","sub":"Eng","raw":"Y13","off":false},"Sunday|4":{"cls":"8","sub":"Eng","raw":"Y8","off":false},"Sunday|2":{"cls":"7-D","sub":"Eng","raw":"Y7 Dadan","off":true},"Sunday|1":{"cls":"7-W","sub":"Eng","raw":"Y7 Al Waha","off":true},"Monday|7":{"cls":"11-G2","sub":"Eng","raw":"Y11 Group 2","off":false},"Monday|B2":{"cls":"13","sub":"Eng","raw":"Y13","off":false},"Monday|5":{"cls":"8","sub":"Eng","raw":"Y8","off":false},"Monday|2":{"cls":"7-D","sub":"Eng","raw":"Y7 Dadan","off":true},"Monday|1":{"cls":"7-W","sub":"Eng","raw":"Y7 Al Waha","off":true},"Tuesday|8":{"cls":"11-G2","sub":"Eng","raw":"Y11 Group 2","off":false},"Tuesday|7":{"cls":"8","sub":"Eng","raw":"Y8","off":false},"Tuesday|5":{"cls":"13","sub":"Eng","raw":"Y13","off":false},"Tuesday|2":{"cls":"7-D","sub":"Eng","raw":"Y7 Dadan","off":true},"Tuesday|1":{"cls":"7-W","sub":"Eng","raw":"Y7 Al Waha","off":true},"Wednesday|7":{"cls":"8","sub":"Eng","raw":"Y8","off":false},"Wednesday|2":{"cls":"7-D","sub":"Eng","raw":"Y7 Dadan","off":true},"Wednesday|1":{"cls":"7-W","sub":"Eng","raw":"Y7 Al Waha","off":true},"Thursday|7":{"cls":"11-G2","sub":"Eng","raw":"Y11 Group 2","off":false},"Thursday|5":{"cls":"13","sub":"Eng","raw":"Y13","off":false},"Thursday|4":{"cls":"8","sub":"Eng","raw":"Y8","off":false},"Thursday|2":{"cls":"7-D","sub":"Eng","raw":"Y7 Dadan","off":true},"Thursday|1":{"cls":"7-W","sub":"Eng","raw":"Y7 Al Waha","off":true}},"load":23},"Francios":{"subject":"GP","lessons":{"Sunday|B2":{"cls":"11","sub":"GP","raw":"Y11","off":false},"Sunday|5":{"cls":"10","sub":"GP","raw":"Y10","off":false},"Monday|4":{"cls":"10","sub":"GP","raw":"Y10","off":false},"Monday|2":{"cls":"11","sub":"GP","raw":"Y11","off":false},"Tuesday|1":{"cls":"10","sub":"GP","raw":"Y10","off":false},"Wednesday|4":{"cls":"10","sub":"GP","raw":"Y10","off":false},"Wednesday|1":{"cls":"11","sub":"GP","raw":"Y11","off":false},"Thursday|1":{"cls":"11","sub":"GP","raw":"Y11","off":false}},"load":8},"Hamza":{"subject":"English","lessons":{"Sunday|8":{"cls":"11-G1","sub":"Eng","raw":"Y11 Group 1","off":false},"Sunday|2":{"cls":"12-D","sub":"Eng","raw":"Y12 (Diploma)","off":false},"Sunday|1":{"cls":"10","sub":"Eng","raw":"Y10","off":false},"Monday|7":{"cls":"11-G1","sub":"Eng","raw":"Y11 Group 1","off":false},"Monday|B2":{"cls":"12-AD","sub":"Eng","raw":"Y12 (A/D)","off":false},"Monday|3":{"cls":"10","sub":"Eng","raw":"Y10","off":false},"Monday|2":{"cls":"9","sub":"Eng","raw":"Y9","off":false},"Monday|1":{"cls":"9","sub":"Eng","raw":"Y9","off":false},"Tuesday|8":{"cls":"11-G1","sub":"Eng","raw":"Y11 Group 1","off":false},"Tuesday|5":{"cls":"12-AD","sub":"Eng","raw":"Y12 (A/D)","off":false},"Tuesday|1":{"cls":"9","sub":"Eng","raw":"Y9","off":false},"Wednesday|5":{"cls":"9","sub":"Eng","raw":"Y9","off":false},"Wednesday|1":{"cls":"10","sub":"Eng","raw":"Y10","off":false},"Thursday|7":{"cls":"11-G1","sub":"Eng","raw":"Y11 Group 1","off":false},"Thursday|B2":{"cls":"10","sub":"Eng","raw":"Y10","off":false},"Thursday|5":{"cls":"12-AD","sub":"Eng","raw":"Y12 (A/D)","off":false},"Thursday|3":{"cls":"9","sub":"Eng","raw":"Y9","off":false}},"load":17},"Huthaifa":{"subject":"Islamic/ Social Studies","lessons":{"Sunday|7":{"cls":"11","sub":"Isl","raw":"Y11 Islamic","off":false},"Sunday|B2":{"cls":"13","sub":"Isl","raw":"Y13 Islamic","off":false},"Sunday|5":{"cls":"12","sub":"Isl","raw":"Y12 Islamic","off":false},"Sunday|4":{"cls":"10","sub":"Isl","raw":"Y10 Islamic","off":false},"Sunday|3":{"cls":"12","sub":"SS","raw":"Y12 Social Studies","off":false},"Sunday|2":{"cls":"9","sub":"Isl","raw":"Y9 Islamic","off":false},"Monday|7":{"cls":"13","sub":"Isl","raw":"Y13 Islamic","off":false},"Monday|5":{"cls":"12","sub":"SS","raw":"Y12 Social Studies","off":false},"Monday|4":{"cls":"12","sub":"Isl","raw":"Y12 Islamic","off":false},"Monday|3":{"cls":"9","sub":"Isl","raw":"Y9 Islamic","off":false},"Tuesday|B2":{"cls":"10","sub":"Isl","raw":"Y10 Islamic","off":false},"Tuesday|4":{"cls":"11","sub":"Isl","raw":"Y11 Islamic","off":false},"Tuesday|3":{"cls":"9","sub":"Isl","raw":"Y9 Islamic","off":false},"Tuesday|2":{"cls":"13","sub":"SS","raw":"Y13 Social Studies","off":false},"Wednesday|8":{"cls":"9","sub":"Isl","raw":"Y9 Islamic","off":false},"Wednesday|B2":{"cls":"13","sub":"Isl","raw":"Y13 Islamic","off":false},"Wednesday|5":{"cls":"10","sub":"Isl","raw":"Y10 Islamic","off":false},"Wednesday|4":{"cls":"11","sub":"Isl","raw":"Y11 Islamic","off":false},"Wednesday|3":{"cls":"12","sub":"Isl","raw":"Y12 Islamic","off":false},"Thursday|8":{"cls":"9","sub":"Isl","raw":"Y9 Islamic","off":false},"Thursday|B2":{"cls":"13","sub":"SS","raw":"Y13 Social Studies","off":false},"Thursday|5":{"cls":"10","sub":"Isl","raw":"Y10 Islamic","off":false}},"load":22},"Jose":{"subject":"Business Studies","lessons":{"Sunday|8":{"cls":"12-A","sub":"Bus","raw":"Y12 (A)","off":false},"Sunday|B2":{"cls":"10","sub":"Bus","raw":"Y10","off":false},"Sunday|2":{"cls":"12-A","sub":"Bus","raw":"Y12 (A)","off":false},"Sunday|1":{"cls":"11","sub":"Bus","raw":"Y11","off":false},"Monday|B2":{"cls":"10","sub":"Bus","raw":"Y10","off":false},"Monday|3":{"cls":"12-A","sub":"Bus","raw":"Y12 (A)","off":false},"Monday|1":{"cls":"11","sub":"Bus","raw":"Y11","off":false},"Tuesday|8":{"cls":"9","sub":"Bus","raw":"Y9","off":false},"Tuesday|7":{"cls":"12-A","sub":"Bus","raw":"Y12 (A)","off":false},"Tuesday|4":{"cls":"9","sub":"Bus","raw":"Y9","off":false},"Tuesday|3":{"cls":"8","sub":"Bus","raw":"Y8","off":false},"Tuesday|2":{"cls":"10","sub":"Bus","raw":"Y10","off":false},"Wednesday|8":{"cls":"12-A","sub":"Bus","raw":"Y12 (A)","off":false},"Wednesday|7":{"cls":"12-A","sub":"Bus","raw":"Y12 (A)","off":false},"Wednesday|3":{"cls":"11","sub":"Bus","raw":"Y11","off":false},"Thursday|B2":{"cls":"9","sub":"Bus","raw":"Y9","off":false},"Thursday|3":{"cls":"12-A","sub":"Bus","raw":"Y12 (A)","off":false},"Thursday|2":{"cls":"11","sub":"Bus","raw":"Y11","off":false},"Thursday|1":{"cls":"10","sub":"Bus","raw":"Y10","off":false}},"load":19},"Justin":{"subject":"Science/ Physics/ EP/ LS/ CS","lessons":{"Sunday|8":{"cls":"12/13","sub":"EP","raw":"Y12/ Y13 Extended Project","off":false},"Sunday|7":{"cls":"12/13","sub":"EP","raw":"Y12/ Y13 Extended Project","off":false},"Sunday|3":{"cls":"11","sub":"Sci","raw":"Y11 Science","off":false},"Sunday|2":{"cls":"13","sub":"Phy","raw":"Y13 Physics","off":false},"Sunday|1":{"cls":"12-AD","sub":"Phy","raw":"Y12 Physics (A/D)","off":false},"Monday|8":{"cls":"12/13","sub":"LS","raw":"Y12/Y13 Life Skills","off":false},"Monday|5":{"cls":"13","sub":"Phy","raw":"Y13 Physics","off":false},"Monday|4":{"cls":"11","sub":"Sci","raw":"Y11 Science","off":false},"Monday|2":{"cls":"12-A","sub":"Phy","raw":"Y12 Physics (A)","off":false},"Monday|1":{"cls":"12-AD","sub":"Phy","raw":"Y12 Physics (A/D)","off":false},"Tuesday|B2":{"cls":"11","sub":"Sci","raw":"Y11 Science","off":false},"Tuesday|5":{"cls":"11","sub":"Sci","raw":"Y11 Science","off":false},"Tuesday|2":{"cls":"12-A","sub":"Phy","raw":"Y12 Physics (A)","off":false},"Tuesday|1":{"cls":"12-A","sub":"Phy","raw":"Y12 Physics (A)","off":false},"Wednesday|5":{"cls":"13","sub":"Phy","raw":"Y13 Physics","off":false},"Wednesday|4":{"cls":"12/13","sub":"CS","raw":"Y12/Y13 Community Service","off":false},"Wednesday|1":{"cls":"12-A","sub":"Phy","raw":"Y12 Physics (A)","off":false},"Thursday|5":{"cls":"11","sub":"Sci","raw":"Y11 Science","off":false},"Thursday|4":{"cls":"11","sub":"Sci","raw":"Y11 Science","off":false},"Thursday|1":{"cls":"12-AD","sub":"Phy","raw":"Y12 Physics (A/D)","off":false},"Wednesday|2":{"cls":"11","sub":"Sci","raw":"Y11 Science","off":false}},"load":21},"Medhat":{"subject":"Arabic","lessons":{"Sunday|7":{"cls":"10","sub":"Ar","raw":"Y10","off":false},"Sunday|4":{"cls":"12-AD","sub":"Ar","raw":"Y12 (A/D)","off":false},"Sunday|2":{"cls":"11-G1","sub":"Ar","raw":"Y11 Group 1","off":false},"Monday|8":{"cls":"11-G1","sub":"Ar","raw":"Y11 Group 1","off":false},"Monday|7":{"cls":"10","sub":"Ar","raw":"Y10","off":false},"Monday|4":{"cls":"13","sub":"Ar","raw":"Y13","off":false},"Monday|3":{"cls":"11-G1","sub":"Ar","raw":"Y11 Group 1","off":false},"Monday|2":{"cls":"12-D","sub":"Ar","raw":"Y12 (D)","off":false},"Tuesday|7":{"cls":"10","sub":"Ar","raw":"Y10","off":false},"Tuesday|4":{"cls":"12-AD","sub":"Ar","raw":"Y12 (A/D)","off":false},"Tuesday|3":{"cls":"13","sub":"Ar","raw":"Y13","off":false},"Tuesday|2":{"cls":"11","sub":"Ar","raw":"Y11","off":false},"Wednesday|8":{"cls":"10","sub":"Ar","raw":"Y10","off":false},"Wednesday|B2":{"cls":"11","sub":"Ar","raw":"Y11","off":false},"Wednesday|2":{"cls":"13","sub":"Ar","raw":"Y13","off":false},"Thursday|7":{"cls":"10","sub":"Ar","raw":"Y10","off":false},"Thursday|4":{"cls":"12-AD","sub":"Ar","raw":"Y12 (A/D)","off":false},"Thursday|3":{"cls":"11","sub":"Ar","raw":"Y11","off":false},"Thursday|2":{"cls":"13","sub":"Ar","raw":"Y13","off":false}},"load":19},"Michael":{"subject":"Science/ Biology/ EP","lessons":{"Sunday|8":{"cls":"9","sub":"Sci","raw":"Y9 Science","off":false},"Sunday|7":{"cls":"9","sub":"Sci","raw":"Y9 Science","off":false},"Monday|8":{"cls":"9","sub":"Sci","raw":"Y9 Science","off":false},"Monday|3":{"cls":"13","sub":"Bio","raw":"Y13 Biology","off":false},"Monday|2":{"cls":"10","sub":"Sci","raw":"Y10 Science","off":false},"Monday|1":{"cls":"10","sub":"Sci","raw":"Y10 Science","off":false},"Tuesday|B2":{"cls":"12-AD","sub":"Bio","raw":"Y12 Biology (A/D)","off":false},"Tuesday|5":{"cls":"10","sub":"Sci","raw":"Y10 Science","off":false},"Tuesday|4":{"cls":"10","sub":"Sci","raw":"Y10 Science","off":false},"Tuesday|2":{"cls":"9","sub":"Sci","raw":"Y9 Science","off":false},"Tuesday|1":{"cls":"13","sub":"Bio","raw":"Y13 Biology","off":false},"Wednesday|7":{"cls":"10","sub":"Sci","raw":"Y10 Science","off":false},"Wednesday|B2":{"cls":"12-AD","sub":"Bio","raw":"Y12 Biology (A/D)","off":false},"Wednesday|3":{"cls":"9","sub":"Sci","raw":"Y9 Science","off":false},"Wednesday|2":{"cls":"9","sub":"Sci","raw":"Y9 Science","off":false},"Thursday|8":{"cls":"12/13","sub":"EP","raw":"Y12/Y13 Extended Project","off":false},"Thursday|7":{"cls":"12/13","sub":"EP","raw":"Y12/Y13 Extended Project","off":false},"Thursday|B2":{"cls":"12-AD","sub":"Bio","raw":"Y12 Biology (A/D)","off":false},"Thursday|5":{"cls":"9","sub":"Sci","raw":"Y9 Science","off":false},"Thursday|4":{"cls":"13","sub":"Bio","raw":"Y13 Biology","off":false},"Thursday|3":{"cls":"10","sub":"Sci","raw":"Y10 Science","off":false},"Thursday|2":{"cls":"10","sub":"Sci","raw":"Y10 Science","off":false}},"load":22},"Nabil":{"subject":"Science/ Chemistry/ EP","lessons":{"Sunday|7":{"cls":"7-D","sub":"Sci","raw":"Y7 Dadan Science","off":true},"Sunday|B3":{"cls":"7-W","sub":"Sci","raw":"Y7 Al Waha Science","off":true},"Sunday|5":{"cls":"8","sub":"Sci","raw":"Y8 Science","off":false},"Sunday|4":{"cls":"13","sub":"Chem","raw":"Y13 Chemistry","off":false},"Monday|7":{"cls":"7-W","sub":"Sci","raw":"Y7 Al Waha Science","off":true},"Monday|B3":{"cls":"7-D","sub":"Sci","raw":"Y7 Dadan Science","off":true},"Monday|3":{"cls":"8","sub":"Sci","raw":"Y8 Science","off":false},"Tuesday|8":{"cls":"12/13","sub":"EP","raw":"Y12/ Y13 Extended Project","off":false},"Tuesday|7":{"cls":"12/13","sub":"EP","raw":"Y12/ Y13 Extended Project","off":false},"Tuesday|5":{"cls":"8","sub":"Sci","raw":"Y8 Science","off":false},"Tuesday|4":{"cls":"13","sub":"Chem","raw":"Y13 Chemistry","off":false},"Tuesday|3":{"cls":"12-AD","sub":"Chem","raw":"Y12 Chemistry (A/D)","off":false},"Wednesday|7":{"cls":"7-W","sub":"Sci","raw":"Y7 Al Waha Science","off":true},"Wednesday|B3":{"cls":"7-D","sub":"Sci","raw":"Y7 Dadan Science","off":true},"Wednesday|2":{"cls":"12-AD","sub":"Chem","raw":"Y12 Chemstry (A/D)","off":false},"Thursday|7":{"cls":"7-W","sub":"Sci","raw":"Y7 Al Waha Science","off":true},"Thursday|B3":{"cls":"7-D","sub":"Sci","raw":"Y7 Dadan Science","off":true},"Thursday|3":{"cls":"13","sub":"Chem","raw":"Y13 Chemistry","off":false},"Thursday|2":{"cls":"12-AD","sub":"Chem","raw":"Y12 Chemstry (A/D)","off":false},"Thursday|1":{"cls":"8","sub":"Sci","raw":"Y8 Science","off":false}},"load":20},"Neil":{"subject":"GP/EM/EP","lessons":{"Sunday|8":{"cls":"12/13","sub":"EP","raw":"Y12/ Y13 Extended Project","off":false},"Sunday|7":{"cls":"12/13","sub":"EP","raw":"Y12/ Y13 Extended Project","off":false},"Sunday|4":{"cls":"11","sub":"EM","raw":"Y11 EM","off":false},"Sunday|3":{"cls":"9","sub":"GP","raw":"Y9 GP","off":false},"Sunday|2":{"cls":"10","sub":"EM","raw":"Y10 EM","off":false},"Sunday|1":{"cls":"8","sub":"GP","raw":"Y8 GP","off":false},"Monday|7":{"cls":"7-D","sub":"GP","raw":"Y7 Dadan GP","off":true},"Monday|B3":{"cls":"7-W","sub":"GP","raw":"Y7 Al Waha GP","off":true},"Monday|5":{"cls":"10","sub":"EM","raw":"Y10 EM","off":false},"Tuesday|4":{"cls":"8","sub":"GP","raw":"Y8 GP","off":false},"Tuesday|3":{"cls":"11","sub":"EM","raw":"Y11 EM","off":false},"Tuesday|1":{"cls":"11","sub":"EM","raw":"Y11 EM","off":false},"Wednesday|7":{"cls":"7-D","sub":"GP","raw":"Y7 Dadan GP","off":true},"Wednesday|B3":{"cls":"7-W","sub":"GP","raw":"Y7 Al Waha GP","off":true},"Wednesday|5":{"cls":"11","sub":"EM","raw":"Y11 EM","off":false},"Wednesday|2":{"cls":"10","sub":"EM","raw":"Y10 EM","off":false},"Wednesday|1":{"cls":"9","sub":"GP","raw":"Y9 GP","off":false},"Thursday|7":{"cls":"7-D","sub":"GP","raw":"Y7 Dadan GP","off":true},"Thursday|B3":{"cls":"7-W","sub":"GP","raw":"Y7 Al Waha GP","off":true},"Thursday|5":{"cls":"8","sub":"GP","raw":"Y8 GP","off":false},"Thursday|4":{"cls":"10","sub":"EM","raw":"Y10 EM","off":false},"Thursday|1":{"cls":"9","sub":"GP","raw":"Y9 GP","off":false}},"load":22},"Robert":{"subject":"Maths","lessons":{"Sunday|B2":{"cls":"12-D","sub":"Maths","raw":"Y12 (Diploma)","off":false},"Sunday|5":{"cls":"9","sub":"Maths","raw":"Y9","off":false},"Sunday|3":{"cls":"10","sub":"Maths","raw":"Y10","off":false},"Sunday|2":{"cls":"8","sub":"Maths","raw":"Y8","off":false},"Sunday|1":{"cls":"13","sub":"Maths","raw":"Y13","off":false},"Monday|7":{"cls":"12-D","sub":"Maths","raw":"Y12 (Diploma)","off":false},"Monday|5":{"cls":"9","sub":"Maths","raw":"Y9","off":false},"Monday|2":{"cls":"13","sub":"Maths","raw":"Y13","off":false},"Monday|1":{"cls":"8","sub":"Maths","raw":"Y8","off":false},"Tuesday|7":{"cls":"9","sub":"Maths","raw":"Y9","off":false},"Tuesday|3":{"cls":"10","sub":"Maths","raw":"Y10","off":false},"Tuesday|2":{"cls":"12-D","sub":"Maths","raw":"Y12 (Diploma)","off":false},"Tuesday|1":{"cls":"8","sub":"Maths","raw":"Y8","off":false},"Wednesday|B2":{"cls":"9","sub":"Maths","raw":"Y9","off":false},"Wednesday|5":{"cls":"12-D","sub":"Maths","raw":"Y12 (Diploma)","off":false},"Wednesday|4":{"cls":"8","sub":"Maths","raw":"Y8","off":false},"Wednesday|3":{"cls":"10","sub":"Maths","raw":"Y10","off":false},"Wednesday|1":{"cls":"13","sub":"Maths","raw":"Y13","off":false},"Thursday|8":{"cls":"10","sub":"Maths","raw":"Y10","off":false},"Thursday|4":{"cls":"9","sub":"Maths","raw":"Y9","off":false},"Thursday|2":{"cls":"8","sub":"Maths","raw":"Y8","off":false},"Thursday|1":{"cls":"13","sub":"Maths","raw":"Y13","off":false}},"load":22},"Tahir":{"subject":"ICT","lessons":{"Sunday|7":{"cls":"7-W","sub":"ICT","raw":"Y7 Al Waha","off":true},"Sunday|3":{"cls":"13","sub":"ICT","raw":"Y13","off":false},"Sunday|2":{"cls":"10","sub":"ICT","raw":"Y10","off":false},"Sunday|1":{"cls":"9","sub":"ICT","raw":"Y9","off":false},"Monday|B2":{"cls":"9","sub":"ICT","raw":"Y9","off":false},"Monday|5":{"cls":"10","sub":"ICT","raw":"Y10","off":false},"Monday|4":{"cls":"8","sub":"ICT","raw":"Y8","off":false},"Monday|3":{"cls":"12-D","sub":"ICT","raw":"Y12 (Diploma)","off":false},"Monday|1":{"cls":"13","sub":"ICT","raw":"Y13","off":false},"Tuesday|B2":{"cls":"13","sub":"ICT","raw":"Y13","off":false},"Tuesday|5":{"cls":"9","sub":"ICT","raw":"Y9","off":false},"Tuesday|3":{"cls":"7-D","sub":"ICT","raw":"Y7 Dadan","off":true},"Tuesday|1":{"cls":"12-D","sub":"ICT","raw":"Y12 (Diploma)","off":false},"Wednesday|4":{"cls":"7-W","sub":"ICT","raw":"Y7 Al Waha","off":true},"Wednesday|3":{"cls":"13","sub":"ICT","raw":"Y13","off":false},"Wednesday|2":{"cls":"10","sub":"ICT","raw":"Y10","off":false},"Wednesday|1":{"cls":"12-D","sub":"ICT","raw":"Y12 (Diploma)","off":false},"Thursday|4":{"cls":"10","sub":"ICT","raw":"Y10","off":false},"Thursday|3":{"cls":"12-D","sub":"ICT","raw":"Y12 (Diploma)","off":false},"Sunday|B3":{"cls":"7-D","sub":"ICT","raw":"Y7 Dadan","off":true}},"load":20},"Zaher":{"subject":"Arabic/ Social Studies","lessons":{"Sunday|8":{"cls":"10","sub":"SS","raw":"Y10 Social Studies","off":false},"Sunday|7":{"cls":"8","sub":"SS","raw":"Y8 Social Studies","off":false},"Sunday|B2":{"cls":"9","sub":"Ar","raw":"Y9 Arabic","off":false},"Sunday|4":{"cls":"9","sub":"SS","raw":"Y9 Social Studies","off":false},"Sunday|3":{"cls":"8","sub":"Ar","raw":"Y8 Arabic","off":false},"Sunday|2":{"cls":"11-G2","sub":"Ar","raw":"Y11 Arabic Group 2","off":false},"Monday|8":{"cls":"11-G2","sub":"Ar","raw":"Y11 Arabic Group 2","off":false},"Monday|7":{"cls":"8","sub":"Ar","raw":"Y8 Arabic","off":false},"Monday|B2":{"cls":"11","sub":"SS","raw":"Y11 Social Studies","off":false},"Monday|4":{"cls":"9","sub":"Ar","raw":"Y9 Arabic","off":false},"Monday|3":{"cls":"11-G2","sub":"Ar","raw":"Y11 Arabic Group 2","off":false},"Tuesday|8":{"cls":"10","sub":"SS","raw":"Y10 Social Studies","off":false},"Tuesday|B2":{"cls":"9","sub":"Ar","raw":"Y9 Arabic","off":false},"Tuesday|2":{"cls":"8","sub":"Ar","raw":"Y8 Arabic","off":false},"Wednesday|7":{"cls":"9","sub":"Ar","raw":"Y9 Arabic","off":false},"Wednesday|3":{"cls":"8","sub":"Ar","raw":"Y8 Arabic","off":false},"Thursday|8":{"cls":"11","sub":"SS","raw":"Y11 Social Studies","off":false},"Thursday|7":{"cls":"9","sub":"SS","raw":"Y9 Social Studies","off":false},"Thursday|B3":{"cls":"8","sub":"SS","raw":"Y8 Social Studies","off":false},"Thursday|3":{"cls":"8","sub":"Ar","raw":"Y8 Arabic","off":false},"Thursday|2":{"cls":"9","sub":"Ar","raw":"Y9 Arabic","off":false}},"load":21},"Yusuf":{"subject":"Supervision only","lessons":{},"load":0,"sup":true},"Dr. Maher":{"subject":"Supervision only","lessons":{},"load":0,"sup":true}}};
+const DUTY={"duties":{"Sunday|B2":["Dr. Maher","Ebrahim","Hamza","Michael"],"Monday|B2":["Ayman","Dr. Maher","Huthaifa","Robert"],"Thursday|B2":["Dr. Maher","Francios","Tahir","Zaher"],"Wednesday|B2":["Dr. Maher","Jose","Justin","Yusuf"],"Sunday|B3":["Ayman","Dr. Maher","Francios","Jose","Justin","Medhat","Robert"],"Tuesday|B2":["Dr. Maher","Hamza","Nabil","Neil"],"Sunday|B1":["Dr. Maher","Ebrahim","Medhat","Michael","Nabil","Tahir","Yusuf"],"Thursday|B3":["Abdullah","Ayman","Dr. Maher","Hamza","Huthaifa","Jose","Robert"],"Monday|B3":["Dr. Maher","Ebrahim","Francios","Justin","Michael","Tahir","Zaher"],"Wednesday|B3":["Dr. Maher","Huthaifa","Medhat","Michael","Tahir","Yusuf","Zaher"],"Tuesday|B1":["Ayman","Dr. Maher","Huthaifa","Jose","Nabil","Neil","Zaher"],"Wednesday|B1":["Dr. Maher","Ebrahim","Francios","Hamza","Nabil","Neil","Robert"],"Thursday|B1":["Dr. Maher","Ebrahim","Justin","Medhat","Nabil","Neil","Yusuf"],"Monday|B1":["Dr. Maher","Hamza","Huthaifa","Jose","Medhat","Neil","Yusuf"],"Tuesday|B3":["Dr. Maher","Francios","Justin","Michael","Robert","Tahir","Zaher"]},"dcount":{"Ebrahim":5,"Hamza":5,"Justin":5,"Medhat":5,"Michael":5,"Yusuf":5,"Ayman":4,"Francios":5,"Huthaifa":5,"Robert":5,"Tahir":5,"Zaher":5,"Jose":5,"Nabil":5,"Neil":5,"Abdullah":1,"Dr. Maher":15,"Abdulrahman":0}};
+const CLASSES={"10":{"title":"Year 10 Buraidah Qassim","lower":false,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["P3","9:45 – 10:30"],["BB","10:30 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["P6","12:30 – 1:15"],["BD","1:15 – 2:00"],["P7","2:00 – 2:45"],["P8","2:45 – 3:30"]],"days":{"Sunday":{"P1":[{"sub":"English","t":"Hamza","grp":"10"}],"P2":[{"sub":"EM","t":"Neil","grp":"10"},{"sub":"ICT","t":"Tahir","grp":"10"}],"P3":[{"sub":"Maths","t":"Robert","grp":"10"}],"P4":[{"sub":"Islamic","t":"Huthaifa","grp":"10"}],"P5":[{"sub":"GP","t":"Francios","grp":"10"}],"P6":[{"sub":"Business Studies","t":"Jose","grp":"10"}],"P7":[{"sub":"Arabic","t":"Medhat","grp":"10"}],"P8":[{"sub":"Social Studies","t":"Zaher","grp":"10"}]},"Monday":{"P1":[{"sub":"Science","t":"Michael","grp":"10"}],"P2":[{"sub":"Science","t":"Michael","grp":"10"}],"P3":[{"sub":"English","t":"Hamza","grp":"10"}],"P4":[{"sub":"GP","t":"Francios","grp":"10"}],"P5":[{"sub":"EM","t":"Neil","grp":"10"},{"sub":"ICT","t":"Tahir","grp":"10"}],"P6":[{"sub":"Business Studies","t":"Jose","grp":"10"}],"P7":[{"sub":"Arabic","t":"Medhat","grp":"10"}],"P8":[{"sub":"PE","t":null,"grp":null}]},"Tuesday":{"P1":[{"sub":"GP","t":"Francios","grp":"10"}],"P2":[{"sub":"Business Studies","t":"Jose","grp":"10"}],"P3":[{"sub":"Maths","t":"Robert","grp":"10"}],"P4":[{"sub":"Science","t":"Michael","grp":"10"}],"P5":[{"sub":"Science","t":"Michael","grp":"10"}],"P6":[{"sub":"Islamic","t":"Huthaifa","grp":"10"}],"P7":[{"sub":"Arabic","t":"Medhat","grp":"10"}],"P8":[{"sub":"Social Studies","t":"Zaher","grp":"10"}]},"Wednesday":{"P1":[{"sub":"English","t":"Hamza","grp":"10"}],"P2":[{"sub":"EM","t":"Neil","grp":"10"},{"sub":"ICT","t":"Tahir","grp":"10"}],"P3":[{"sub":"Maths","t":"Robert","grp":"10"}],"P4":[{"sub":"GP","t":"Francios","grp":"10"}],"P5":[{"sub":"Islamic","t":"Huthaifa","grp":"10"}],"P6":[{"sub":"PE","t":null,"grp":null}],"P7":[{"sub":"Science","t":"Michael","grp":"10"}],"P8":[{"sub":"Arabic","t":"Medhat","grp":"10"}]},"Thursday":{"P1":[{"sub":"Business Studies","t":"Jose","grp":"10"}],"P2":[{"sub":"Science","t":"Michael","grp":"10"}],"P3":[{"sub":"Science","t":"Michael","grp":"10"}],"P4":[{"sub":"EM","t":"Neil","grp":"10"},{"sub":"ICT","t":"Tahir","grp":"10"}],"P5":[{"sub":"Islamic","t":"Huthaifa","grp":"10"}],"P6":[{"sub":"English","t":"Hamza","grp":"10"}],"P7":[{"sub":"Arabic","t":"Medhat","grp":"10"}],"P8":[{"sub":"Maths","t":"Robert","grp":"10"}]}}},"11":{"title":"Year 11 Qasr Emara Najran","lower":false,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["P3","9:45 – 10:30"],["BB","10:30 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["P6","12:30 – 1:15"],["BD","1:15 – 2:00"],["P7","2:00 – 2:45"],["P8","2:45 – 3:30"]],"days":{"Sunday":{"P1":[{"sub":"Business Studies","t":"Jose","grp":"11"}],"P2":[{"sub":"Arabic 1","t":"Medhat","grp":"11-G1"},{"sub":"Arabic 2","t":"Zaher","grp":"11-G2"}],"P3":[{"sub":"Science","t":"Justin","grp":"11"}],"P4":[{"sub":"EM","t":"Neil","grp":"11"}],"P5":[{"sub":"Maths","t":"Ayman","grp":"11"}],"P6":[{"sub":"GP","t":"Francios","grp":"11"}],"P7":[{"sub":"Islamic","t":"Huthaifa","grp":"11"}],"P8":[{"sub":"English 1","t":"Ebrahim","grp":"11-G2"},{"sub":"English 2","t":"Hamza","grp":"11-G1"}]},"Monday":{"P1":[{"sub":"Business Studies","t":"Jose","grp":"11"}],"P2":[{"sub":"Global Perspectives","t":"Francios","grp":"11"}],"P3":[{"sub":"Arabic 1","t":"Medhat","grp":"11-G1"},{"sub":"Arabic 2","t":"Zaher","grp":"11-G2"}],"P4":[{"sub":"Science","t":"Justin","grp":"11"}],"P5":[{"sub":"Maths","t":"Ayman","grp":"11"}],"P6":[{"sub":"Social Studies","t":"Zaher","grp":"11"}],"P7":[{"sub":"English 1","t":"Ebrahim","grp":"11-G2"},{"sub":"English 2","t":"Hamza","grp":"11-G1"}],"P8":[{"sub":"Arabic 1","t":"Medhat","grp":"11-G1"},{"sub":"Arabic 2","t":"Zaher","grp":"11-G2"}]},"Tuesday":{"P1":[{"sub":"EM","t":"Neil","grp":"11"}],"P2":[{"sub":"Arabic","t":"Medhat","grp":"11"}],"P3":[{"sub":"EM","t":"Neil","grp":"11"}],"P4":[{"sub":"Islamic","t":"Huthaifa","grp":"11"}],"P5":[{"sub":"Science","t":"Justin","grp":"11"}],"P6":[{"sub":"Science","t":"Justin","grp":"11"}],"P7":[{"sub":"Maths","t":"Ayman","grp":"11"}],"P8":[{"sub":"English 1","t":"Ebrahim","grp":"11-G2"},{"sub":"English 2","t":"Hamza","grp":"11-G1"}]},"Wednesday":{"P1":[{"sub":"GP","t":"Francios","grp":"11"}],"P2":[{"sub":"Science","t":"Justin","grp":"11"}],"P3":[{"sub":"Business Studies","t":"Jose","grp":"11"}],"P4":[{"sub":"Islamic","t":"Huthaifa","grp":"11"}],"P5":[{"sub":"EM","t":"Neil","grp":"11"}],"P6":[{"sub":"Arabic","t":"Medhat","grp":"11"}],"P7":[{"sub":"PE","t":null,"grp":null}],"P8":[{"sub":"PE","t":null,"grp":null}]},"Thursday":{"P1":[{"sub":"GP","t":"Francios","grp":"11"}],"P2":[{"sub":"Business Studies","t":"Jose","grp":"11"}],"P3":[{"sub":"Arabic","t":"Medhat","grp":"11"}],"P4":[{"sub":"Science","t":"Justin","grp":"11"}],"P5":[{"sub":"Science","t":"Justin","grp":"11"}],"P6":[{"sub":"Maths","t":"Ayman","grp":"11"}],"P7":[{"sub":"English 1","t":"Ebrahim","grp":"11-G2"},{"sub":"English 2","t":"Hamza","grp":"11-G1"}],"P8":[{"sub":"Social Studies","t":"Zaher","grp":"11"}]}}},"12-A":{"title":"Year 12 KAFD (A Level)","lower":false,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["P3","9:45 – 10:30"],["BB","10:30 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["P6","12:30 – 1:15"],["BD","1:15 – 2:00"],["P7","2:00 – 2:45"],["P8","2:45 – 3:30"]],"days":{"Sunday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-AD"}],"P2":[{"sub":"Business Studies","t":"Jose","grp":"12-A"}],"P3":[{"sub":"Social Studies","t":"Huthaifa","grp":"12"}],"P4":[{"sub":"Arabic","t":"Medhat","grp":"12-AD"}],"P5":[{"sub":"Islamic","t":"Huthaifa","grp":"12"}],"P6":[{"sub":"Maths","t":"Ayman","grp":"12-A"}],"P7":[{"sub":"Maths","t":"Ayman","grp":"12-A"}],"P8":[{"sub":"Business Studies","t":"Jose","grp":"12-A"}]},"Monday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-AD"}],"P2":[{"sub":"Physics","t":"Justin","grp":"12-A"}],"P3":[{"sub":"Business Studies","t":"Jose","grp":"12-A"}],"P4":[{"sub":"Islamic","t":"Huthaifa","grp":"12"}],"P5":[{"sub":"Social Studies","t":"Huthaifa","grp":"12"}],"P6":[{"sub":"English","t":"Hamza","grp":"12-AD"}],"P7":[{"sub":"Maths","t":"Ayman","grp":"12-A"}],"P8":[{"sub":"Study","t":null,"grp":null}]},"Tuesday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-A"}],"P2":[{"sub":"Physics","t":"Justin","grp":"12-A"}],"P3":[{"sub":"Chemistry","t":"Nabil","grp":"12-AD"}],"P4":[{"sub":"Arabic","t":"Medhat","grp":"12-AD"}],"P5":[{"sub":"English","t":"Hamza","grp":"12-AD"}],"P6":[{"sub":"Biology","t":"Michael","grp":"12-AD"}],"P7":[{"sub":"Business Studies","t":"Jose","grp":"12-A"}],"P8":[{"sub":"Maths","t":"Ayman","grp":"12-A"}]},"Wednesday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-A"}],"P2":[{"sub":"Chemistry","t":"Nabil","grp":"12-AD"}],"P3":[{"sub":"Islamic","t":"Huthaifa","grp":"12"}],"P4":[{"sub":"Community Service","t":"Abdulrahman","grp":"12/13"},{"sub":"Community Service","t":"Justin","grp":"12/13","only":true}],"P5":[{"sub":"Maths","t":"Ayman","grp":"12-A"}],"P6":[{"sub":"Biology","t":"Michael","grp":"12-AD"}],"P7":[{"sub":"Business Studies","t":"Jose","grp":"12-A"}],"P8":[{"sub":"Business Studies","t":"Jose","grp":"12-A"}]},"Thursday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-AD"}],"P2":[{"sub":"Chemistry","t":"Nabil","grp":"12-AD"}],"P3":[{"sub":"Business Studies","t":"Jose","grp":"12-A"}],"P4":[{"sub":"Arabic","t":"Medhat","grp":"12-AD"}],"P5":[{"sub":"English","t":"Hamza","grp":"12-AD"}],"P6":[{"sub":"Biology","t":"Michael","grp":"12-AD"}],"P7":[{"sub":"Maths","t":"Ayman","grp":"12-A"}],"P8":[{"sub":"Maths","t":"Ayman","grp":"12-A"}]}}},"12-D":{"title":"Year 12 KAFD (Diploma)","lower":false,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["P3","9:45 – 10:30"],["BB","10:30 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["P6","12:30 – 1:15"],["BD","1:15 – 2:00"],["P7","2:00 – 2:45"],["P8","2:45 – 3:30"]],"days":{"Sunday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-AD"}],"P2":[{"sub":"English","t":"Hamza","grp":"12-D"}],"P3":[{"sub":"Social Studies","t":"Huthaifa","grp":"12"}],"P4":[{"sub":"Arabic","t":"Medhat","grp":"12-AD"}],"P5":[{"sub":"Islamic","t":"Huthaifa","grp":"12"}],"P6":[{"sub":"Maths","t":"Robert","grp":"12-D"}],"P7":[{"sub":"Extended Project","t":"Justin","grp":"12/13"},{"sub":"Extended Project","t":"Neil","grp":"12/13","only":true}],"P8":[{"sub":"Extended Project","t":"Justin","grp":"12/13"},{"sub":"Extended Project","t":"Neil","grp":"12/13","only":true}]},"Monday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-AD"}],"P2":[{"sub":"Arabic","t":"Medhat","grp":"12-D"}],"P3":[{"sub":"ICT","t":"Tahir","grp":"12-D"}],"P4":[{"sub":"Islamic","t":"Huthaifa","grp":"12"}],"P5":[{"sub":"Social Studies","t":"Huthaifa","grp":"12"}],"P6":[{"sub":"English","t":"Hamza","grp":"12-AD"}],"P7":[{"sub":"Maths","t":"Robert","grp":"12-D"}],"P8":[{"sub":"Life Skills","t":"Abdulrahman","grp":"12/13"},{"sub":"Life Skills","t":"Justin","grp":"12/13","only":true}]},"Tuesday":{"P1":[{"sub":"ICT","t":"Tahir","grp":"12-D"}],"P2":[{"sub":"Maths","t":"Robert","grp":"12-D"}],"P3":[{"sub":"Chemistry","t":"Nabil","grp":"12-AD"}],"P4":[{"sub":"Arabic","t":"Medhat","grp":"12-AD"}],"P5":[{"sub":"English","t":"Hamza","grp":"12-AD"}],"P6":[{"sub":"Biology","t":"Michael","grp":"12-AD"}],"P7":[{"sub":"Extended Project","t":"Nabil","grp":"12/13"}],"P8":[{"sub":"Extended Project","t":"Nabil","grp":"12/13"}]},"Wednesday":{"P1":[{"sub":"ICT","t":"Tahir","grp":"12-D"}],"P2":[{"sub":"Chemistry","t":"Nabil","grp":"12-AD"}],"P3":[{"sub":"Islamic","t":"Huthaifa","grp":"12"}],"P4":[{"sub":"Community Service","t":"Abdulrahman","grp":"12/13"},{"sub":"Community Service","t":"Justin","grp":"12/13","only":true}],"P5":[{"sub":"Maths","t":"Robert","grp":"12-D"}],"P6":[{"sub":"Biology","t":"Michael","grp":"12-AD"}],"P7":[{"sub":"PE","t":null,"grp":null}],"P8":[{"sub":"PE","t":null,"grp":null}]},"Thursday":{"P1":[{"sub":"Physics","t":"Justin","grp":"12-AD"}],"P2":[{"sub":"Chemistry","t":"Nabil","grp":"12-AD"}],"P3":[{"sub":"ICT","t":"Tahir","grp":"12-D"}],"P4":[{"sub":"Arabic","t":"Medhat","grp":"12-AD"}],"P5":[{"sub":"English","t":"Hamza","grp":"12-AD"}],"P6":[{"sub":"Biology","t":"Michael","grp":"12-AD"}],"P7":[{"sub":"Extended Project","t":"Michael","grp":"12/13"}],"P8":[{"sub":"Extended Project","t":"Michael","grp":"12/13"}]}}},"13":{"title":"Year 13 Minaa Jeddah","lower":false,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["P3","9:45 – 10:30"],["BB","10:30 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["P6","12:30 – 1:15"],["BD","1:15 – 2:00"],["P7","2:00 – 2:45"],["P8","2:45 – 3:30"]],"days":{"Sunday":{"P1":[{"sub":"Maths","t":"Robert","grp":"13"}],"P2":[{"sub":"Physics","t":"Justin","grp":"13"}],"P3":[{"sub":"ICT","t":"Tahir","grp":"13"}],"P4":[{"sub":"Chemistry","t":"Nabil","grp":"13"}],"P5":[{"sub":"English","t":"Ebrahim","grp":"13"}],"P6":[{"sub":"Islamic","t":"Huthaifa","grp":"13"}],"P7":[{"sub":"Extended Project","t":"Justin","grp":"12/13"},{"sub":"Extended Project","t":"Neil","grp":"12/13","only":true}],"P8":[{"sub":"Extended Project","t":"Justin","grp":"12/13"},{"sub":"Extended Project","t":"Neil","grp":"12/13","only":true}]},"Monday":{"P1":[{"sub":"ICT","t":"Tahir","grp":"13"}],"P2":[{"sub":"Maths","t":"Robert","grp":"13"}],"P3":[{"sub":"Biology","t":"Michael","grp":"13"}],"P4":[{"sub":"Arabic","t":"Medhat","grp":"13"}],"P5":[{"sub":"Physics","t":"Justin","grp":"13"}],"P6":[{"sub":"English","t":"Ebrahim","grp":"13"}],"P7":[{"sub":"Islamic","t":"Huthaifa","grp":"13"}],"P8":[{"sub":"Life Skills","t":"Abdulrahman","grp":"12/13"},{"sub":"Life Skills","t":"Justin","grp":"12/13","only":true}]},"Tuesday":{"P1":[{"sub":"Biology","t":"Michael","grp":"13"}],"P2":[{"sub":"Social Studies","t":"Huthaifa","grp":"13"}],"P3":[{"sub":"Arabic","t":"Medhat","grp":"13"}],"P4":[{"sub":"Chemistry","t":"Nabil","grp":"13"}],"P5":[{"sub":"English","t":"Ebrahim","grp":"13"}],"P6":[{"sub":"ICT","t":"Tahir","grp":"13"}],"P7":[{"sub":"Extended Project","t":"Nabil","grp":"12/13"}],"P8":[{"sub":"Extended Project","t":"Nabil","grp":"12/13"}]},"Wednesday":{"P1":[{"sub":"Maths","t":"Robert","grp":"13"}],"P2":[{"sub":"Arabic","t":"Medhat","grp":"13"}],"P3":[{"sub":"ICT","t":"Tahir","grp":"13"}],"P4":[{"sub":"Community Service","t":"Abdulrahman","grp":"12/13"},{"sub":"Community Service","t":"Justin","grp":"12/13","only":true}],"P5":[{"sub":"Physics","t":"Justin","grp":"13"}],"P6":[{"sub":"Islamic","t":"Huthaifa","grp":"13"}],"P7":[{"sub":"PE","t":null,"grp":null}],"P8":[{"sub":"PE","t":null,"grp":null}]},"Thursday":{"P1":[{"sub":"Maths","t":"Robert","grp":"13"}],"P2":[{"sub":"Arabic","t":"Medhat","grp":"13"}],"P3":[{"sub":"Chemistry","t":"Nabil","grp":"13"}],"P4":[{"sub":"Biology","t":"Michael","grp":"13"}],"P5":[{"sub":"English","t":"Ebrahim","grp":"13"}],"P6":[{"sub":"Social Studies","t":"Huthaifa","grp":"13"}],"P7":[{"sub":"Extended Project","t":"Michael","grp":"12/13"}],"P8":[{"sub":"Extended Project","t":"Michael","grp":"12/13"}]}}},"7-W":{"title":"Year 7 Al Waha Al Ula","lower":true,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["BA","9:45 – 10:15"],["P3","10:15 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["BC","12:30 – 1:15"],["P6","1:15 – 2:00"],["P7","2:00 – 2:45"]],"days":{"Sunday":{"P1":[{"sub":"English","t":"Ebrahim","grp":"7-W"}],"P2":[{"sub":"Maths","t":"Ayman","grp":"7-W"}],"P3":[{"sub":"Islamic","t":"Abdullah","grp":"7-W"}],"P4":[{"sub":"Social Studies","t":null,"grp":null}],"P5":[{"sub":"Arabic","t":null,"grp":null}],"P6":[{"sub":"Science","t":"Nabil","grp":"7-W"}],"P7":[{"sub":"ICT","t":"Tahir","grp":"7-W"}]},"Monday":{"P1":[{"sub":"English","t":"Ebrahim","grp":"7-W"}],"P2":[{"sub":"Maths","t":"Ayman","grp":"7-W"}],"P3":[{"sub":"Islamic","t":"Abdullah","grp":"7-W"}],"P4":[{"sub":"PE","t":null,"grp":null}],"P5":[{"sub":"Arabic","t":null,"grp":null}],"P6":[{"sub":"GP","t":"Neil","grp":"7-W"}],"P7":[{"sub":"Science","t":"Nabil","grp":"7-W"}]},"Tuesday":{"P1":[{"sub":"English","t":"Ebrahim","grp":"7-W"}],"P2":[{"sub":"Maths","t":"Ayman","grp":"7-W"}],"P3":[{"sub":"Social Studies","t":null,"grp":null}],"P4":[{"sub":"Arabic","t":null,"grp":null}],"P5":[{"sub":"Islamic","t":"Abdullah","grp":"7-W"}],"P6":[{"sub":"Term 1 - Music","t":null,"grp":null},{"sub":"Term 2 - Art","t":null,"grp":null}],"P7":[{"sub":"Term 1 - Music","t":null,"grp":null},{"sub":"Term 2 - Art","t":null,"grp":null}]},"Wednesday":{"P1":[{"sub":"English","t":"Ebrahim","grp":"7-W"}],"P2":[{"sub":"Maths","t":"Ayman","grp":"7-W"}],"P3":[{"sub":"Islamic","t":"Abdullah","grp":"7-W"}],"P4":[{"sub":"ICT","t":"Tahir","grp":"7-W"}],"P5":[{"sub":"Arabic","t":null,"grp":null}],"P6":[{"sub":"GP","t":"Neil","grp":"7-W"}],"P7":[{"sub":"Science","t":"Nabil","grp":"7-W"}]},"Thursday":{"P1":[{"sub":"English","t":"Ebrahim","grp":"7-W"}],"P2":[{"sub":"Maths","t":"Ayman","grp":"7-W"}],"P3":[{"sub":"Islamic","t":"Abdullah","grp":"7-W"}],"P4":[{"sub":"PE","t":null,"grp":null}],"P5":[{"sub":"Arabic","t":null,"grp":null}],"P6":[{"sub":"GP","t":"Neil","grp":"7-W"}],"P7":[{"sub":"Science","t":"Nabil","grp":"7-W"}]}}},"7-D":{"title":"Year 7 Dadan Al Ula Boys class","lower":true,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["BA","9:45 – 10:15"],["P3","10:15 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["BC","12:30 – 1:15"],["P6","1:15 – 2:00"],["P7","2:00 – 2:45"]],"days":{"Sunday":{"P1":[{"sub":"Maths","t":"Ayman","grp":"7-D"}],"P2":[{"sub":"English","t":"Ebrahim","grp":"7-D"}],"P3":[{"sub":"Arabic","t":null,"grp":null}],"P4":[{"sub":"PE","t":null,"grp":null}],"P5":[{"sub":"Islamic","t":"Abdullah","grp":"7-D"}],"P6":[{"sub":"ICT","t":"Tahir","grp":"7-D"}],"P7":[{"sub":"Science","t":"Nabil","grp":"7-D"}]},"Monday":{"P1":[{"sub":"Maths","t":"Ayman","grp":"7-D"}],"P2":[{"sub":"English","t":"Ebrahim","grp":"7-D"}],"P3":[{"sub":"Arabic","t":null,"grp":null}],"P4":[{"sub":"Social Studies","t":null,"grp":null}],"P5":[{"sub":"Islamic","t":"Abdullah","grp":"7-D"}],"P6":[{"sub":"Science","t":"Nabil","grp":"7-D"}],"P7":[{"sub":"GP","t":"Neil","grp":"7-D"}]},"Tuesday":{"P1":[{"sub":"Maths","t":"Ayman","grp":"7-D"}],"P2":[{"sub":"English","t":"Ebrahim","grp":"7-D"}],"P3":[{"sub":"ICT","t":"Tahir","grp":"7-D"}],"P4":[{"sub":"Islamic","t":"Abdullah","grp":"7-D"}],"P5":[{"sub":"Arabic","t":null,"grp":null}],"P6":[{"sub":"Term 1 - Art","t":null,"grp":null},{"sub":"Term 2 - Music","t":null,"grp":null}],"P7":[{"sub":"Term 1 - Art","t":null,"grp":null},{"sub":"Term 2 - Music","t":null,"grp":null}]},"Wednesday":{"P1":[{"sub":"Maths","t":"Ayman","grp":"7-D"}],"P2":[{"sub":"English","t":"Ebrahim","grp":"7-D"}],"P3":[{"sub":"Arabic","t":null,"grp":null}],"P4":[{"sub":"Social Studies","t":null,"grp":null}],"P5":[{"sub":"Islamic","t":"Abdullah","grp":"7-D"}],"P6":[{"sub":"Science","t":"Nabil","grp":"7-D"}],"P7":[{"sub":"GP","t":"Neil","grp":"7-D"}]},"Thursday":{"P1":[{"sub":"Maths","t":"Ayman","grp":"7-D"}],"P2":[{"sub":"English","t":"Ebrahim","grp":"7-D"}],"P3":[{"sub":"Arabic","t":null,"grp":null}],"P4":[{"sub":"Islamic","t":"Abdullah","grp":"7-D"}],"P5":[{"sub":"PE","t":null,"grp":null}],"P6":[{"sub":"Science","t":"Nabil","grp":"7-D"}],"P7":[{"sub":"GP","t":"Neil","grp":"7-D"}]}}},"8":{"title":"Year 8 Wadi Al Disah Tabuk","lower":"mixed","slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["P3","9:45 – 10:30"],["BB","10:30 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["BC","12:30 – 1:15"],["P6","1:15 – 2:00"],["P7","2:00 – 2:45"]],"days":{"Sunday":{"P1":[{"sub":"GP","t":"Neil","grp":"8"}],"P2":[{"sub":"Maths","t":"Robert","grp":"8"}],"P3":[{"sub":"Arabic","t":"Zaher","grp":"8"}],"P4":[{"sub":"English","t":"Ebrahim","grp":"8"}],"P5":[{"sub":"Science","t":"Nabil","grp":"8"}],"P6":[{"sub":"Islamic","t":"Abdullah","grp":"8"}],"P7":[{"sub":"Social Studies","t":"Zaher","grp":"8"}]},"Monday":{"P1":[{"sub":"Maths","t":"Robert","grp":"8"}],"P2":[{"sub":"PE","t":null,"grp":null}],"P3":[{"sub":"Science","t":"Nabil","grp":"8"}],"P4":[{"sub":"ICT","t":"Tahir","grp":"8"}],"P5":[{"sub":"English","t":"Ebrahim","grp":"8"}],"P6":[{"sub":"Islamic","t":"Abdullah","grp":"8"}],"P7":[{"sub":"Arabic","t":"Zaher","grp":"8"}]},"Tuesday":{"P1":[{"sub":"Maths","t":"Robert","grp":"8"}],"P2":[{"sub":"Arabic","t":"Zaher","grp":"8"}],"P3":[{"sub":"Business Studies","t":"Jose","grp":"8"}],"P4":[{"sub":"GP","t":"Neil","grp":"8"}],"P5":[{"sub":"Science","t":"Nabil","grp":"8"}],"P6":[{"sub":"Islamic","t":"Abdullah","grp":"8"}],"P7":[{"sub":"English","t":"Ebrahim","grp":"8"}]},"Wednesday":{"P1":[{"sub":"Term 1 - Art","t":null,"grp":null},{"sub":"Term 2 - Music","t":null,"grp":null}],"P2":[{"sub":"Term 1 - Art","t":null,"grp":null},{"sub":"Term 2 - Music","t":null,"grp":null}],"P3":[{"sub":"Arabic","t":"Zaher","grp":"8"}],"P4":[{"sub":"Maths","t":"Robert","grp":"8"}],"P5":[{"sub":"PE","t":null,"grp":null}],"P6":[{"sub":"Islamic","t":"Abdullah","grp":"8"}],"P7":[{"sub":"English","t":"Ebrahim","grp":"8"}]},"Thursday":{"P1":[{"sub":"Science","t":"Nabil","grp":"8"}],"P2":[{"sub":"Maths","t":"Robert","grp":"8"}],"P3":[{"sub":"Arabic","t":"Zaher","grp":"8"}],"P4":[{"sub":"English","t":"Ebrahim","grp":"8"}],"P5":[{"sub":"GP","t":"Neil","grp":"8"}],"P6":[{"sub":"Social Studies","t":"Zaher","grp":"8"}],"P7":[{"sub":"Islamic","t":"Abdullah","grp":"8"}]}}},"9":{"title":"Year 9 Taaqa Al Sharqiya","lower":false,"slots":[["P1","8:15 – 9:00"],["P2","9:00 – 9:45"],["P3","9:45 – 10:30"],["BB","10:30 – 11:00"],["P4","11:00 – 11:45"],["P5","11:45 – 12:30"],["P6","12:30 – 1:15"],["BD","1:15 – 2:00"],["P7","2:00 – 2:45"],["P8","2:45 – 3:30"]],"days":{"Sunday":{"P1":[{"sub":"ICT","t":"Tahir","grp":"9"}],"P2":[{"sub":"Islamic","t":"Huthaifa","grp":"9"}],"P3":[{"sub":"GP","t":"Neil","grp":"9"}],"P4":[{"sub":"Social Studies","t":"Zaher","grp":"9"}],"P5":[{"sub":"Maths","t":"Robert","grp":"9"}],"P6":[{"sub":"Arabic","t":"Zaher","grp":"9"}],"P7":[{"sub":"Science","t":"Michael","grp":"9"}],"P8":[{"sub":"Science","t":"Michael","grp":"9"}]},"Monday":{"P1":[{"sub":"English","t":"Hamza","grp":"9"}],"P2":[{"sub":"English","t":"Hamza","grp":"9"}],"P3":[{"sub":"Islamic","t":"Huthaifa","grp":"9"}],"P4":[{"sub":"Arabic","t":"Zaher","grp":"9"}],"P5":[{"sub":"Maths","t":"Robert","grp":"9"}],"P6":[{"sub":"ICT","t":"Tahir","grp":"9"}],"P7":[{"sub":"PE","t":null,"grp":null}],"P8":[{"sub":"Science","t":"Michael","grp":"9"}]},"Tuesday":{"P1":[{"sub":"English","t":"Hamza","grp":"9"}],"P2":[{"sub":"Science","t":"Michael","grp":"9"}],"P3":[{"sub":"Islamic","t":"Huthaifa","grp":"9"}],"P4":[{"sub":"Business Studies","t":"Jose","grp":"9"}],"P5":[{"sub":"ICT","t":"Tahir","grp":"9"}],"P6":[{"sub":"Arabic","t":"Zaher","grp":"9"}],"P7":[{"sub":"Maths","t":"Robert","grp":"9"}],"P8":[{"sub":"Business Studies","t":"Jose","grp":"9"}]},"Wednesday":{"P1":[{"sub":"GP","t":"Neil","grp":"9"}],"P2":[{"sub":"Science","t":"Michael","grp":"9"}],"P3":[{"sub":"Science","t":"Michael","grp":"9"}],"P4":[{"sub":"PE","t":null,"grp":null}],"P5":[{"sub":"English","t":"Hamza","grp":"9"}],"P6":[{"sub":"Maths","t":"Robert","grp":"9"}],"P7":[{"sub":"Arabic","t":"Zaher","grp":"9"}],"P8":[{"sub":"Islamic","t":"Huthaifa","grp":"9"}]},"Thursday":{"P1":[{"sub":"GP","t":"Neil","grp":"9"}],"P2":[{"sub":"Arabic","t":"Zaher","grp":"9"}],"P3":[{"sub":"English","t":"Hamza","grp":"9"}],"P4":[{"sub":"Maths","t":"Robert","grp":"9"}],"P5":[{"sub":"Science","t":"Michael","grp":"9"}],"P6":[{"sub":"Business Studies","t":"Jose","grp":"9"}],"P7":[{"sub":"Social Studies","t":"Zaher","grp":"9"}],"P8":[{"sub":"Islamic","t":"Huthaifa","grp":"9"}]}}}};
+/* ================= i18n ================= */
+const I18N={
+ ar:{
+  title:"جدول الحصص والمناوبات — أكاديمية نهضة العالمية",
+  eyebrow:"بنين · صفوف ٨–١٣ · العام الدراسي ٢٠٢٥–٢٦",
+  h1:"جدول الحصص والمناوبات",
+  sub:"الجدول الأسبوعي، وجداول الفصول، وجدول كل معلم، ومناوبات الفسح، وتغطية الغياب — في ملف واحد.",
+  metaB1:"الفسحة الأولى <b>B1</b> ١٠:٣٠–١١:٠٠ · ٦ مشرفين",
+  metaB2:"الفسحة الثانية <b>B2</b> ١٢:٣٠–١:١٥ · ٣ مشرفين",
+  metaB3:"الفسحة الثالثة <b>B3</b> ١:١٥–٢:٠٠ · ٦ مشرفين",
+  "nav.grid":"الجدول الأسبوعي","nav.cls":"جداول الفصول","nav.me":"جدول معلم",
+  "nav.duty":"مناوبات الفسح","nav.cover":"تغطية الغياب",
+  "ctl.highlight":"تمييز معلم","ctl.onlyOne":"إخفاء بقية المعلمين","ctl.showDuty":"إظهار مناوبات الإشراف",
+  "ctl.print":"طباعة","print.blocked":"المتصفح منع فتح نافذة الطباعة — حمّل الملف وافتحه ثم اضغط Ctrl+P.","ctl.pickClass":"اختر الفصل","ctl.pickMe":"اختر اسمك",
+  "sel.none":"— بلا تمييز —","sel.pickTeacher":"— اختر معلماً —","sel.pickClass":"— اختر فصلاً —",
+  "legend.grid":"7-W صف ٧ الواحة · 7-D صف ٧ دادان (المبنى الآخر — خلفية برتقالية) · G1/G2 مجموعات · A مسار A level · D مسار Diploma · AD مشترك · 12/13 مشروع مشترك.<br>عمود <b>B2</b> (١٢:٣٠–١:١٥) هو الحصة السادسة لصفوف ٩–١٣ وفسحة لصفوف ٦–٨ · وعمود <b>B3</b> (١:١٥–٢:٠٠) فسحة لصفوف ٩–١٣ والحصة السادسة لصفوف ٦–٨.<br>صف ٨ صباحه كصفوف ٩–١٣ (الحصة ٣ من ٩:٤٥–١٠:٣٠ وفسحته الأولى ١٠:٣٠–١١:٠٠) وبعد الظهر كصفوف ٦–٧ (فسحة ١٢:٣٠–١:١٥ والحصة ٦ من ١:١٥–٢:٠٠) · وصفوف ٦ و٧ في المبنى الآخر لها فسحة أولى مبكرة ٩:٤٥–١٠:١٥.",
+  "legend.me":"الخانات الزرقاء حصصك · البرتقالية حصصك في مبنى صفوف ٦/٧ · الوردية مناوبات إشراف الفسح.",
+  "legend.cls":"الجدول مأخوذ من ملف الفصل الرسمي · تحت كل مادة اسم معلمها · «—» يعني أن معلم هذه الحصة غير موجود في ملفات المعلمين المرفوعة · السطران في الخانة يعنيان مجموعتين أو خيارين في الوقت نفسه.",
+  "cls.noTeacher":"—",
+  "duty.h":"مناوبات الإشراف في الفسح","duty.hint":"من لديه ٦ حصص فأكثر في اليوم يُعفى من مناوباته · د. ماهر في كل الفسح · والباقون خمس مناوبات لكل واحد","sup.role":"إشراف فقط",
+  "duty.counts":"عدد المناوبات الأسبوعية لكل معلم:",
+  "duty.rules":"قواعد التوزيع: المعلم متفرغ فعلياً وقت الفسحة · <b>من نصابه ٦ حصص فأكثر في ذلك اليوم لا يُكلَّف بمناوبة فيه</b> · لا يُكلَّف من كانت حصته السابقة أو التالية في مبنى صفوف ٦/٧ · بحد أقصى مناوبتان في اليوم الواحد.<br>الأستاذ Abdullah حصصه كلها في مبنى صفوف ٦/٧ قبل الفسح وبعدها، فلا يمكن تكليفه بإشراف المبنى الرئيسي إلا مرة واحدة أسبوعياً.<br>د. ماهر مشرف ثابت في الفسح الثلاث كل يوم، ويوسف يشرف بلا نصاب تدريسي. والأعداد المطلوبة (٦ / ٣ / ٦) محسوبة من المعلمين دون د. ماهر.",
+  "cover.h1":"سجل الغياب","cover.hint1":"اضغط على الاسم لتعليمه غائباً · الرقم = النصاب الأسبوعي",
+  "cover.clear":"مسح كل الغيابات","cover.h2":"كشف التغطية","cover.hint2":"الترتيب حسب الأقل حصصاً في اليوم نفسه · يمكنك تغيير المقترح من القائمة",
+  "cover.none":"لم يُحدَّد أي غائب بعد","cover.absentList":"الغائبون: ",
+  "cover.empty1":"لا يوجد غياب مسجّل","cover.empty2":"اختر معلماً أو أكثر من سجل الغياب بالأعلى.",
+  "cover.noLessons":"لا حصص لتغطيتها يوم ","cover.noLessons2":"المعلمون المحددون ليس لديهم حصص في هذا اليوم.",
+  "cover.needs":"حصة تحتاج تغطية","cover.assigned":"معلماً مكلَّفاً","cover.uncovered":"حصة بلا بديل",
+  "cover.noCover":"— بلا تغطية —","cover.sameSubj":" · نفس المادة","cover.cross":" · انتقال بين المبنيين",
+  "cover.noAlt":"لا بدائل أخرى","cover.today":"حصص اليوم","cover.week":"النصاب",
+  "th.teacher":"المعلم / Teacher","th.load":"النصاب","th.loadSub":"أسبوعي","th.duty":"الإشراف",
+  "th.day":"اليوم","th.period":"الحصة","th.classSubj":"الصف والمادة","th.absent":"المعلم الغائب",
+  "th.cover":"المعلم المغطي","th.alts":"بدائل أخرى (حصص اليوم)",
+  "me.empty1":"اختر اسمك من القائمة","me.empty2":"سيظهر جدولك الأسبوعي كاملاً مع حصصك ومناوباتك وأوقات فراغك.",
+  "cls.empty1":"اختر فصلاً من القائمة","cls.empty2":"سيظهر جدول الفصل الأسبوعي كاملاً بالمعلمين والمواد.",
+  "st.load":"النصاب الأسبوعي","st.duty":"مناوبة إشراف","st.free":"حصة فراغ","st.busiest":"أكثر يوم ازدحاماً",
+  "st.clsLessons":"حصة في الأسبوع","st.clsTeachers":"معلماً","st.clsGaps":"حصة بلا معلم معروف",
+  "w.duty":"إشراف","w.free":"فراغ","w.break":"فسحة","w.absent":"غائب","w.supervisors":"مشرفين",
+  "b.1":"الفسحة الأولى","b.2":"الفسحة الثانية","b.3":"الفسحة الثالثة",
+  footer:"حصص صفوف ٦ و٧ في المبنى الآخر ومعلّمة بلون مختلف · إشراف مبنى صفوف ٦/٧ غير مشمول في هذه المناوبات.",
+  days:{Sunday:"الأحد",Monday:"الاثنين",Tuesday:"الثلاثاء",Wednesday:"الأربعاء",Thursday:"الخميس"},
+  subj:{Ar:"عربي",SS:"اجتماعيات",Isl:"إسلامية",Chem:"كيمياء",Bio:"أحياء",Phy:"فيزياء",Sci:"علوم",
+        EP:"مشروع موسّع",LS:"مهارات حياتية",CS:"خدمة مجتمع",GP:"GP",EM:"EM",Maths:"رياضيات",
+        Eng:"إنجليزي",ICT:"حاسب",Bus:"أعمال"},
+  cls:{"7-W":"صف ٧ — الواحة الأولى","7-D":"صف ٧ — دادان الأولى","8":"صف ٨ — وادي الديسة","9":"صف ٩ — طاقة الشرقية",
+       "10":"صف ١٠ — بريدة القصيم","11":"صف ١١ — قصر إمارة نجران","12-A":"صف ١٢ — A level","12-D":"صف ١٢ — Diploma","13":"صف ١٣ — ميناء جدة"},
+  csub:{"Arabic":"عربي","English":"إنجليزي","Maths":"رياضيات","Science":"علوم","Islamic":"إسلامية",
+    "Social Studies":"اجتماعيات","ICT":"حاسب","GP":"منظورات عالمية","Global Perspectives":"منظورات عالمية",
+    "EM":"EM","Business Studies":"أعمال","Physics":"فيزياء","Chemistry":"كيمياء","Biology":"أحياء",
+    "Extended Project":"مشروع موسّع","Life Skills":"مهارات حياتية","Community Service":"خدمة مجتمع",
+    "PE":"تربية بدنية","Study":"مذاكرة","Term 1 - Art":"الفصل ١ — فنون","Term 2 - Art":"الفصل ٢ — فنون",
+    "Term 1 - Music":"الفصل ١ — موسيقى","Term 2 - Music":"الفصل ٢ — موسيقى",
+    "English 1":"إنجليزي — مجموعة ١","English 2":"إنجليزي — مجموعة ٢",
+    "Arabic 1":"عربي — مجموعة ١","Arabic 2":"عربي — مجموعة ٢"}
+ },
+ en:{
+  title:"Timetable & Duty Roster — Nahda Academy",
+  eyebrow:"BOYS · YEARS 8–13 · ACADEMIC YEAR 2025–26",
+  h1:"Timetable & Duty Roster",
+  sub:"Weekly grid, class timetables, individual teacher schedules, break duties and absence cover — in one file.",
+  metaB1:"Break 1 <b>B1</b> 10:30–11:00 · 6 supervisors",
+  metaB2:"Break 2 <b>B2</b> 12:30–1:15 · 3 supervisors",
+  metaB3:"Break 3 <b>B3</b> 1:15–2:00 · 6 supervisors",
+  "nav.grid":"Weekly grid","nav.cls":"Class timetables","nav.me":"My schedule",
+  "nav.duty":"Break duties","nav.cover":"Absence cover",
+  "ctl.highlight":"Highlight teacher","ctl.onlyOne":"Hide other teachers","ctl.showDuty":"Show break duties",
+  "ctl.print":"Print","print.blocked":"Your browser blocked the print window — download the file, open it, then press Ctrl+P.","ctl.pickClass":"Choose class","ctl.pickMe":"Choose your name",
+  "sel.none":"— none —","sel.pickTeacher":"— choose a teacher —","sel.pickClass":"— choose a class —",
+  "legend.grid":"7-W Year 7 Al Waha · 7-D Year 7 Dadan (other building — orange) · G1/G2 sets · A = A level · D = Diploma · AD = combined · 12/13 joint project.<br><b>B2</b> (12:30–1:15) is period 6 for Years 9–13 and break for Years 6–8 · <b>B3</b> (1:15–2:00) is break for Years 9–13 and period 6 for Years 6–8.<br>Year 8 follows the upper morning (period 3 at 9:45–10:30, first break 10:30–11:00) and the lower afternoon (break 12:30–1:15, period 6 at 1:15–2:00) · Years 6 and 7 in the other building take an earlier first break at 9:45–10:15.",
+  "legend.me":"Blue cells are your lessons · orange are lessons in the Years 6/7 building · pink are break duties.",
+  "legend.cls":"Taken from the official class file · the teacher\u2019s name sits under each subject · “—” means that lesson\u2019s teacher is not among the uploaded teacher timetables · two lines in a cell mean two sets or options at the same time.",
+  "cls.noTeacher":"—",
+  "duty.h":"Break supervision duties","duty.hint":"Anyone with 6+ lessons that day is exempt · Dr. Maher covers every break · the rest take five duties each","sup.role":"Supervision only",
+  "duty.counts":"Weekly duties per teacher:",
+  "duty.rules":"Rules: the teacher is genuinely free at that break · <b>anyone teaching 6 or more lessons that day takes no duty that day</b> · nobody is assigned whose lesson before or after is in the Years 6/7 building · maximum two duties per day.<br>Abdullah teaches in the Years 6/7 building before and after every break, so he can take only one main-building duty per week.<br>Dr. Maher is a permanent supervisor at all three breaks every day, and Yusuf supervises without a teaching load. The required counts (6 / 3 / 6) are counted among the teachers, excluding Dr. Maher.",
+  "cover.h1":"Absence register","cover.hint1":"Tap a name to mark them absent · the number is their weekly load",
+  "cover.clear":"Clear all absences","cover.h2":"Cover sheet","cover.hint2":"Ranked by fewest lessons on the same day · you can change the suggestion from the list",
+  "cover.none":"No absences marked yet","cover.absentList":"Absent: ",
+  "cover.empty1":"No absences marked","cover.empty2":"Choose one or more teachers from the register above.",
+  "cover.noLessons":"No lessons to cover on ","cover.noLessons2":"The selected teachers have no lessons that day.",
+  "cover.needs":"lessons need cover","cover.assigned":"teachers assigned","cover.uncovered":"lessons with no cover",
+  "cover.noCover":"— no cover —","cover.sameSubj":" · same subject","cover.cross":" · crosses buildings",
+  "cover.noAlt":"No other options","cover.today":"today","cover.week":"week",
+  "th.teacher":"Teacher","th.load":"Load","th.loadSub":"weekly","th.duty":"Duties",
+  "th.day":"Day","th.period":"Period","th.classSubj":"Class & subject","th.absent":"Absent teacher",
+  "th.cover":"Covering teacher","th.alts":"Other options (lessons today)",
+  "me.empty1":"Choose your name from the list","me.empty2":"Your full week will appear with lessons, duties and free periods.",
+  "cls.empty1":"Choose a class from the list","cls.empty2":"The full weekly timetable will appear with teachers and subjects.",
+  "st.load":"lessons per week","st.duty":"break duties","st.free":"free periods","st.busiest":"busiest day",
+  "st.clsLessons":"lessons per week","st.clsTeachers":"teachers","st.clsGaps":"lessons with no known teacher",
+  "w.duty":"Duty","w.free":"Free","w.break":"Break","w.absent":"Absent","w.supervisors":"supervisors",
+  "b.1":"Break 1","b.2":"Break 2","b.3":"Break 3",
+  footer:"Years 6 and 7 lessons are in the other building and shown in a different colour · supervision of the Years 6/7 building is not part of this roster.",
+  days:{Sunday:"Sunday",Monday:"Monday",Tuesday:"Tuesday",Wednesday:"Wednesday",Thursday:"Thursday"},
+  subj:{Ar:"Arabic",SS:"Social St.",Isl:"Islamic",Chem:"Chemistry",Bio:"Biology",Phy:"Physics",Sci:"Science",
+        EP:"Ext. Project",LS:"Life Skills",CS:"Comm. Service",GP:"GP",EM:"EM",Maths:"Maths",
+        Eng:"English",ICT:"ICT",Bus:"Business"},
+  cls:{"7-W":"Year 7 — Al Waha Al Ula","7-D":"Year 7 — Dadan Al Ula","8":"Year 8 — Wadi Al Disah","9":"Year 9 — Taaqa Al Sharqiya",
+       "10":"Year 10 — Buraidah Qassim","11":"Year 11 — Qasr Emara Najran","12-A":"Year 12 — A level","12-D":"Year 12 — Diploma","13":"Year 13 — Minaa Jeddah"},
+  csub:{}
+ }
+};
+let LANG="ar";
+const t=k=>I18N[LANG][k]!==undefined?I18N[LANG][k]:k;
+const dayName=d=>I18N[LANG].days[d];
+const subjName=s=>I18N[LANG].subj[s]||s||"";
+const clsName=c=>I18N[LANG].cls[c]||c;
+const cSub=s=>(LANG==="ar"?(I18N.ar.csub[s]||s):s);
+
+/* ================= ثوابت ================= */
+const SLOTS=[
+ {k:"1",n:"1",t:"8:15 – 9:00"},{k:"2",n:"2",t:"9:00 – 9:45"},{k:"3",n:"3",t:"9:45 – 10:30"},
+ {k:"B1",n:"B1",t:"10:30 – 11:00",brk:true},
+ {k:"4",n:"4",t:"11:00 – 11:45"},{k:"5",n:"5",t:"11:45 – 12:30"},
+ {k:"B2",n:"6 / B2",t:"12:30 – 1:15",brk:true},{k:"B3",n:"B3 / 6",t:"1:15 – 2:00",brk:true},
+ {k:"7",n:"7",t:"2:00 – 2:45"},{k:"8",n:"8",t:"2:45 – 3:30"}
+];
+const ORDER=SLOTS.map(s=>s.k);
+const NO_COVER=new Set(["Abdulrahman","Yusuf","Dr. Maher"]);          /* لا يُقترح للتغطية */
+const SUBJ_FULL={Ar:"Arabic",SS:"Social Studies",Isl:"Islamic",Chem:"Chemistry",Bio:"Biology",Phy:"Physics",
+  Sci:"Science",EP:"Extended Project",LS:"Life Skills",CS:"Community Service",GP:"GP",EM:"EM",
+  Maths:"Maths",Eng:"English",ICT:"ICT",Bus:"Business"};
+const T=DATA.teachers, DAYS=DATA.days;
+const ALL_NAMES=Object.keys(T).sort();
+const NAMES=ALL_NAMES.filter(n=>!T[n].sup).sort((a,b)=>T[b].load-T[a].load);
+const BY_NAME=ALL_NAMES.filter(n=>!T[n].sup);
+const BY_LOAD=BY_NAME.slice().sort((a,b)=>T[a].load-T[b].load);
+const roleName=n=>T[n].sup?t("sup.role"):T[n].subject;
+const les=(t_,d,s)=>T[t_].lessons[d+"|"+s];
+const onDuty=(t_,d,s)=>(DUTY.duties[d+"|"+s]||[]).includes(t_);
+const dutyOf=t_=>DUTY.dcount[t_]||0;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const CLASS_IDS=["8","9","10","11","12-A","12-D","13","7-W","7-D"];
+
+/* ================= حالة ================= */
+const state={view:"grid",gday:"Sunday",cday:"Sunday",hi:"",onlyOne:false,showDuty:true,
+             me:"",cls:"",dutyHi:"",absent:new Set(),manual:{}};
+
+/* ================= لغة ================= */
+function applyStatic(){
+  const html=document.documentElement;
+  html.lang=LANG; html.dir=LANG==="ar"?"rtl":"ltr";
+  document.title=t("title");
+  document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=t(e.dataset.i18n));
+  document.querySelectorAll("[data-i18n-html]").forEach(e=>e.innerHTML=t(e.dataset.i18nHtml));
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
+  fillTeacherSel(document.getElementById("hi"),t("sel.none"),state.hi);
+  fillTeacherSel(document.getElementById("meSel"),t("sel.pickTeacher"),state.me,ALL_NAMES);
+  fillTeacherSel(document.getElementById("dutyHi"),t("sel.none"),state.dutyHi,ALL_NAMES);
+  const cs=document.getElementById("clsSel");
+  cs.innerHTML=`<option value="">${t("sel.pickClass")}</option>`+
+    CLASS_IDS.map(c=>`<option value="${c}"${c===state.cls?" selected":""}>${clsName(c)}</option>`).join("");
+}
+function fillTeacherSel(el,first,cur,list){
+  (list||BY_NAME).forEach(()=>{});
+  el.innerHTML=`<option value="">${first}</option>`+
+    (list||BY_NAME).map(n=>`<option value="${n}"${n===cur?" selected":""}>${n} — ${esc(roleName(n))}</option>`).join("");
+}
+function setLang(l){ LANG=l; applyStatic(); renderAll(); }
+function renderAll(){ renderGrid(); renderCls(); renderMe(); renderDuty(); renderCover(); }
+
+/* ================= ١) الجدول الأسبوعي ================= */
+function dayTabs(el,cur,onPick,count){
+  el.innerHTML="";
+  DAYS.forEach(d=>{
+    const b=document.createElement("button"); b.type="button"; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",d===cur);
+    const n=count?count(d):0;
+    b.innerHTML=dayName(d)+(n?`<span class="n">${n}</span>`:"");
+    b.onclick=()=>onPick(d); el.appendChild(b);
+  });
+}
+function renderGrid(){
+  dayTabs(document.getElementById("gdays"),state.gday,d=>{state.gday=d;renderGrid();});
+  const d=state.gday;
+  const head=`<tr><th class="tname">${t("th.teacher")}</th>`+
+    SLOTS.map(s=>`<th class="${s.brk?"brk":""}">${s.n}<span class="tm">${s.t}</span></th>`).join("")+
+    `<th class="brk">${t("th.load")}<span class="tm">${t("th.loadSub")}</span></th>`+
+    `<th class="brk">${t("th.duty")}<span class="tm">${t("th.loadSub")}</span></th></tr>`;
+  const rows=NAMES.filter(n=>!(state.onlyOne&&state.hi&&n!==state.hi)).map(n=>{
+    const cl=state.hi===n?"focus":(state.hi&&!state.onlyOne?"dim":"");
+    return `<tr class="${cl}"><td class="tname">${n}<span class="s">${esc(roleName(n))}</span></td>`+
+      SLOTS.map(s=>{
+        const l=les(n,d,s.k);
+        if(l) return `<td class="cell${l.off?" off":""}${s.brk?" brk":""}"><span class="c">${esc(l.cls)}</span><span class="s">${subjName(l.sub)}</span></td>`;
+        if(s.brk&&state.showDuty&&onDuty(n,d,s.k)) return `<td class="cell brk"><span class="duty">${t("w.duty")}</span></td>`;
+        return `<td class="cell${s.brk?" brk":""}"></td>`;
+      }).join("")+
+      `<td class="numcol">${T[n].load}</td><td class="numcol">${dutyOf(n)}</td></tr>`;
+  }).join("");
+  document.getElementById("gridBox").innerHTML=`<table class="grid"><thead>${head}</thead><tbody>${rows}</tbody></table>`;
+}
+
+/* ================= ٢) جداول الفصول ================= */
+function renderCls(){
+  const box=document.getElementById("clsBox"), cid=state.cls;
+  if(!cid){box.innerHTML=`<div class="empty"><div class="big">${t("cls.empty1")}</div>${t("cls.empty2")}</div>`;return;}
+  const C=CLASSES[cid];
+  const head=`<tr><th class="dayh">${t("th.day")}</th>`+C.slots.map(([k,tm])=>
+      `<th${k[0]==="B"?' class="brkh"':""}>${k[0]==="B"?t("w.break"):k.slice(1)}<span class="tm">${tm}</span></th>`).join("")+`</tr>`;
+  let filled=0; const staff=new Set(); let gaps=0;
+  const rows=DAYS.map(d=>`<tr><th class="dayh">${dayName(d)}</th>`+C.slots.map(([k])=>{
+      if(k[0]==="B") return `<td class="brkc">${t("w.break")}</td>`;
+      const cells=(C.days[d]||{})[k];
+      if(!cells||!cells.length) return `<td class="freec">${t("w.free")}</td>`;
+      filled++;
+      return `<td class="has${cid[0]==="7"?" off":""}${cells.length>1?" multi":""}">`+cells.map((c,i)=>{
+        if(c.t) staff.add(c.t); else gaps++;
+        return `<span class="${i?"row2":""}"><span class="c">${cSub(c.sub)}</span><span class="s${c.t?"":" gap"}">${c.t||t("cls.noTeacher")}${c.only?" ⚠":""}</span></span>`;
+      }).join("")+`</td>`;
+    }).join("")+`</tr>`).join("");
+  box.innerHTML=`
+    <div class="pstats">
+      <div><b>${filled}</b>${t("st.clsLessons")}</div>
+      <div><b>${staff.size}</b>${t("st.clsTeachers")}</div>
+      ${gaps?`<div style="color:#B32B27"><b style="color:#B32B27">${gaps}</b>${t("st.clsGaps")}</div>`:""}
+      <div style="flex:1;min-width:200px;color:var(--ink-soft)">${esc(C.title)}</div>
+    </div>
+    <div class="scroll" style="margin-top:14px"><table class="pgrid"><thead>${head}</thead><tbody>${rows}</tbody></table></div>
+    <p class="legend">${t("legend.cls")}</p>`;
+}
+
+/* ================= ٣) جدول معلم ================= */
+function renderMe(){
+  const box=document.getElementById("meBox"), n=state.me;
+  if(!n){box.innerHTML=`<div class="empty"><div class="big">${t("me.empty1")}</div>${t("me.empty2")}</div>`;return;}
+  const lessons=Object.keys(T[n].lessons).length;
+  const sup=!!T[n].sup;
+  const head=`<tr><th class="dayh">${t("th.day")}</th>`+SLOTS.map(s=>`<th>${s.n}<span class="tm">${s.t}</span></th>`).join("")+`</tr>`;
+  const rows=DAYS.map(d=>`<tr><th class="dayh">${dayName(d)}</th>`+SLOTS.map(s=>{
+      const l=les(n,d,s.k);
+      if(l) return `<td class="has${l.off?" off":""}"><span class="c">${esc(l.cls)}</span><span class="s">${subjName(l.sub)}</span></td>`;
+      if(onDuty(n,d,s.k)) return `<td class="dutyc"><span class="duty">${t("w.duty")}</span></td>`;
+      return `<td class="freec">${s.brk?t("w.break"):t("w.free")}</td>`;
+    }).join("")+`</tr>`).join("");
+  const busiest=DAYS.map(d=>({d,n:SLOTS.filter(s=>les(n,d,s.k)).length})).sort((a,b)=>b.n-a.n)[0];
+  box.innerHTML=`
+    <div class="pstats">
+      ${sup?"":`<div><b>${lessons}</b>${t("st.load")}</div>`}
+      <div><b>${dutyOf(n)}</b>${t("st.duty")}</div>
+      ${sup?"":`<div><b>${40-lessons}</b>${t("st.free")}</div><div><b>${busiest.n}</b>${t("st.busiest")} (${dayName(busiest.d)})</div>`}
+      <div style="flex:1;min-width:180px;color:var(--maroon-dk);font-weight:600">${n}<span style="color:var(--ink-soft);font-weight:400"> — ${esc(roleName(n))}</span></div>
+    </div>
+    <div class="scroll" style="margin-top:14px"><table class="pgrid"><thead>${head}</thead><tbody>${rows}</tbody></table></div>
+    <p class="legend">${t("legend.me")}</p>`;
+}
+
+/* ================= ٤) مناوبات الفسح ================= */
+function renderDuty(){
+  const B=[["B1","b.1","10:30 – 11:00",6],["B2","b.2","12:30 – 1:15",3],["B3","b.3","1:15 – 2:00",6]];
+  const FIXED="Dr. Maher";
+  const head=`<tr><th>${t("th.day")}</th>`+B.map(b=>`<th>${t(b[1])} — ${b[0]}<span class="tm">${b[2]} · ${b[3]} ${t("w.supervisors")}</span></th>`).join("")+`</tr>`;
+  const rows=DAYS.map(d=>`<tr><td class="dayc">${dayName(d)}</td>`+B.map(b=>{
+      const list=DUTY.duties[d+"|"+b[0]]||[];
+      return `<td>${list.map(n=>`<span class="dname${n===state.dutyHi?" me":""}${n===FIXED?" fixed":""}">${n}</span>`).join("")}</td>`;
+    }).join("")+`</tr>`).join("");
+  document.getElementById("dutyBox").innerHTML=`<table class="dutytbl"><thead>${head}</thead><tbody>${rows}</tbody></table>`;
+  const counts=Object.keys(DUTY.dcount).sort((a,b)=>dutyOf(b)-dutyOf(a)||a.localeCompare(b))
+    .map(n=>`<span class="dname${n===state.dutyHi?" me":""}">${n} · ${dutyOf(n)}</span>`).join("");
+  document.getElementById("dutyCount").innerHTML=
+    `<p class="legend" style="margin-top:16px"><b>${t("duty.counts")}</b><br>${counts}</p><p class="legend">${t("duty.rules")}</p>`;
+}
+
+/* ================= ٥) تغطية الغياب ================= */
+const prevSlot=s=>ORDER[ORDER.indexOf(s)-1]||null;
+const nextSlot=s=>ORDER[ORDER.indexOf(s)+1]||null;
+const dayLoad=(n,d)=>SLOTS.filter(x=>les(n,d,x.k)).length;
+function candidates(d,s,lesson,taken,dayCount){
+  return BY_NAME.filter(n=>!NO_COVER.has(n)&&!state.absent.has(n)&&!les(n,d,s)&&!taken.has(n)).map(n=>{
+    const dl=dayLoad(n,d), got=dayCount[n]||0;
+    const p=les(n,d,prevSlot(s)), x=les(n,d,nextSlot(s));
+    const cross=(p&&p.off!==lesson.off)||(x&&x.off!==lesson.off);
+    const same=T[n].subject.includes(SUBJ_FULL[lesson.sub]||lesson.sub);
+    return {n,dl,got,same,cross,score:(dl+got)*100+(cross?40:0)+T[n].load+dutyOf(n)};
+  }).sort((a,b)=>a.score-b.score||a.n.localeCompare(b.n));
+}
+function lessonsFor(d){
+  const out=[];
+  for(const s of SLOTS) for(const n of BY_NAME)
+    if(state.absent.has(n)&&les(n,d,s.k)) out.push({d,s:s.k,time:s.t,label:s.n,n,l:les(n,d,s.k)});
+  return out;
+}
+function renderRoster(){
+  const el=document.getElementById("roster"); el.innerHTML="";
+  BY_LOAD.forEach(n=>{
+    const b=document.createElement("button"); b.className="chip"; b.type="button";
+    b.setAttribute("aria-pressed",state.absent.has(n)); b.dataset.flag=t("w.absent");
+    b.innerHTML=`<span><span class="nm">${n}</span><span class="mt">${esc(roleName(n))}</span></span><span class="ld">${T[n].load}</span>`;
+    b.onclick=()=>{state.absent.has(n)?state.absent.delete(n):state.absent.add(n);state.manual={};renderCover();};
+    el.appendChild(b);
+  });
+  document.getElementById("absHint").textContent =
+    state.absent.size? t("cover.absentList")+[...state.absent].join(" · ") : t("cover.none");
+}
+function renderCover(){
+  renderRoster();
+  dayTabs(document.getElementById("cdays"),state.cday,d=>{state.cday=d;renderCover();},d=>lessonsFor(d).length);
+  const box=document.getElementById("coverBox"), sum=document.getElementById("csum");
+  const rows=lessonsFor(state.cday);
+  if(!state.absent.size){sum.hidden=true;
+    box.innerHTML=`<div class="empty"><div class="big">${t("cover.empty1")}</div>${t("cover.empty2")}</div>`;return;}
+  if(!rows.length){sum.hidden=true;
+    box.innerHTML=`<div class="empty"><div class="big">${t("cover.noLessons")}${dayName(state.cday)}</div>${t("cover.noLessons2")}</div>`;return;}
+  const taken={},assigned={},dayCount={}; let uncovered=0;
+  const body=rows.map(r=>{
+    taken[r.s]=taken[r.s]||new Set();
+    const cands=candidates(r.d,r.s,r.l,taken[r.s],dayCount);
+    const key=`${r.d}|${r.s}|${r.n}`;
+    let pick = key in state.manual ? state.manual[key] : (cands[0]?cands[0].n:"");
+    if(pick&&!cands.some(c=>c.n===pick)) pick=cands[0]?cands[0].n:"";
+    if(pick){taken[r.s].add(pick);assigned[pick]=(assigned[pick]||0)+1;dayCount[pick]=(dayCount[pick]||0)+1;} else uncovered++;
+    const opts=[`<option value=""${pick?"":" selected"}>${t("cover.noCover")}</option>`].concat(
+      cands.map(c=>`<option value="${c.n}"${c.n===pick?" selected":""}>${c.n} · ${t("cover.today")} ${c.dl+c.got} · ${t("cover.week")} ${T[c.n].load}${c.same?t("cover.sameSubj"):""}${c.cross?t("cover.cross"):""}</option>`)).join("");
+    const alts=cands.filter(c=>c.n!==pick).slice(0,3).map(c=>`${c.n} (${c.dl+c.got})`).join(" · ");
+    return `<tr>
+      <td><span class="per">${r.label}</span><span class="time">${r.time}</span></td>
+      <td><span class="cls">${esc(r.l.cls)}</span>${r.l.off?`<span class="tagoff">${LANG==="ar"?"المبنى الآخر":"Other building"}</span>`:""}<span class="subj">${subjName(r.l.sub)}</span></td>
+      <td style="color:var(--maroon-dk);font-weight:500">${r.n}</td>
+      <td><select data-k="${key}" class="${pick?"":"none"}">${opts}</select></td>
+      <td class="alt">${alts||t("cover.noAlt")}</td></tr>`;
+  }).join("");
+  box.innerHTML=`<table class="list"><thead><tr><th>${t("th.period")}</th><th>${t("th.classSubj")}</th><th>${t("th.absent")}</th><th>${t("th.cover")}</th><th>${t("th.alts")}</th></tr></thead>
+    <tbody><tr class="daybar"><td colspan="5">${dayName(state.cday)} — ${rows.length} ${t("cover.needs")}</td></tr>${body}</tbody></table>`;
+  box.querySelectorAll("select").forEach(s=>s.onchange=e=>{state.manual[e.target.dataset.k]=e.target.value;renderCover();});
+  const names=Object.keys(assigned).sort((a,b)=>assigned[b]-assigned[a]);
+  sum.hidden=false;
+  sum.innerHTML=`<div><b>${rows.length}</b>${t("cover.needs")}</div><div><b>${names.length}</b>${t("cover.assigned")}</div>
+    ${uncovered?`<div style="color:#B32B27"><b style="color:#B32B27">${uncovered}</b>${t("cover.uncovered")}</div>`:""}
+    <div style="flex:1;min-width:220px;color:var(--ink-soft)">${names.map(n=>`${n} × ${assigned[n]}`).join(" · ")||"—"}</div>`;
+}
+
+/* ================= تنقل ================= */
+const VIEWS=["grid","cls","me","duty","cover"];
+function show(v){
+  state.view=v;
+  VIEWS.forEach(k=>document.getElementById("v-"+k).hidden=(k!==v));
+  document.querySelectorAll("#nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
+}
+document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+document.getElementById("hi").onchange=e=>{state.hi=e.target.value;renderGrid();};
+document.getElementById("onlyOne").onchange=e=>{state.onlyOne=e.target.checked;renderGrid();};
+document.getElementById("showDuty").onchange=e=>{state.showDuty=e.target.checked;renderGrid();};
+document.getElementById("clsSel").onchange=e=>{state.cls=e.target.value;renderCls();};
+document.getElementById("meSel").onchange=e=>{state.me=e.target.value;renderMe();};
+document.getElementById("dutyHi").onchange=e=>{state.dutyHi=e.target.value;renderDuty();};
+const INFRAME=(function(){try{return window.self!==window.top;}catch(e){return true;}})();
+function printableHTML(){
+  const css=[...document.querySelectorAll("style")].map(s=>s.textContent).join("\n");
+  const clone=document.querySelector(".wrap").cloneNode(true);
+  clone.querySelectorAll("nav,.controls,.lang,.daytabs,.roster,[hidden]").forEach(e=>e.remove());
+  clone.querySelectorAll("select").forEach(sel=>{
+    const span=document.createElement("span");
+    span.textContent=sel.options[sel.selectedIndex]?sel.options[sel.selectedIndex].textContent:"";
+    sel.replaceWith(span);
+  });
+  return `<!DOCTYPE html><html lang="${LANG}" dir="${LANG==="ar"?"rtl":"ltr"}"><head><meta charset="utf-8">`+
+    `<title>${t("title")}</title>`+
+    `<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">`+
+    `<style>${css}\n@page{size:A4 landscape;margin:10mm}body{background:#fff}.panel{box-shadow:none;border:0;padding:0}.scroll{overflow:visible;border:0}</style>`+
+    `</head><body>${clone.outerHTML}</body></html>`;
+}
+function doPrint(){
+  const hints=[...document.querySelectorAll("[data-hint]")];
+  if(!INFRAME){ try{ window.print(); return; }catch(e){} }
+  const w=window.open("","_blank");
+  if(w){
+    w.document.open(); w.document.write(printableHTML()); w.document.close();
+    setTimeout(()=>{ try{ w.focus(); w.print(); }catch(e){} },600);
+  } else {
+    hints.forEach(h=>h.textContent=t("print.blocked"));
+    setTimeout(()=>hints.forEach(h=>h.textContent=""),9000);
+  }
+}
+["printGrid","printCls","printMe","printDuty","printCover"].forEach(id=>document.getElementById(id).onclick=doPrint);
+document.getElementById("clear").onclick=()=>{state.absent.clear();state.manual={};renderCover();};
+applyStatic(); renderAll(); show("grid");
+</script>
+</body>
+</html>
