@@ -715,13 +715,15 @@ function candidates(d,s,lesson,taken,dayCount){
 }
 function lessonsFor(d){
   const out=[];
-  for(const s of SLOTS) for(const n of BY_NAME)
-    if(state.absent.has(n)&&les(n,d,s.k)) out.push({d,s:s.k,time:les(n,d,s.k).tm||s.t,label:s.n,n,l:les(n,d,s.k)});
+  for(const s of SLOTS) for(const n of BY_NAME.concat(COVER_EXT))
+    if(state.absent.has(n)&&les(n,d,s.k)&&!(T[n].ext&&les(n,d,s.k).off)) out.push({d,s:s.k,time:les(n,d,s.k).tm||s.t,label:s.n,n,l:les(n,d,s.k)});
   return out;
 }
+/* معلمون من خارج الصفحة تُغطّى حصصهم في مبنى البنين فقط عند غيابهم، ولا يُقترحون للتغطية */
+const COVER_EXT=["Disha"].filter(n=>T[n]);
 function renderRoster(){
   const el=document.getElementById("roster"); el.innerHTML="";
-  BY_LOAD.forEach(n=>{
+  BY_LOAD.concat(COVER_EXT).forEach(n=>{
     const b=document.createElement("button"); b.className="chip"; b.type="button";
     b.setAttribute("aria-pressed",state.absent.has(n)); b.dataset.flag=t("w.absent");
     b.innerHTML=`<span><span class="nm">${n}</span><span class="mt">${esc(roleName(n))}</span></span><span class="ld">${T[n].load}</span>`;
@@ -753,7 +755,7 @@ function renderCover(){
     const alts=cands.filter(c=>c.n!==pick).slice(0,3).map(c=>`${c.n} (${c.dl+c.got})`).join(" · ");
     return `<tr>
       <td><span class="per">${r.label}</span><span class="time">${r.time}</span></td>
-      <td><span class="cls">${esc(r.l.cls)}</span>${r.l.off?`<span class="tagoff">${LANG==="ar"?"المبنى الآخر":"Other building"}</span>`:""}<span class="subj">${subjName(r.l.sub)}</span></td>
+      <td><span class="cls">${esc(shortCls(r.l.cls))}</span>${r.l.off?`<span class="tagoff">${LANG==="ar"?"المبنى الآخر":"Other building"}</span>`:""}<span class="subj">${subjName(r.l.sub)}</span></td>
       <td style="color:var(--maroon-dk);font-weight:500">${r.n}</td>
       <td><select data-k="${key}" class="${pick?"":"none"}">${opts}</select></td>
       <td class="alt">${alts||t("cover.noAlt")}</td></tr>`;
