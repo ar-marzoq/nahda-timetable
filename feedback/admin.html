@@ -72,6 +72,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
     <button class="tab" data-tab="thanks" data-t="tabThanks"></button>
     <button class="tab" data-tab="complaints" data-t="tabComplaints"></button>
     <button class="tab" data-tab="suggestions" data-t="tabSuggestions"></button>
+    <button class="tab" data-tab="meeting" data-t="tabMeeting"></button>
     <button class="tab" data-tab="classes" data-t="tabClasses"></button>
   </div>
 
@@ -95,6 +96,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
   </section>
 
   <section id="t-suggestions" class="card hidden"><div id="suggList"></div></section>
+  <section id="t-meeting" class="card hidden"><div id="meetSum"></div><h3 data-t="meetComments" style="color:var(--maroon);font-size:16px;margin:18px 0 6px"></h3><div id="meetList"></div></section>
   <section id="t-classes" class="card hidden"><div class="tblwrap"><table id="clsTbl"></table></div></section>
 </div>
 </div>
@@ -111,9 +113,11 @@ const CRIT={ar:[["c1","يحب المادة بسببه"],["c2","تواصل واض
  en:[["c1","Enjoys the subject"],["c2","Clear communication"],["c3","Respect & fairness"],["c4","Follows progress"],["c5","Responsiveness"],["c6","Character impact"],["c7","Clear homework"]]};
 const CAT={ar:{learning:"التعليم والتعلّم",comm:"التواصل",activities:"الأنشطة",facilities:"المرافق",transport:"النقل",teaching:"التدريس والتقييم",treatment:"التعامل مع الطالب",behaviour:"السلوك والانضباط",admin:"الإدارة",other:"أخرى"},
  en:{learning:"Teaching & learning",comm:"Communication",activities:"Activities",facilities:"Facilities",transport:"Transport",teaching:"Teaching & assessment",treatment:"Treatment of student",behaviour:"Behaviour & discipline",admin:"Administration",other:"Other"}};
+const MEET={ar:[["m1","سهولة الوصول إلى قاعات المعلمين"],["m2","التنظيم وانسيابية الانتظار"],["m3","كفاية الوقت مع كل معلم"],["m4","فائدة المعلومات عن مستوى الابن"],["m5","حسن الاستقبال والتعامل"]],
+ en:[["m1","Finding teachers' rooms"],["m2","Organisation & waiting"],["m3","Time with each teacher"],["m4","Usefulness of information"],["m5","Welcome & courtesy"]]};
 const STATUS={ar:{new:"جديدة",in_progress:"قيد المتابعة",closed:"مغلقة"},en:{new:"New",in_progress:"In progress",closed:"Closed"}};
 const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subtitle:"للإدارة فقط · تقييم المعلمين والمقترحات والملاحظات",loginP:"أدخل رمز الإدارة لعرض النتائج.",pin:"الرمز",enter:"دخول",
- badPin:"الرمز غير صحيح.",net:"تعذّر الاتصال.",tabTeachers:"المعلمون",tabThanks:"رسائل الشكر",tabComplaints:"الملاحظات والشكاوى",tabSuggestions:"المقترحات",tabClasses:"الفصول",
+ badPin:"الرمز غير صحيح.",net:"تعذّر الاتصال.",tabTeachers:"المعلمون",tabThanks:"رسائل الشكر",tabComplaints:"الملاحظات والشكاوى",tabSuggestions:"المقترحات",tabClasses:"الفصول",tabMeeting:"تقييم اللقاء",meetComments:"ملاحظات أولياء الأمور على اللقاء",noMeet:"لا توجد تقييمات للقاء بعد.",tMeet:"تقييم للقاء",avg:"المتوسط",responses:"تقييم",overallAvg:"المتوسط العام",hStudent:"الطالب",
  classL:"الفصل:",allClasses:"كل الفصول",csv:"تصدير CSV",refresh:"تحديث",print:"طباعة",teacherL:"المعلم:",allTeachers:"كل المعلمين",printFor:"طباعة للمعلم",statusL:"الحالة:",all:"الكل",
  tVotes:"تقييم مكتمل",tThanks:"رسالة شكر",tSugg:"مقترح",tComp:"ملاحظة/شكوى",tOpen:"بانتظار المتابعة",
  hTeacher:"المعلم",hResp:"ردود من فصوله",hTotal:"الإجمالي",hLift:"الأثر",hThanks:"شكر",of:"من",
@@ -121,7 +125,7 @@ const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subt
  noThanks:"لا توجد رسائل بعد.",noComp:"لا توجد ملاحظات.",noSugg:"لا توجد مقترحات بعد.",anon:"بدون اسم",note:"ملاحظة الإدارة / الإجراء المتخذ",save:"حفظ",saved:"✓ حُفظ",saveErr:"تعذّر الحفظ",
  hClass:"الفصل",hCount:"عدد التقييمات",hTeachers:"عدد المعلمين",hThanksN:"رسائل شكر",hComp:"شكاوى",hSugg:"مقترحات",na:"لا أستطيع الحكم",lang:"English"},
 en:{title:"Parents' Meeting Results",subtitle:"Leadership only · Teacher ratings, suggestions and concerns",loginP:"Enter the admin code to view results.",pin:"Code",enter:"Sign in",
- badPin:"Incorrect code.",net:"Couldn't connect.",tabTeachers:"Teachers",tabThanks:"Thank-you notes",tabComplaints:"Concerns & complaints",tabSuggestions:"Suggestions",tabClasses:"Classes",
+ badPin:"Incorrect code.",net:"Couldn't connect.",tabTeachers:"Teachers",tabThanks:"Thank-you notes",tabComplaints:"Concerns & complaints",tabSuggestions:"Suggestions",tabClasses:"Classes",tabMeeting:"Meeting rating",meetComments:"Parents' comments on the meeting",noMeet:"No meeting ratings yet.",tMeet:"Meeting ratings",avg:"Average",responses:"ratings",overallAvg:"Overall average",hStudent:"Student",
  classL:"Class:",allClasses:"All classes",csv:"Export CSV",refresh:"Refresh",print:"Print",teacherL:"Teacher:",allTeachers:"All teachers",printFor:"Print for teacher",statusL:"Status:",all:"All",
  tVotes:"Ratings",tThanks:"Thank-you notes",tSugg:"Suggestions",tComp:"Concerns",tOpen:"Awaiting follow-up",
  hTeacher:"Teacher",hResp:"Responses from their classes",hTotal:"Overall",hLift:"Impact",hThanks:"Thanks",of:"of",
@@ -183,11 +187,11 @@ function heat(r){if(r==null)return"#f4f1ec";const a=Math.min(1,r*1.6);return`rgb
 function render(){
   const ct=classTeachers();
   const open=D.complaints.filter(c=>c.status!=="closed").length;
-  $("tiles").innerHTML=[[D.votes.length,L("tVotes")],[D.votes.filter(v=>v.tx).length,L("tThanks")],[D.suggestions.length,L("tSugg")],[D.complaints.length,L("tComp")],[open,L("tOpen")]]
+  $("tiles").innerHTML=[[D.votes.length,L("tVotes")],[D.votes.filter(v=>v.tx).length,L("tThanks")],[D.suggestions.length,L("tSugg")],[D.complaints.length,L("tComp")],[open,L("tOpen")],[(D.meeting||[]).length,L("tMeet")]]
     .map(([n,l])=>`<div class="tile"><b>${n}</b><span>${l}</span></div>`).join("");
   const fc=$("fClass");const keep=fc.value;
   fc.innerHTML=`<option value="">${L("allClasses")}</option>`+CLASS_ORDER.map(c=>`<option value="${c}">${cn(c)}</option>`).join("");fc.value=keep;
-  renderTeachers();renderThanks();renderComplaints();renderSuggestions();renderClasses(ct);
+  renderTeachers();renderThanks();renderComplaints();renderSuggestions();renderClasses(ct);renderMeeting();
 }
 $("fClass").onchange=()=>renderTeachers();
 
@@ -205,7 +209,7 @@ function renderThanks(){
   const names=[...new Set(D.teachers.map(x=>x.t))].sort((a,b)=>tn(a).localeCompare(tn(b),lang));
   sel.innerHTML=`<option value="">${L("allTeachers")}</option>`+names.map(n=>`<option value="${esc(n)}">${esc(tn(n))}</option>`).join("");sel.value=keep;
   const list=D.votes.filter(v=>v.tx&&(!sel.value||v.tt===sel.value));
-  $("thanksList").innerHTML=list.length?list.map(v=>`<div class="thank" dir="auto"><div class="muted" style="font-size:12.5px">${v.tt?esc(tn(v.tt))+" · ":""}${esc(cn(v.c))} · ${dt(v.at)}</div>${esc(v.tx)}</div>`).join(""):`<p class="muted">${L("noThanks")}</p>`;
+  $("thanksList").innerHTML=list.length?list.map(v=>`<div class="thank" dir="auto"><div class="muted" style="font-size:12.5px">${v.tt?esc(tn(v.tt))+" · ":""}${v.s?esc(v.s)+" · ":""}${esc(cn(v.c))} · ${dt(v.at)}</div>${esc(v.tx)}</div>`).join(""):`<p class="muted">${L("noThanks")}</p>`;
 }
 $("fThank").onchange=renderThanks;
 
@@ -231,10 +235,23 @@ function renderClasses(ct){
   $("clsTbl").innerHTML=`<thead><tr><th style="text-align:start">${L("hClass")}</th><th>${L("hCount")}</th><th>${L("hTeachers")}</th><th>${L("hThanksN")}</th><th>${L("hComp")}</th><th>${L("hSugg")}</th></tr></thead><tbody>`+
   CLASS_ORDER.map(c=>`<tr><td class="n">${cn(c)}</td><td>${D.votes.filter(v=>v.c===c).length}</td><td>${(ct[c]||[]).length}</td><td>${D.votes.filter(v=>v.c===c&&v.tx).length}</td><td>${D.complaints.filter(x=>x.class_id===c).length}</td><td>${D.suggestions.filter(x=>x.class_id===c).length}</td></tr>`).join("")+`</tbody>`;
 }
+function renderMeeting(){
+  const M=D.meeting||[];
+  if(!M.length){$("meetSum").innerHTML=`<p class="muted">${L("noMeet")}</p>`;$("meetList").innerHTML="";return;}
+  let tot=0,totN=0;
+  const rows=MEET[lang].map(([k,l])=>{const vals=M.map(m=>m.r[k]).filter(Boolean);const n=vals.length;const a=n?vals.reduce((x,y)=>x+y,0)/n:0;tot+=a*n;totN+=n;
+    const dist=[5,4,3,2,1].map(i=>vals.filter(v=>v===i).length);
+    return `<div class="item"><div class="row" style="justify-content:space-between"><b>${l}</b><span><span dir="ltr"><b style="color:var(--maroon);font-size:18px">${n?a.toFixed(1):"—"}</b> <span class="muted">/ 5</span></span> <span class="muted">· ${n} ${L("responses")}</span></span></div>
+    <div class="bar" style="margin:8px 0"><i style="width:${(a/5*100).toFixed(0)}%"></i></div>
+    <div class="row muted" style="font-size:12.5px;gap:12px">${dist.map((c,j)=>`<span>${"★".repeat(5-j)} ${c}</span>`).join("")}</div></div>`;});
+  $("meetSum").innerHTML=`<div class="tile" style="margin-bottom:6px"><b dir="ltr">${totN?(tot/totN).toFixed(1):"—"} / 5</b><span>${L("overallAvg")} · ${M.length} ${L("responses")}</span></div>`+rows.join("");
+  const cm=M.filter(m=>m.cm);
+  $("meetList").innerHTML=cm.length?cm.map(m=>`<div class="thank" dir="auto"><div class="muted" style="font-size:12.5px">${dt(m.at)}</div>${esc(m.cm)}</div>`).join(""):`<p class="muted">—</p>`;
+}
 $("csv").onclick=()=>{
   const crit=CRIT[lang];
-  const head=["id",lang==="ar"?"التاريخ":"date",L("hClass"),...crit.map(c=>c[1]),L("hThanks"),lang==="ar"?"نص الشكر":"thanks_text"];
-  const rows=D.votes.map(v=>[v.id,v.at,cn(v.c),...crit.map(([k])=>v.p[k]==="na"?L("na"):pickList(v.p[k]).map(tn).join(" | ")),v.tt?tn(v.tt):"",v.tx||""]);
+  const head=["id",lang==="ar"?"التاريخ":"date",L("hClass"),L("hStudent"),...crit.map(c=>c[1]),L("hThanks"),lang==="ar"?"نص الشكر":"thanks_text"];
+  const rows=D.votes.map(v=>[v.id,v.at,cn(v.c),v.s||"",...crit.map(([k])=>v.p[k]==="na"?L("na"):pickList(v.p[k]).map(tn).join(" | ")),v.tt?tn(v.tt):"",v.tx||""]);
   const csv="﻿"+[head,...rows].map(r=>r.map(x=>`"${String(x??"").replace(/"/g,'""')}"`).join(",")).join("\n");
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="nahda-parent-votes.csv";a.click();
 };
