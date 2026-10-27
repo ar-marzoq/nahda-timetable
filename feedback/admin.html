@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>لوحة نتائج أولياء الأمور — أكاديمية نهضة</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--maroon:#812146;--beige:#E3D2AA;--grey:#555859;--bg:#f7f4ef;--card:#fff;--ink:#2a2426;--muted:#6f6769;--line:#e6ddd2;--soft:#f5ede3}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+header img{width:84px;height:auto}
+h1{font-size:20px;margin:0;color:var(--maroon)}
+.sub{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.tile b{display:block;font-size:26px;color:var(--maroon)}
+.tile span{color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:20px;padding:7px 16px;font:inherit;cursor:pointer}
+.tab.on{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+input,select,textarea,button{font:inherit}
+input,select,textarea{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:#fff}
+.btn{background:var(--maroon);color:#fff;border:0;border-radius:10px;padding:9px 16px;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--maroon);border:1px solid var(--line)}
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:center;font-size:13.5px}
+th{color:var(--muted);font-weight:600;font-size:12px;vertical-align:bottom}
+td.n{text-align:start;font-weight:600;white-space:nowrap}
+td.n small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.cell{border-radius:6px;padding:4px 2px;min-width:44px;display:inline-block}
+tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
+.bar{height:8px;background:var(--soft);border-radius:6px;overflow:hidden;min-width:80px}
+.bar i{display:block;height:100%;background:var(--maroon)}
+.item{border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;background:#fff}
+.item .meta{color:var(--muted);font-size:12.5px;display:flex;gap:10px;flex-wrap:wrap}
+.item .body{white-space:pre-wrap;margin:8px 0}
+.pill{border-radius:20px;padding:2px 10px;font-size:12px;background:var(--soft)}
+.pill.new{background:#fde8e8;color:#9b1c1c}.pill.in_progress{background:#fff3d6;color:#8a5a00}.pill.closed{background:#e3f4e6;color:#1f6b34}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}
+.hidden{display:none!important}
+.thank{border-inline-start:4px solid var(--beige);padding:8px 12px;margin:8px 0;background:#fffdf8;border-radius:8px;white-space:pre-wrap}
+.legend{font-size:12.5px;color:var(--muted);margin-top:8px}
+@media print{.noprint{display:none!important}body{background:#fff}.card{border:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="logo.png" alt="أكاديمية نهضة" width="320" height="231">
+  <div><h1>لوحة نتائج لقاء أولياء الأمور</h1><div class="sub">للإدارة فقط · تقييم المعلمين والمقترحات والملاحظات</div></div>
+</header>
+
+<div id="login" class="card">
+  <p style="margin-top:0">أدخل رمز الإدارة لعرض النتائج.</p>
+  <div class="row"><input type="password" id="pin" inputmode="numeric" autocomplete="current-password" placeholder="الرمز"><button class="btn" id="go">دخول</button></div>
+  <div id="lerr" style="color:#b42318;margin-top:8px"></div>
+</div>
+
+<div id="app" class="hidden">
+  <div class="tiles" id="tiles"></div>
+  <div class="tabs noprint">
+    <button class="tab on" data-tab="teachers">المعلمون</button>
+    <button class="tab" data-tab="thanks">رسائل الشكر</button>
+    <button class="tab" data-tab="complaints">الملاحظات والشكاوى</button>
+    <button class="tab" data-tab="suggestions">المقترحات</button>
+    <button class="tab" data-tab="classes">الفصول</button>
+  </div>
+
+  <section id="t-teachers" class="card">
+    <div class="row noprint" style="justify-content:space-between">
+      <div class="row"><label>الفصل:</label><select id="fClass"></select></div>
+      <div class="row"><button class="btn ghost" id="csv">تصدير CSV</button><button class="btn ghost" id="refresh">تحديث</button><button class="btn ghost" onclick="print()">طباعة</button></div>
+    </div>
+    <div class="tblwrap" style="margin-top:12px"><table id="tbl"></table></div>
+    <div class="legend">النسبة = من اختاروا المعلم في المعيار ÷ أولياء أمور فصوله الذين أجابوا عن المعيار (دون «لا أستطيع الحكم»). <b>الأثر</b> = النسبة ÷ النسبة المتوقعة بالصدفة (١ ÷ عدد معلمي الفصل)، فـ ١٫٠ تعني متوسطاً و٢٫٠ ضعف المتوقع — وهو المقياس الأعدل للمقارنة بين معلمين يدرّسون فصولاً مختلفة. اضغط على أي معلم لعرض رسائل الشكر له.</div>
+  </section>
+
+  <section id="t-thanks" class="card hidden">
+    <div class="row noprint"><label>المعلم:</label><select id="fThank"></select><button class="btn ghost" onclick="print()">طباعة للمعلم</button></div>
+    <div id="thanksList"></div>
+  </section>
+
+  <section id="t-complaints" class="card hidden">
+    <div class="row noprint"><label>الحالة:</label><select id="fCStatus"><option value="">الكل</option><option value="new">جديدة</option><option value="in_progress">قيد المتابعة</option><option value="closed">مغلقة</option></select></div>
+    <div id="compList"></div>
+  </section>
+
+  <section id="t-suggestions" class="card hidden"><div id="suggList"></div></section>
+  <section id="t-classes" class="card hidden"><div class="tblwrap"><table id="clsTbl"></table></div></section>
+</div>
+</div>
+
+<script>
+const API="https://ttbzddqkiwzvwxzqkplm.supabase.co/rest/v1/rpc/";
+const KEY="sb_publishable_TwoP6f7968_xGpTpDRwl7g_olvo-ftO";
+const CLASS_ORDER=["7-W","7-D","8","9","10","11","12","13"];
+const CLASS_NAME={"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","13":"الثالث عشر"};
+const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Will:"ويل",Tahir:"طاهر",Jose:"خوسيه",Disha:"ديشا",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان"};
+const CRIT=[["c1","يحب المادة بسببه"],["c2","تواصل واضح"],["c3","احترام وعدل"],["c4","متابعة التقدم"],["c5","سرعة التجاوب"],["c6","أثر أخلاقي وسلوكي"],["c7","وضوح الواجبات"]];
+const CAT={learning:"التعليم والتعلّم",comm:"التواصل",activities:"الأنشطة",facilities:"المرافق",transport:"النقل",teaching:"التدريس والتقييم",treatment:"التعامل مع الطالب",behaviour:"السلوك والانضباط",other:"أخرى"};
+const STATUS={new:"جديدة",in_progress:"قيد المتابعة",closed:"مغلقة"};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const tn=n=>"أ. "+(T_AR[n]||n);
+const pct=x=>x==null?"—":Math.round(x*100)+"%";
+const dt=s=>new Date(s).toLocaleString("ar-SA-u-nu-latn",{dateStyle:"medium",timeStyle:"short"});
+let PIN="",D=null;
+try{PIN=sessionStorage.getItem("nahda_admin_pin")||"";}catch(e){}
+
+async function rpc(fn,body){const r=await fetch(API+fn,{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify(body)});if(!r.ok)throw new Error(r.status);return r.json();}
+async function load(){
+  const d=await rpc("admin_data",{p_pin:PIN});
+  if(d.error){$("lerr").textContent="الرمز غير صحيح.";$("login").classList.remove("hidden");$("app").classList.add("hidden");return;}
+  try{sessionStorage.setItem("nahda_admin_pin",PIN)}catch(e){}
+  D=d;$("login").classList.add("hidden");$("app").classList.remove("hidden");render();
+}
+$("go").onclick=()=>{PIN=$("pin").value.trim();$("lerr").textContent="";load().catch(()=>$("lerr").textContent="تعذّر الاتصال.");};
+$("pin").onkeydown=e=>{if(e.key==="Enter")$("go").click();};
+$("refresh").onclick=()=>load();
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll("section[id^=t-]").forEach(s=>s.classList.toggle("hidden",s.id!=="t-"+b.dataset.tab));});
+
+function classTeachers(){const m={};D.teachers.forEach(({c,t})=>{(m[c]=m[c]||[]).push(t);});return m;}
+
+function stats(filter){
+  const ct=classTeachers();const S={};
+  const get=t=>S[t]=S[t]||{t,classes:new Set(),resp:0,crit:{},num:0,den:0,lift:0,liftN:0,thanks:0};
+  D.teachers.forEach(({c,t})=>{if(!filter||filter===c)get(t).classes.add(c);});
+  D.votes.forEach(v=>{
+    if(filter&&v.c!==filter)return;const ts=ct[v.c]||[];const base=1/ts.length;
+    ts.forEach(t=>{const s=get(t);s.resp++;
+      CRIT.forEach(([k])=>{const p=v.p[k];if(!p||p==="na")return;const c=s.crit[k]=s.crit[k]||{num:0,den:0,exp:0};
+        c.den++;c.exp+=base;s.den++;if(p===t){c.num++;s.num++;}});});
+    if(v.tt&&S[v.tt]&&v.tx)S[v.tt].thanks++;
+    else if(v.tt&&S[v.tt])S[v.tt].thanks++;
+  });
+  Object.values(S).forEach(s=>{let e=0;CRIT.forEach(([k])=>{const c=s.crit[k];if(c&&c.den)e+=c.exp;});s.exp=e;s.lift=e?s.num/e:null;s.rate=s.den?s.num/s.den:null;});
+  return Object.values(S).filter(s=>s.classes.size);
+}
+function heat(r){if(r==null)return"#f4f1ec";const a=Math.min(1,r*2.2);return`rgba(129,33,70,${(0.08+a*0.8).toFixed(2)})`;}
+
+function render(){
+  const ct=classTeachers();
+  const open=D.complaints.filter(c=>c.status!=="closed").length;
+  $("tiles").innerHTML=[
+    [D.votes.length,"تقييم مكتمل"],[D.votes.filter(v=>v.tx).length,"رسالة شكر"],
+    [D.suggestions.length,"مقترح"],[D.complaints.length,"ملاحظة/شكوى"],[open,"بانتظار المتابعة"]]
+    .map(([n,l])=>`<div class="tile"><b>${n}</b><span>${l}</span></div>`).join("");
+  const fc=$("fClass");const keep=fc.value;
+  fc.innerHTML=`<option value="">كل الفصول</option>`+CLASS_ORDER.map(c=>`<option value="${c}">${CLASS_NAME[c]}</option>`).join("");fc.value=keep;
+  renderTeachers();renderThanks();renderComplaints();renderSuggestions();renderClasses(ct);
+}
+$("fClass").onchange=()=>renderTeachers();
+
+function renderTeachers(){
+  const f=$("fClass").value;const rows=stats(f).sort((a,b)=>(b.lift??-1)-(a.lift??-1)||b.resp-a.resp);
+  $("tbl").innerHTML=`<thead><tr><th style="text-align:start">المعلم</th><th>ردود من فصوله</th>${CRIT.map(([k,l])=>`<th>${l}</th>`).join("")}<th>الإجمالي</th><th>الأثر</th><th>شكر</th></tr></thead><tbody>`+
+  rows.map(s=>`<tr class="click" data-t="${esc(s.t)}"><td class="n">${esc(tn(s.t))}<small>${[...s.classes].sort((a,b)=>CLASS_ORDER.indexOf(a)-CLASS_ORDER.indexOf(b)).map(c=>CLASS_NAME[c]).join("، ")}</small></td><td>${s.resp}</td>`+
+   CRIT.map(([k])=>{const c=s.crit[k];const r=c&&c.den?c.num/c.den:null;return`<td><span class="cell" style="background:${heat(r)};color:${r!=null&&r>.3?"#fff":"inherit"}" title="${c?c.num+" من "+c.den:""}">${pct(r)}</span></td>`;}).join("")+
+   `<td>${pct(s.rate)}</td><td><b>${s.lift==null?"—":s.lift.toFixed(1)}</b></td><td>${s.thanks||""}</td></tr>`).join("")+`</tbody>`;
+  document.querySelectorAll("#tbl tr.click").forEach(tr=>tr.onclick=()=>{$("fThank").value=tr.dataset.t;renderThanks();document.querySelector('[data-tab="thanks"]').click();});
+}
+function renderThanks(){
+  const sel=$("fThank");const keep=sel.value;
+  const names=[...new Set(D.teachers.map(x=>x.t))].sort((a,b)=>tn(a).localeCompare(tn(b),"ar"));
+  sel.innerHTML=`<option value="">كل المعلمين</option>`+names.map(n=>`<option value="${esc(n)}">${esc(tn(n))}</option>`).join("");sel.value=keep;
+  const list=D.votes.filter(v=>v.tx&&(!sel.value||v.tt===sel.value));
+  $("thanksList").innerHTML=list.length?list.map(v=>`<div class="thank"><div class="muted" style="font-size:12.5px">${v.tt?esc(tn(v.tt))+" · ":""}${CLASS_NAME[v.c]||esc(v.c)} · ${dt(v.at)}</div>${esc(v.tx)}</div>`).join(""):`<p class="muted">لا توجد رسائل بعد.</p>`;
+}
+$("fThank").onchange=renderThanks;
+
+function itemHTML(x,kind){
+  const who=kind==="complaint"?`<div class="row" style="margin-top:4px"><span>👤 ${esc(x.parent_name)}</span><span>🎓 ${esc(x.student_name)}</span><a href="tel:${esc(x.phone)}" dir="ltr">${esc(x.phone)}</a></div>`
+    :(x.parent_name||x.phone?`<div class="row" style="margin-top:4px">${x.parent_name?`<span>👤 ${esc(x.parent_name)}</span>`:""}${x.phone?`<a href="tel:${esc(x.phone)}" dir="ltr">${esc(x.phone)}</a>`:""}</div>`:`<div class="muted" style="font-size:12.5px">بدون اسم</div>`);
+  return `<div class="item"><div class="meta"><span class="pill ${x.status}">${STATUS[x.status]||x.status}</span><span>#${x.id}</span><span>${CAT[x.category]||esc(x.category)}</span>${x.class_id?`<span>${CLASS_NAME[x.class_id]||esc(x.class_id)}</span>`:""}<span>${dt(x.created_at)}</span></div>
+  ${who}<div class="body">${esc(x.body)}</div>
+  <div class="row noprint"><select data-st="${kind}:${x.id}">${Object.entries(STATUS).map(([k,l])=>`<option value="${k}"${k===x.status?" selected":""}>${l}</option>`).join("")}</select>
+  <input data-note="${kind}:${x.id}" style="flex:1;min-width:180px" placeholder="ملاحظة الإدارة / الإجراء المتخذ" value="${esc(x.admin_note||"")}"><button class="btn ghost" data-save="${kind}:${x.id}">حفظ</button><span class="muted" data-ok="${kind}:${x.id}"></span></div></div>`;
+}
+function bindSave(){document.querySelectorAll("[data-save]").forEach(b=>b.onclick=async()=>{
+  const key=b.dataset.save;const[kind,id]=key.split(":");const status=document.querySelector(`[data-st="${key}"]`).value;const note=document.querySelector(`[data-note="${key}"]`).value;
+  const ok=document.querySelector(`[data-ok="${key}"]`);ok.textContent="…";
+  try{const r=await rpc("admin_update",{p_pin:PIN,p_kind:kind,p_id:+id,p_status:status,p_note:note});
+    if(r==="ok"){const arr=kind==="complaint"?D.complaints:D.suggestions;const x=arr.find(i=>i.id==id);x.status=status;x.admin_note=note;ok.textContent="✓ حُفظ";render();}else ok.textContent="تعذّر الحفظ";}
+  catch(e){ok.textContent="تعذّر الحفظ";}});}
+function renderComplaints(){const f=$("fCStatus").value;const l=D.complaints.filter(c=>!f||c.status===f);
+  $("compList").innerHTML=l.length?l.map(c=>itemHTML(c,"complaint")).join(""):`<p class="muted">لا توجد ملاحظات.</p>`;bindSave();}
+$("fCStatus").onchange=renderComplaints;
+function renderSuggestions(){$("suggList").innerHTML=D.suggestions.length?D.suggestions.map(s=>itemHTML(s,"suggestion")).join(""):`<p class="muted">لا توجد مقترحات بعد.</p>`;bindSave();}
+function renderClasses(ct){
+  $("clsTbl").innerHTML=`<thead><tr><th style="text-align:start">الفصل</th><th>عدد التقييمات</th><th>عدد المعلمين</th><th>رسائل شكر</th><th>شكاوى</th><th>مقترحات</th></tr></thead><tbody>`+
+  CLASS_ORDER.map(c=>`<tr><td class="n">${CLASS_NAME[c]}</td><td>${D.votes.filter(v=>v.c===c).length}</td><td>${(ct[c]||[]).length}</td><td>${D.votes.filter(v=>v.c===c&&v.tx).length}</td><td>${D.complaints.filter(x=>x.class_id===c).length}</td><td>${D.suggestions.filter(x=>x.class_id===c).length}</td></tr>`).join("")+`</tbody>`;
+}
+$("csv").onclick=()=>{
+  const head=["id","date","class",...CRIT.map(c=>c[0]+" "+c[1]),"thanks_teacher","thanks_text"];
+  const rows=D.votes.map(v=>[v.id,v.at,CLASS_NAME[v.c]||v.c,...CRIT.map(([k])=>v.p[k]==="na"?"لا أستطيع الحكم":(v.p[k]?tn(v.p[k]):"")),v.tt?tn(v.tt):"",v.tx||""]);
+  const csv="﻿"+[head,...rows].map(r=>r.map(x=>`"${String(x??"").replace(/"/g,'""')}"`).join(",")).join("\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="nahda-parent-votes.csv";a.click();
+};
+if(PIN)load().catch(()=>{});
+</script>
+</body>
+</html>
