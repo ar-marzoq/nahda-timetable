@@ -186,18 +186,18 @@ const API="https://ttbzddqkiwzvwxzqkplm.supabase.co/rest/v1/rpc/";
 const KEY="sb_publishable_TwoP6f7968_xGpTpDRwl7g_olvo-ftO";
 
 /* معلمو كل فصل — من جدول الحصص (قسم البنين 2026–27) */
-const TEACH={"7-W":{"Ebrahim":["English"],"Robert":["Maths"],"Abdullah":["Islamic"],"Yaman":["Arabic","Social Studies"],"Nabil":["Science"],"Tahir":["ICT"],"Will":["PE"],"Neil":["GP"],"Disha":["Art"]},
-"7-D":{"Robert":["Maths"],"Ebrahim":["English"],"Yaman":["Arabic","Social Studies"],"Will":["PE"],"Abdullah":["Islamic"],"Tahir":["ICT"],"Nabil":["Science"],"Neil":["GP"],"Disha":["Art"]},
-"8":{"Neil":["GP"],"Ayman":["Maths"],"Zaher":["Arabic","Social Studies"],"Ebrahim":["English"],"Nabil":["Science"],"Abdullah":["Islamic"],"Will":["PE"],"Tahir":["ICT"],"Jose":["Business Studies"],"Disha":["Art"]},
-"9":{"Tahir":["ICT"],"Huthaifa":["Islamic"],"Neil":["GP"],"Zaher":["Arabic","Social Studies"],"Robert":["Maths"],"Michael":["Science"],"Hamza":["English"],"Will":["PE"],"Jose":["Business Studies"]},
-"10":{"Hamza":["English"],"Neil":["EM"],"Tahir":["ICT"],"Robert":["Maths"],"Huthaifa":["Islamic"],"Francios":["GP"],"Jose":["Business Studies"],"Medhat":["Arabic"],"Zaher":["Social Studies"],"Michael":["Science"],"Will":["PE"]},
-"11":{"Jose":["Business Studies"],"Medhat":["Arabic"],"Zaher":["Arabic","Social Studies"],"Justin":["Science"],"Neil":["EM"],"Ayman":["Maths"],"Francios":["GP"],"Huthaifa":["Islamic"],"Ebrahim":["English"],"Hamza":["English"],"Will":["PE"]},
-"12":{"Justin":["Physics"],"Jose":["Business Studies"],"Huthaifa":["Islamic","Social Studies"],"Medhat":["Arabic"],"Ayman":["Maths"],"Robert":["Maths"],"Nabil":["Chemistry"],"Hamza":["English"],"Michael":["Biology"],"Neil":["Extended Project"],"Tahir":["ICT"],"Will":["PE"]},
-"13":{"Ayman":["Maths"],"Justin":["Physics"],"Tahir":["ICT"],"Nabil":["Chemistry"],"Ebrahim":["English"],"Huthaifa":["Islamic","Social Studies"],"Neil":["Extended Project"],"Michael":["Biology"],"Medhat":["Arabic"],"Will":["PE"]}};
+const TEACH={"7-W":{"Ebrahim":["English"],"Robert":["Maths"],"Abdullah":["Islamic"],"Yaman":["Arabic","Social Studies"],"Nabil":["Science"],"Tahir":["ICT"],"Neil":["GP"]},
+"7-D":{"Robert":["Maths"],"Ebrahim":["English"],"Yaman":["Arabic","Social Studies"],"Abdullah":["Islamic"],"Tahir":["ICT"],"Nabil":["Science"],"Neil":["GP"]},
+"8":{"Neil":["GP"],"Ayman":["Maths"],"Zaher":["Arabic","Social Studies"],"Ebrahim":["English"],"Nabil":["Science"],"Abdullah":["Islamic"],"Tahir":["ICT"],"Jose":["Business Studies"]},
+"9":{"Tahir":["ICT"],"Huthaifa":["Islamic"],"Neil":["GP"],"Zaher":["Arabic","Social Studies"],"Robert":["Maths"],"Michael":["Science"],"Hamza":["English"],"Jose":["Business Studies"]},
+"10":{"Hamza":["English"],"Neil":["EM"],"Tahir":["ICT"],"Robert":["Maths"],"Huthaifa":["Islamic"],"Francios":["GP"],"Jose":["Business Studies"],"Medhat":["Arabic"],"Zaher":["Social Studies"],"Michael":["Science"]},
+"11":{"Jose":["Business Studies"],"Medhat":["Arabic"],"Zaher":["Arabic","Social Studies"],"Justin":["Science"],"Neil":["EM"],"Ayman":["Maths"],"Francios":["GP"],"Huthaifa":["Islamic"],"Ebrahim":["English"],"Hamza":["English"]},
+"12":{"Justin":["Physics"],"Jose":["Business Studies"],"Huthaifa":["Islamic","Social Studies"],"Medhat":["Arabic"],"Ayman":["Maths"],"Robert":["Maths"],"Nabil":["Chemistry"],"Hamza":["English"],"Michael":["Biology"],"Neil":["Extended Project"],"Tahir":["ICT"]},
+"13":{"Ayman":["Maths"],"Justin":["Physics"],"Tahir":["ICT"],"Nabil":["Chemistry"],"Ebrahim":["English"],"Huthaifa":["Islamic","Social Studies"],"Neil":["Extended Project"],"Michael":["Biology"],"Medhat":["Arabic"]}};
 const CLASS_ORDER=["7-W","7-D","8","9","10","11","12","13"];
 const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","13":"الثالث عشر"},
  en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","13":"Year 13"}};
-const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Will:"ويل",Tahir:"طاهر",Jose:"خوسيه",Disha:"ديشا",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان"};
+const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Tahir:"طاهر",Jose:"خوسيه",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان"};
 const T_EN={Francios:"Francois"};
 const SUBJ_AR={"English":"اللغة الإنجليزية","Maths":"الرياضيات","Islamic":"التربية الإسلامية","Arabic":"اللغة العربية","Social Studies":"الدراسات الاجتماعية","Science":"العلوم","ICT":"الحاسب الآلي","PE":"التربية البدنية","GP":"المنظورات العالمية","Art":"الفنون","Business Studies":"الدراسات التجارية","EM":"EM","Physics":"الفيزياء","Chemistry":"الكيمياء","Biology":"الأحياء","Extended Project":"المشروع البحثي"};
 const SUBJ_EN={"GP":"Global Perspectives","Islamic":"Islamic Studies","ICT":"ICT","PE":"PE"};
@@ -217,7 +217,7 @@ const CATS_C={ar:[["teaching","التدريس والتقييم"],["treatment","�
 
 const I18N={ar:{
 homeTitle:"صوتك يصنع الفرق",homeLead:"شكراً لحضورك لقاء أولياء الأمور. اختر ما تريد مشاركتنا به — لن يستغرق أكثر من دقيقتين.",
-c1t:"قيّم معلمي ابنك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c3t:"ملاحظة أو شكوى",c3s:"نتابعها معك ونرد خلال ٣ أيام عمل",
+c1t:"قيّم معلمي ابنك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c3t:"ملاحظة أو شكوى",c3s:"تصل لإدارة المدرسة ونتابعها معك",
 back:"→ رجوع",step1:"الخطوة ١ من ٣",step3:"الخطوة ٣ من ٣",pickClass:"صف ابنك",phone:"رقم جوال ولي الأمر",
 phoneHint:"لمنع تكرار التقييم فقط؛ يُحفظ كرمز مشفّر ولا يظهر مع إجاباتك.",next:"التالي",
 critTitle:"من الأبرز في كل معيار؟",critLead:"لكل عبارة، اختر المعلم الذي تراه يطبّقها أكثر مع ابنك. إن لم تكن متأكداً فاختر «لا أستطيع الحكم».",
@@ -225,18 +225,18 @@ na:"لا أستطيع الحكم",thanksTitle:"كلمة شكر",thanksLead:"هل
 thanksWho:"المعلم (اختياري)",thanksMsg:"رسالتك",thanksHint:"اختياري — تُسلَّم للمعلم كما كتبتها.",send:"إرسال",
 topic:"الموضوع",classOpt:"الصف (اختياري)",classReq:"صف ابنك",suggBody:"مقترحك",nameOpt:"الاسم (اختياري)",phoneOpt:"الجوال (اختياري)",
 anonHint:"يمكنك ترك الاسم والجوال فارغين. إن كتبتهما نستطيع إبلاغك بما تم.",
-compNote:"نتعامل مع كل ملاحظة بسرية تامة، ولا يطّلع عليها إلا إدارة المدرسة. نحتاج بيانات التواصل لنتابعها معك ونرد خلال ٣ أيام عمل.",
+compNote:"نتعامل مع كل ملاحظة بسرية تامة، ولا يطّلع عليها إلا إدارة المدرسة. نحتاج بيانات التواصل لنتابعها معك.",
 student:"اسم الطالب",parentName:"اسم ولي الأمر",compBody:"تفاصيل الملاحظة أو الشكوى",
 another:"تقييم معلمي ابن آخر",toHome:"العودة للبداية",
 doneVote:"شكراً لك",doneVoteMsg:"وصل تقييمك. رأيك يساعدنا على تكريم المتميزين وتطوير الأداء.",
 doneS:"شكراً على مقترحك",doneSMsg:"سيُعرض على إدارة المدرسة، وسننشر ما نُفِّذ من مقترحاتكم.",
-doneC:"وصلتنا ملاحظتك",doneCMsg:"سيتواصل معك أحد أعضاء الإدارة خلال ٣ أيام عمل.",
+doneC:"وصلتنا ملاحظتك",doneCMsg:"ستتابعها إدارة المدرسة ويتواصل معك أحد أعضائها.",
 e_class:"اختر صف ابنك.",e_phone:"أدخل رقم جوال صحيحاً يبدأ بـ 05.",e_crit:"بقي معيار أو أكثر بدون اختيار (مميّز بالأحمر).",
 e_dup:"سبق تقييم معلمي هذا الصف من هذا الرقم. شكراً لك!",e_net:"تعذّر الإرسال. تأكد من الاتصال بالإنترنت وحاول مرة أخرى.",e_empty:"اكتب النص أولاً.",e_missing:"أكمل اسم الطالب واسم ولي الأمر.",
 crit:"معيار",of:"من",foot:"أكاديمية نهضة العالمية · لقاء أولياء الأمور 2026–2027",choose:"— اختر —"},
 en:{
 homeTitle:"Your voice makes a difference",homeLead:"Thank you for joining us at the parents' meeting. Choose what you'd like to share — it takes less than two minutes.",
-c1t:"Rate your son's teachers",c1s:"Pick the standout teacher for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c3t:"Concern or complaint",c3s:"We follow up with you within 3 working days",
+c1t:"Rate your son's teachers",c1s:"Pick the standout teacher for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c3t:"Concern or complaint",c3s:"Goes to the school leadership, who follow up with you",
 back:"← Back",step1:"Step 1 of 3",step3:"Step 3 of 3",pickClass:"Your son's class",phone:"Parent's mobile number",
 phoneHint:"Used only to prevent duplicate ratings; stored as an encrypted code, never shown with your answers.",next:"Next",
 critTitle:"Who stands out for each quality?",critLead:"For each statement, choose the teacher who does this most for your son. If you're not sure, choose “Can't judge”.",
@@ -244,12 +244,12 @@ na:"Can't judge",thanksTitle:"A word of thanks",thanksLead:"Is there a teacher y
 thanksWho:"Teacher (optional)",thanksMsg:"Your message",thanksHint:"Optional — delivered to the teacher as written.",send:"Submit",
 topic:"Topic",classOpt:"Class (optional)",classReq:"Your son's class",suggBody:"Your suggestion",nameOpt:"Name (optional)",phoneOpt:"Mobile (optional)",
 anonHint:"You may leave name and mobile blank. If you add them, we can tell you what was done.",
-compNote:"Every concern is handled in strict confidence and seen only by the school leadership. We need your contact details to follow up and respond within 3 working days.",
+compNote:"Every concern is handled in strict confidence and seen only by the school leadership. We need your contact details to follow up with you.",
 student:"Student's name",parentName:"Parent's name",compBody:"Details",
 another:"Rate another child's teachers",toHome:"Back to start",
 doneVote:"Thank you",doneVoteMsg:"Your rating has been received. It helps us recognise excellence and keep improving.",
 doneS:"Thank you for your suggestion",doneSMsg:"It will go to the school leadership, and we'll share what we've acted on.",
-doneC:"We've received your message",doneCMsg:"A member of the leadership team will contact you within 3 working days.",
+doneC:"We've received your message",doneCMsg:"The school leadership will follow up and a member of the team will contact you.",
 e_class:"Please choose your son's class.",e_phone:"Please enter a valid mobile number starting with 05.",e_crit:"One or more qualities still need an answer (marked in red).",
 e_dup:"This class's teachers have already been rated from this number. Thank you!",e_net:"Couldn't submit. Check your connection and try again.",e_empty:"Please write your message first.",e_missing:"Please add the student's and parent's names.",
 crit:"Quality",of:"of",foot:"Nahda International Academy · Parents' Meeting 2026–2027",choose:"— Choose —"}};
