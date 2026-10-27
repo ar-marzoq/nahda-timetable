@@ -16,7 +16,7 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",sans-
 .wrap{max-width:560px;margin:0 auto;padding:0 16px 48px}
 header{text-align:center;padding:22px 0 8px;position:relative}
 header img{width:118px;height:auto;display:block;margin:0 auto}
-.lang{position:absolute;top:16px;inset-inline-end:0;background:none;border:1px solid var(--line);border-radius:20px;padding:4px 12px;font:inherit;font-size:13px;color:var(--maroon);cursor:pointer}
+.lang{position:absolute;top:16px;inset-inline-end:0;background:none;border:1px solid var(--line);border-radius:20px;padding:9px 16px;min-height:44px;font:inherit;font-size:14px;color:var(--maroon);cursor:pointer}
 h1{font-size:22px;margin:14px 0 4px;color:var(--maroon)}
 h2{font-size:19px;margin:6px 0 4px;color:var(--maroon)}
 .lead{color:var(--muted);margin:0 0 18px;font-size:15px}
@@ -36,7 +36,7 @@ textarea{min-height:110px;resize:vertical}
 input[type=tel]{direction:ltr;text-align:left}
 [dir=rtl] input[type=tel]{text-align:right}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 13px;font:inherit;font-size:14.5px;color:var(--ink);cursor:pointer;text-align:start;line-height:1.35}
+.chip{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;min-height:44px;font:inherit;font-size:14.5px;color:var(--ink);cursor:pointer;text-align:start;line-height:1.35}
 .chip small{display:block;color:var(--muted);font-size:12px}
 .chip.on{background:var(--maroon);border-color:var(--maroon);color:#fff}
 .chip.on small{color:#f3dbe4}
@@ -47,10 +47,12 @@ input[type=tel]{direction:ltr;text-align:left}
 .crit .q{font-weight:600;margin-bottom:10px;display:flex;gap:10px}
 .crit .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--soft);color:var(--maroon);display:grid;place-items:center;font-size:13px;font-weight:700}
 .crit.miss .q{color:#b42318}
+.crit.miss .q .n{background:#fde8e8;color:#b42318}
+.req{display:none;font-size:12px;color:#b42318;font-weight:600;white-space:nowrap}.crit.miss .req,.mq.miss .req{display:inline}
 .btn{display:block;width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;margin-top:16px;background:var(--maroon);color:#fff}
 .btn:disabled{opacity:.55;cursor:default}
 .btn.ghost{background:transparent;color:var(--maroon);border:1px solid var(--line);font-weight:600}
-.back{background:none;border:0;color:var(--maroon);font:inherit;font-size:14px;cursor:pointer;padding:6px 0}
+.back{background:none;border:0;color:var(--maroon);font:inherit;font-size:14px;cursor:pointer;padding:10px 0;min-height:44px}
 .progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:8px 0 2px}
 .progress i{display:block;height:100%;background:var(--maroon);width:0;transition:width .25s}
 .pmeta{font-size:12.5px;color:var(--muted)}
@@ -60,7 +62,7 @@ input[type=tel]{direction:ltr;text-align:left}
 .done .big{font-size:46px}
 .hidden{display:none!important}
 .stars{display:flex;gap:6px}
-.star{background:none;border:0;font-size:34px;line-height:1;color:#ddd3c7;cursor:pointer;padding:2px}
+.star{background:none;border:0;font-size:36px;line-height:1;color:#ddd3c7;cursor:pointer;padding:4px;min-width:48px;min-height:48px}
 .star.on{color:#d49a2a}
 .mq{font-weight:600;margin:16px 0 6px}.mq:first-child{margin-top:0}
 .slabel{font-size:12.5px;color:var(--muted);min-height:1.2em}
@@ -81,7 +83,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
   <h1 data-t="homeTitle"></h1>
   <p class="lead" data-t="homeLead"></p>
   <button class="choice" data-go="vote1"><span class="ic a">🌟</span><span><b data-t="c1t"></b><small data-t="c1s"></small></span></button>
-  <button class="choice" data-go="meet"><span class="ic d">⭐</span><span><b data-t="c4t"></b><small data-t="c4s"></small></span></button>
+  <button class="choice" data-go="meet"><span class="ic d">🤝</span><span><b data-t="c4t"></b><small data-t="c4s"></small></span></button>
   <button class="choice" data-go="sugg"><span class="ic b">💡</span><span><b data-t="c2t"></b><small data-t="c2s"></small></span></button>
   <button class="choice" data-go="comp"><span class="ic c">📝</span><span><b data-t="c3t"></b><small data-t="c3s"></small></span></button>
 </section>
@@ -92,13 +94,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
   <h2 data-t="c1t"></h2>
   <div class="progress"><i style="width:15%"></i></div><div class="pmeta" data-t="step1"></div>
   <div class="card">
-    <label class="fl" data-t="pickClass"></label>
-    <div class="chips" id="classChips"></div>
+    <div class="fl" id="lblClass" data-t="pickClass"></div>
+    <div class="chips" id="classChips" role="group" aria-labelledby="lblClass"></div>
     <div id="trackBox" class="hidden"><label class="fl" data-t="track"></label><div class="chips" id="trackChips"></div></div>
     <label class="fl" for="vStudent" data-t="studentV"></label>
     <input type="text" id="vStudent" maxlength="80" autocomplete="off">
     <div class="hint" data-t="studentHint"></div>
-    <div class="err" id="err1"></div>
+    <div class="err" aria-live="polite" id="err1"></div>
     <button class="btn" id="next1" data-t="next"></button>
   </div>
 </section>
@@ -110,7 +112,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
   <div class="progress"><i id="pbar" style="width:30%"></i></div><div class="pmeta" id="pmeta"></div>
   <p class="lead" style="margin-top:10px" data-t="critLead"></p>
   <div class="card" id="critBox"></div>
-  <div class="err" id="err2"></div>
+  <div class="err" aria-live="polite" id="err2"></div>
   <button class="btn" id="next2" data-t="next"></button>
 </section>
 
@@ -121,12 +123,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
   <div class="progress"><i style="width:90%"></i></div><div class="pmeta" data-t="step3"></div>
   <div class="card">
     <p style="margin:0" data-t="thanksLead"></p>
-    <label class="fl" data-t="thanksWho"></label>
-    <div class="chips" id="thanksChips"></div>
+    <div class="fl" id="lblThanks" data-t="thanksWho"></div>
+    <div class="chips" id="thanksChips" role="group" aria-labelledby="lblThanks"></div>
     <label class="fl" for="thanksTx" data-t="thanksMsg"></label>
     <textarea id="thanksTx" maxlength="1000"></textarea>
     <div class="hint" data-t="thanksHint"></div>
-    <div class="err" id="err3"></div>
+    <div class="err" aria-live="polite" id="err3"></div>
     <button class="btn" id="sendVote" data-t="send"></button>
   </div>
 </section>
@@ -147,7 +149,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
     <label class="fl" for="sPhone" data-t="phoneOpt"></label>
     <input type="tel" id="sPhone" inputmode="tel" placeholder="05xxxxxxxx" maxlength="20">
     <div class="hint" data-t="anonHint"></div>
-    <div class="err" id="errS"></div>
+    <div class="err" aria-live="polite" id="errS"></div>
     <button class="btn" id="sendS" data-t="send"></button>
   </div>
 </section>
@@ -170,7 +172,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
     <input type="tel" id="cPhone" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx">
     <label class="fl" for="cBody" data-t="compBody"></label>
     <textarea id="cBody" maxlength="3000"></textarea>
-    <div class="err" id="errC"></div>
+    <div class="err" aria-live="polite" id="errC"></div>
     <button class="btn" id="sendC" data-t="send"></button>
   </div>
 </section>
@@ -184,7 +186,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
   <div class="card">
     <label class="fl" for="mComment" data-t="meetComment"></label>
     <textarea id="mComment" maxlength="1500"></textarea>
-    <div class="err" id="errM"></div>
+    <div class="err" aria-live="polite" id="errM"></div>
     <button class="btn" id="sendM" data-t="send"></button>
   </div>
 </section>
@@ -196,7 +198,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
     <h2 id="doneTitle"></h2>
     <p class="lead" id="doneMsg"></p>
     <div class="invite hidden" id="meetInvite"><b data-t="inviteT"></b><div class="hint" data-t="inviteS"></div><button class="btn" data-go="meet" data-t="inviteB"></button></div>
-    <button class="btn" id="anotherChild" data-t="another"></button>
+    <button class="btn ghost" id="anotherChild" data-t="another"></button>
     <button class="btn ghost" data-go="home" data-t="toHome"></button>
   </div>
 </section>
@@ -230,7 +232,7 @@ const CRIT=[
  ["c1","ابني يحب المادة ويتحمّس لها بسببه","My son enjoys the subject because of this teacher"],
  ["c2","يتواصل معي بوضوح عن مستوى ابني","Communicates clearly with me about my son's progress"],
  ["c3","يعامل ابني باحترام وعدل","Treats my son with respect and fairness"],
- ["c4","يتابع تقدّم ابني ويهتم بنقاط ضعفه","Follows my son's progress and works on his weak points"],
+ ["c4","يتابع تقدّم ابني ويعينه على تجاوز صعوباته","Follows my son's progress and helps him overcome difficulties"],
  ["c5","يتجاوب سريعاً مع استفساراتي","Responds promptly to my questions"],
  ["c6","أرى أثره الإيجابي على أخلاق ابني وسلوكه","I see a positive impact on my son's character and behaviour"],
  ["c7","يجعل الواجبات والتقييمات واضحة ومفهومة","Makes homework and assessments clear"]];
@@ -246,32 +248,32 @@ const CATS_C={ar:[["teaching","التدريس والتقييم"],["treatment","�
  en:[["teaching","Teaching & assessment"],["treatment","How my son is treated"],["behaviour","Behaviour & discipline"],["comm","Communication"],["admin","Administration"],["other","Other"]]};
 
 const I18N={ar:{
-homeTitle:"صوتك يصنع الفرق",homeLead:"في نهضة نحن مجتمع متعلّم شغوف، وأنتم شركاؤنا فيه. رأيكم الصادق يكرّم المتميزين من معلمينا، ويعيننا على بلوغ التميّز الذي يستحقه أبناؤكم. دقيقتان منكم تصنعان فرقاً.",
-c1t:"قيّم معلمي ابنك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c4t:"قيّم لقاء أولياء الأمور",c4s:"٥ أسئلة بالنجوم — ٣٠ ثانية",meetLead:"رأيك يساعدنا على تحسين اللقاءات القادمة. اختر من ١ إلى ٥ نجوم.",meetComment:"ما أهم شيء نحسّنه في اللقاء القادم؟ (اختياري)",inviteT:"بقي سؤال واحد: كيف كان اللقاء؟",inviteS:"٥ أسئلة بالنجوم — ٣٠ ثانية",inviteB:"قيّم اللقاء",doneM:"شكراً لتقييمك",doneMMsg:"سنأخذ ملاحظاتك بعين الاعتبار في اللقاء القادم.",e_stars:"قيّم المعايير الخمسة بالنجوم.",studentV:"اسم الطالب",studentHint:"الاسم واسم الأب على الأقل، مثل: محمد أحمد. لا يطّلع على التقييمات إلا إدارة المدرسة.",e_name:"اكتب اسم الطالب واسم أبيه على الأقل.",c3t:"ملاحظة أو شكوى",c3s:"تصل لإدارة المدرسة ونتابعها معك",
+homeTitle:"صوتك يصنع الفرق",homeLead:"في نهضة نحن مجتمع متعلّم شغوف، وأنتم شركاؤنا فيه. رأيكم الصادق يكرّم المتميزين من معلمينا، ويعيننا على بلوغ التميّز الذي يستحقه أبناؤكم. دقائق معدودة منكم تصنع أثراً كبيراً.",
+c1t:"قيّم معلمي ابنك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c4t:"قيّم لقاء أولياء الأمور",c4s:"٥ أسئلة بالنجوم — ٣٠ ثانية",meetLead:"رأيك يساعدنا على تحسين اللقاءات القادمة. اختر من ١ إلى ٥ نجوم.",meetComment:"ما أهم شيء نحسّنه في اللقاء القادم؟ (اختياري)",inviteT:"خطوة أخيرة: كيف كان اللقاء؟",inviteS:"٥ أسئلة بالنجوم — ٣٠ ثانية",inviteB:"قيّم اللقاء",doneM:"شكراً لتقييمك",doneMMsg:"سنأخذ ملاحظاتك بعين الاعتبار في اللقاء القادم.",e_stars:"قيّم المعايير الخمسة بالنجوم.",studentV:"اسم الطالب",studentHint:"الاسم واسم الأب على الأقل، مثل: محمد أحمد. تقييمك سري ولا يطّلع عليه المعلم؛ نطلب الاسم لمنع التكرار فقط.",e_name:"اكتب اسم الطالب واسم أبيه على الأقل.",c3t:"ملاحظة أو شكوى",c3s:"تصل إلى إدارة المدرسة وتتابعها معك",
 back:"→ رجوع",step1:"الخطوة ١ من ٣",step3:"الخطوة ٣ من ٣",pickClass:"صف ابنك",phone:"رقم جوال ولي الأمر",
-phoneHint:"لمنع تكرار التقييم فقط؛ يُحفظ كرمز مشفّر ولا يظهر مع إجاباتك.",next:"التالي",
+next:"التالي",
 critTitle:"من الأبرز في كل معيار؟",critLead:"لكل عبارة، اختر المعلم أو المعلمين (حتى ٣) الذين تراهم يطبّقونها أكثر مع ابنك. إن لم تكن متأكداً فاختر «لا أستطيع الحكم».",
 na:"لا أستطيع الحكم",thanksTitle:"كلمة شكر",thanksLead:"هل هناك معلم تودّ أن تشكره بموقف أو أثر رأيته؟ سنوصل رسالتك إليه.",
-thanksWho:"المعلم (اختياري)",thanksMsg:"رسالتك",thanksHint:"اختياري — تُسلَّم للمعلم كما كتبتها.",send:"إرسال",
+thanksWho:"المعلم (اختياري)",thanksMsg:"رسالتك",thanksHint:"اختياري — تُسلَّم رسالتك للمعلم كما كتبتها مع اسم ابنك.",send:"إرسال",
 topic:"الموضوع",classOpt:"الصف (اختياري)",classReq:"صف ابنك",suggBody:"مقترحك",nameOpt:"الاسم (اختياري)",phoneOpt:"الجوال (اختياري)",
 anonHint:"يمكنك ترك الاسم والجوال فارغين. إن كتبتهما نستطيع إبلاغك بما تم.",
-compNote:"نتعامل مع كل ملاحظة بسرية تامة، ولا يطّلع عليها إلا إدارة المدرسة. نحتاج بيانات التواصل لنتابعها معك.",
+compNote:"نتعامل مع كل ملاحظة بسرية تامة، ولا تطّلع عليها إلا إدارة المدرسة. نحتاج بيانات التواصل لنتابعها معك.",
 student:"اسم الطالب",parentName:"اسم ولي الأمر",compBody:"تفاصيل الملاحظة أو الشكوى",
 another:"تقييم معلمي ابن آخر",toHome:"العودة للبداية",
 doneVote:"شكراً لك",doneVoteMsg:"وصل تقييمك. رأيك يساعدنا على تكريم المتميزين وتطوير الأداء.",
 doneS:"شكراً على مقترحك",doneSMsg:"سيُعرض على إدارة المدرسة، وسننشر ما نُفِّذ من مقترحاتكم.",
 doneC:"وصلتنا ملاحظتك",doneCMsg:"ستتابعها إدارة المدرسة ويتواصل معك أحد أعضائها.",
-e_class:"اختر صف ابنك.",e_track:"اختر مسار ابنك في الصف الثاني عشر.",track:"المسار",e_phone:"أدخل رقم جوال صحيحاً يبدأ بـ 05.",e_crit:"بقي معيار أو أكثر بدون اختيار (مميّز بالأحمر).",max3:"يمكنك اختيار ٣ معلمين كحد أقصى في كل معيار.",upto:"حتى ٣",
+e_class:"اختر صف ابنك.",e_track:"اختر مسار ابنك في الصف الثاني عشر.",track:"المسار",e_phone:"أدخل رقم جوال صحيحاً يبدأ بـ 05.",e_crit:"بقي معيار أو أكثر بدون اختيار (مميّز بالأحمر).",req:"مطلوب",answered:"أُجيب",crits:"معايير",starOf:"من ٥ نجوم",max3:"يمكنك اختيار ٣ معلمين كحد أقصى في كل معيار.",upto:"حتى ٣",
 e_dup:"سبق تقييم معلمي هذا الطالب. شكراً لك!",e_net:"تعذّر الإرسال. تأكد من الاتصال بالإنترنت وحاول مرة أخرى.",e_empty:"اكتب النص أولاً.",e_missing:"أكمل اسم الطالب واسم ولي الأمر.",
 crit:"معيار",of:"من",foot:"أكاديمية نهضة العالمية · لقاء أولياء الأمور 2026–2027",choose:"— اختر —"},
 en:{
-homeTitle:"Your voice makes a difference",homeLead:"At Nahda, we are a community of passionately engaged learners — and you are part of it. Your honest view recognises our outstanding teachers and helps us reach the excellence your children deserve. Two minutes of your time make a real difference.",
-c1t:"Rate your son's teachers",c1s:"Pick the standout teacher for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c4t:"Rate the parents' meeting",c4s:"5 star questions — 30 seconds",meetLead:"Your feedback helps us improve future meetings. Choose 1 to 5 stars.",meetComment:"What is the one thing we should improve next time? (optional)",inviteT:"One last question: how was the meeting?",inviteS:"5 star questions — 30 seconds",inviteB:"Rate the meeting",doneM:"Thank you for your feedback",doneMMsg:"We'll take your comments into account for the next meeting.",e_stars:"Please rate all five questions.",studentV:"Student's name",studentHint:"At least first and father's name, e.g. Mohammed Ahmed. Ratings are seen only by the school leadership.",e_name:"Please enter at least the student's first and father's name.",c3t:"Concern or complaint",c3s:"Goes to the school leadership, who follow up with you",
+homeTitle:"Your voice makes a difference",homeLead:"At Nahda, we are a community of passionately engaged learners — and you are part of it. Your honest view recognises our outstanding teachers and helps us reach the excellence your children deserve. A few minutes of your time go a long way.",
+c1t:"Rate your son's teachers",c1s:"Pick standout teachers for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c4t:"Rate the parents' meeting",c4s:"5 star questions — 30 seconds",meetLead:"Your feedback helps us improve future meetings. Choose 1 to 5 stars.",meetComment:"What is the one thing we should improve next time? (optional)",inviteT:"One last step: how was the meeting?",inviteS:"5 star questions — 30 seconds",inviteB:"Rate the meeting",doneM:"Thank you for your feedback",doneMMsg:"We'll take your comments into account for the next meeting.",e_stars:"Please rate all five questions.",studentV:"Student's name",studentHint:"At least first and father's name, e.g. Mohammed Ahmed. Your rating is confidential and not shown to teachers; the name only prevents duplicates.",e_name:"Please enter at least the student's first and father's name.",c3t:"Concern or complaint",c3s:"Goes to the school leadership, who follow up with you",
 back:"← Back",step1:"Step 1 of 3",step3:"Step 3 of 3",pickClass:"Your son's class",phone:"Parent's mobile number",
-phoneHint:"Used only to prevent duplicate ratings; stored as an encrypted code, never shown with your answers.",next:"Next",
+next:"Next",
 critTitle:"Who stands out for each quality?",critLead:"For each statement, choose up to 3 teachers who do this most for your son. If you're not sure, choose “Can't judge”.",
 na:"Can't judge",thanksTitle:"A word of thanks",thanksLead:"Is there a teacher you'd like to thank for something you've seen? We'll pass your message on.",
-thanksWho:"Teacher (optional)",thanksMsg:"Your message",thanksHint:"Optional — delivered to the teacher as written.",send:"Submit",
+thanksWho:"Teacher (optional)",thanksMsg:"Your message",thanksHint:"Optional — your message is passed to the teacher as written, with your son's name.",send:"Submit",
 topic:"Topic",classOpt:"Class (optional)",classReq:"Your son's class",suggBody:"Your suggestion",nameOpt:"Name (optional)",phoneOpt:"Mobile (optional)",
 anonHint:"You may leave name and mobile blank. If you add them, we can tell you what was done.",
 compNote:"Every concern is handled in strict confidence and seen only by the school leadership. We need your contact details to follow up with you.",
@@ -280,14 +282,14 @@ another:"Rate another child's teachers",toHome:"Back to start",
 doneVote:"Thank you",doneVoteMsg:"Your rating has been received. It helps us recognise excellence and keep improving.",
 doneS:"Thank you for your suggestion",doneSMsg:"It will go to the school leadership, and we'll share what we've acted on.",
 doneC:"We've received your message",doneCMsg:"The school leadership will follow up and a member of the team will contact you.",
-e_class:"Please choose your son's class.",e_track:"Please choose your son's Year 12 track.",track:"Track",e_phone:"Please enter a valid mobile number starting with 05.",e_crit:"One or more qualities still need an answer (marked in red).",max3:"You can choose up to 3 teachers per quality.",upto:"up to 3",
+e_class:"Please choose your son's class.",e_track:"Please choose your son's Year 12 track.",track:"Track",e_phone:"Please enter a valid mobile number starting with 05.",e_crit:"One or more qualities still need an answer (marked in red).",req:"Required",answered:"answered",crits:"",starOf:"of 5 stars",max3:"You can choose up to 3 teachers per quality.",upto:"up to 3",
 e_dup:"This student's teachers have already been rated. Thank you!",e_net:"Couldn't submit. Check your connection and try again.",e_empty:"Please write your message first.",e_missing:"Please add the student's and parent's names.",
 crit:"Quality",of:"of",foot:"Nahda International Academy · Parents' Meeting 2026–2027",choose:"— Choose —"}};
 
 let lang="ar";
 try{const s=localStorage.getItem("nahda_fb_lang");if(s==="en"||s==="ar")lang=s;}catch(e){}
 const st={cls:null,picks:{},order:{},thanks:null,meet:{}};
-let meetDone=false;try{meetDone=localStorage.getItem("nahda_meet_done")==="1"}catch(e){}
+let meetDone=false,lastDone=null,lastDup=false;try{meetDone=localStorage.getItem("nahda_meet_done")==="1"}catch(e){}
 const $=id=>document.getElementById(id);
 const t=k=>I18N[lang][k]||k;
 const num=n=>lang==="ar"?String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]):String(n);
@@ -298,7 +300,9 @@ const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(M
 const validName=n=>{const w=(n||"").trim().split(/\s+/).filter(Boolean);return w.length>=2&&w.join("").length>=4;};
 const validPhone=p=>{const d=(p||"").replace(/\D/g,"");const r=d.slice(-9);return r.length===9&&r[0]==="5";};
 
-function show(v){document.querySelectorAll("section[id^=v-]").forEach(s=>s.classList.toggle("hidden",s.id!=="v-"+v));window.scrollTo(0,0);
+function show(v,fromPop){if(!fromPop){try{history.pushState({v},"","#"+v)}catch(e){}}
+  _show(v);}
+function _show(v){document.querySelectorAll("section[id^=v-]").forEach(s=>s.classList.toggle("hidden",s.id!=="v-"+v));window.scrollTo(0,0);
   if(v==="vote2")renderCrit();if(v==="meet")renderMeet();if(v==="vote3")renderThanks();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)show(g.dataset.go);});
 
@@ -311,17 +315,18 @@ function applyLang(){
   if(!$("v-vote2").classList.contains("hidden"))renderCrit();
   if(!$("v-meet").classList.contains("hidden"))renderMeet();
   if(!$("v-vote3").classList.contains("hidden"))renderThanks();
+  if(lastDone&&!$("v-done").classList.contains("hidden")){const K={vote:"doneVote",s:"doneS",c:"doneC",m:"doneM"}[lastDone];$("doneTitle").textContent=t(K);$("doneMsg").textContent=lastDup&&lastDone==="vote"?t("e_dup"):t(K+"Msg");}
 }
 $("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("nahda_fb_lang",lang)}catch(e){};applyLang();};
 
 function renderClassChips(){
   const box=$("classChips");box.innerHTML="";
-  CLASS_ORDER.forEach(c=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.cls===c?" on":"");b.textContent=CLASS_NAME[lang][c];
-    b.onclick=()=>{if(st.cls!==c){st.cls=c;st.track=null;st.picks={};st.order={};st.thanks=null;}renderClassChips();};box.appendChild(b);});
-  $("trackBox").classList.toggle("hidden",st.cls!=="12");
+  CLASS_ORDER.forEach(c=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.cls===c?" on":"");b.setAttribute("aria-pressed",st.cls===c);b.textContent=CLASS_NAME[lang][c];
+    b.onclick=()=>{if(st.cls!==c){st.cls=c;st.track=null;st.picks={};st.order={};st.thanks=null;st.tried=false;}renderClassChips();};box.appendChild(b);});
+  $("trackBox").classList.toggle("hidden",st.cls!=="12");$("trackChips").setAttribute("role","group");
   const tb=$("trackChips");tb.innerHTML="";
-  [["12-A","A Level"],["12-D",lang==="ar"?"الدبلوم":"Diploma"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.track===k?" on":"");b.textContent=l;
-    b.onclick=()=>{if(st.track!==k){st.track=k;st.picks={};st.order={};st.thanks=null;}renderClassChips();};tb.appendChild(b);});
+  [["12-A","A Level"],["12-D",lang==="ar"?"الدبلوم":"Diploma"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.track===k?" on":"");b.setAttribute("aria-pressed",st.track===k);b.textContent=l;
+    b.onclick=()=>{if(st.track!==k){st.track=k;st.picks={};st.order={};st.thanks=null;st.tried=false;}renderClassChips();};tb.appendChild(b);});
 }
 function fillSelects(){
   const opt=(sel,list,keep)=>{const v=sel.value;sel.innerHTML="";list.forEach(([k,l])=>{const o=document.createElement("option");o.value=k;o.textContent=l;sel.appendChild(o);});if(keep&&v)sel.value=v;};
@@ -340,25 +345,28 @@ $("next1").onclick=()=>{
 function renderCrit(){
   const box=$("critBox");box.innerHTML="";const teachers=Object.keys(TEACH[cc()]||{});
   CRIT.forEach(([k,ar,en],i)=>{
-    if(!st.order[k])st.order[k]=shuffle(teachers);
+    if(!st.order._all)st.order._all=shuffle(teachers);st.order[k]=st.order._all;
     const d=document.createElement("div");d.className="crit";d.id="crit-"+k;
-    d.innerHTML=`<div class="q"><span class="n">${i+1}</span><span></span></div><div class="chips"></div>`;
-    d.querySelector(".q span:last-child").textContent=(lang==="ar"?ar:en)+"  ";const u=document.createElement("small");u.style.cssText="color:var(--muted);font-weight:400;font-size:12.5px;white-space:nowrap";u.textContent="("+t("upto")+")";d.querySelector(".q span:last-child").appendChild(u);
-    const ch=d.querySelector(".chips");
-    st.order[k].forEach(n=>{const b=document.createElement("button");b.type="button";const sel=Array.isArray(st.picks[k])&&st.picks[k].includes(n);b.className="chip"+(sel?" on":"");
+    d.innerHTML=`<div class="q"><span class="n">${num(i+1)}</span><span></span></div><div class="chips"></div>`;
+    d.querySelector(".q span:last-child").textContent=(lang==="ar"?ar:en)+"  ";const u=document.createElement("small");u.style.cssText="color:var(--muted);font-weight:400;font-size:12.5px;white-space:nowrap";u.textContent="("+t("upto")+")";d.querySelector(".q span:last-child").appendChild(u);const rq=document.createElement("span");rq.className="req";rq.textContent=" — "+t("req");d.querySelector(".q span:last-child").appendChild(rq);
+    d.querySelector(".q span:last-child").id="cq-"+k;
+    const ch=d.querySelector(".chips");ch.setAttribute("role","group");ch.setAttribute("aria-labelledby","cq-"+k);
+    st.order[k].forEach(n=>{const b=document.createElement("button");b.type="button";const sel=Array.isArray(st.picks[k])&&st.picks[k].includes(n);b.className="chip"+(sel?" on":"");b.setAttribute("aria-pressed",sel);b.dataset.f=k+"|"+n;
       b.innerHTML="<span></span><small></small>";b.firstChild.textContent=tName(n);b.lastChild.textContent=tSubj(n);
-      b.onclick=()=>{let a=Array.isArray(st.picks[k])?st.picks[k].slice():[];if(a.includes(n))a=a.filter(x=>x!==n);else{if(a.length>=3){flash(k);return;}a.push(n);}st.picks[k]=a.length?a:undefined;if(!a.length)delete st.picks[k];renderCrit();updateProg();};ch.appendChild(b);});
-    const na=document.createElement("button");na.type="button";na.className="chip na"+(st.picks[k]==="na"?" on":"");na.textContent=t("na");
-    na.onclick=()=>{st.picks[k]=st.picks[k]==="na"?undefined:"na";if(!st.picks[k])delete st.picks[k];renderCrit();updateProg();};ch.appendChild(na);
-    const h=document.createElement("div");h.className="hint";h.id="h-"+k;h.textContent=Array.isArray(st.picks[k])?(lang==="ar"?"اخترت "+num(st.picks[k].length)+" من ٣":st.picks[k].length+" of 3 chosen"):"";d.appendChild(h);
+      b.onclick=()=>{let a=Array.isArray(st.picks[k])?st.picks[k].slice():[];if(a.includes(n))a=a.filter(x=>x!==n);else{if(a.length>=3){flash(k);return;}a.push(n);}st.picks[k]=a.length?a:undefined;if(!a.length)delete st.picks[k];renderCrit();refocus(k+"|"+n);};ch.appendChild(b);});
+    const na=document.createElement("button");na.type="button";na.className="chip na"+(st.picks[k]==="na"?" on":"");na.setAttribute("aria-pressed",st.picks[k]==="na");na.dataset.f=k+"|na";na.textContent=t("na");
+    na.onclick=()=>{st.picks[k]=st.picks[k]==="na"?undefined:"na";if(!st.picks[k])delete st.picks[k];renderCrit();refocus(k+"|na");};ch.appendChild(na);
+    const h=document.createElement("div");h.className="hint";h.id="h-"+k;h.setAttribute("aria-live","polite");h.textContent=Array.isArray(st.picks[k])?(lang==="ar"?"اخترت "+num(st.picks[k].length)+" من ٣":st.picks[k].length+" of 3 chosen"):"";d.appendChild(h);
     box.appendChild(d);
+    if(st.picks[k])d.classList.remove("miss");else if(st.tried)d.classList.add("miss");
   });updateProg();
 }
+function refocus(f){const el=document.querySelector(`[data-f="${CSS.escape(f)}"]`);if(el)el.focus({preventScroll:true});}
 function flash(k){const h=$("h-"+k);if(h){h.textContent=t("max3");h.style.color="#b42318";}}
 function updateProg(){const n=CRIT.filter(([k])=>st.picks[k]).length;$("pbar").style.width=(30+n/CRIT.length*50)+"%";
-  $("pmeta").textContent=(lang==="ar"?"الخطوة ٢ من ٣ · ":"Step 2 of 3 · ")+num(n)+" "+t("of")+" "+num(CRIT.length);}
+  $("pmeta").textContent=lang==="ar"?"الخطوة ٢ من ٣ · أُجيب "+num(n)+" من "+num(CRIT.length)+" معايير":"Step 2 of 3 · "+n+" of "+CRIT.length+" answered";}
 $("next2").onclick=()=>{
-  $("err2").textContent="";let first=null;
+  $("err2").textContent="";st.tried=true;let first=null;
   CRIT.forEach(([k])=>{const el=$("crit-"+k);const miss=!st.picks[k];el.classList.toggle("miss",miss);if(miss&&!first)first=el;});
   if(first){$("err2").textContent=t("e_crit");first.scrollIntoView({behavior:"smooth",block:"center"});return;}
   show("vote3");
@@ -366,7 +374,7 @@ $("next2").onclick=()=>{
 function renderThanks(){
   const box=$("thanksChips");box.innerHTML="";
   Object.keys(TEACH[cc()]||{}).sort((a,b)=>tName(a).localeCompare(tName(b),lang)).forEach(n=>{
-    const b=document.createElement("button");b.type="button";b.className="chip"+(st.thanks===n?" on":"");
+    const b=document.createElement("button");b.type="button";b.className="chip"+(st.thanks===n?" on":"");b.setAttribute("aria-pressed",st.thanks===n);
     b.innerHTML="<span></span><small></small>";b.firstChild.textContent=tName(n);b.lastChild.textContent=tSubj(n);
     b.onclick=()=>{st.thanks=st.thanks===n?null:n;renderThanks();};box.appendChild(b);});
 }
@@ -377,7 +385,7 @@ async function rpc(fn,body){
 }
 function busy(btn,on){btn.disabled=on;btn.textContent=on?"…":t("send");}
 function done(kind){
-  const K={vote:"doneVote",s:"doneS",c:"doneC",m:"doneM"}[kind];
+  lastDone=kind;const K={vote:"doneVote",s:"doneS",c:"doneC",m:"doneM"}[kind];
   $("doneTitle").textContent=t(K);$("doneMsg").textContent=t(K+"Msg");
   $("meetInvite").classList.toggle("hidden",meetDone||kind==="m");
   $("anotherChild").classList.toggle("hidden",kind!=="vote");show("done");
@@ -388,14 +396,14 @@ $("sendVote").onclick=async()=>{
   busy(btn,true);
   try{
     const res=await rpc("submit_vote_v2",{p_class:cc(),p_student:$("vStudent").value,p_picks:st.picks,p_thanks_teacher:st.thanks||"",p_thanks_text:tx});
-    if(res==="ok"){done("vote");}
-    else if(res==="duplicate"){done("vote");$("doneMsg").textContent=t("e_dup");}
+    if(res==="ok"){lastDup=false;done("vote");}
+    else if(res==="duplicate"){done("vote");lastDup=true;$("doneMsg").textContent=t("e_dup");}
     else if(res==="bad_name"){show("vote1");$("err1").textContent=t("e_name");}
     else $("err3").textContent=t("e_net");
   }catch(e){$("err3").textContent=t("e_net");}
   busy(btn,false);
 };
-$("anotherChild").onclick=()=>{$("vStudent").value="";st.cls=null;st.track=null;st.picks={};st.order={};st.thanks=null;$("thanksTx").value="";renderClassChips();show("vote1");};
+$("anotherChild").onclick=()=>{$("vStudent").value="";st.cls=null;st.track=null;st.picks={};st.order={};st.thanks=null;st.tried=false;$("thanksTx").value="";renderClassChips();show("vote1");};
 
 $("sendS").onclick=async()=>{
   const btn=$("sendS");$("errS").textContent="";const body=$("sBody").value.trim();
@@ -425,9 +433,9 @@ function renderMeet(){
   const box=$("meetBox");box.innerHTML="";
   MEET.forEach(([k,ar,en])=>{
     const q=document.createElement("div");q.className="mq";q.id="mq-"+k;q.textContent=lang==="ar"?ar:en;box.appendChild(q);
-    const row=document.createElement("div");row.className="stars";row.setAttribute("role","radiogroup");
+    const row=document.createElement("div");row.className="stars";row.setAttribute("role","radiogroup");row.setAttribute("aria-labelledby","mq-"+k);
     for(let i=1;i<=5;i++){const b=document.createElement("button");b.type="button";b.className="star"+((st.meet[k]||0)>=i?" on":"");b.textContent="★";
-      b.setAttribute("aria-label",i+" / 5");b.onclick=()=>{st.meet[k]=i;$("errM").textContent="";renderMeet();};row.appendChild(b);}
+      b.setAttribute("role","radio");b.setAttribute("aria-checked",st.meet[k]===i);b.setAttribute("aria-label",(lang==="ar"?num(i)+" ":i+" ")+t("starOf")+" — "+STAR_L[lang][i]);b.onclick=()=>{st.meet[k]=i;$("errM").textContent="";renderMeet();};row.appendChild(b);}
     box.appendChild(row);
     const l=document.createElement("div");l.className="slabel";l.textContent=st.meet[k]?STAR_L[lang][st.meet[k]]:"";box.appendChild(l);
   });
@@ -443,6 +451,8 @@ $("sendM").onclick=async()=>{
   catch(e){err.textContent=t("e_net");}
   busy(btn,false);
 };
+window.addEventListener("popstate",e=>{const v=(e.state&&e.state.v)||"home";if(v==="vote2"&&!st.cls){_show("vote1");return;}if((v==="vote3")&&!st.cls){_show("vote1");return;}_show(v);});
+try{history.replaceState({v:"home"},"",location.pathname+location.search)}catch(e){}
 const go=new URLSearchParams(location.search).get("go");
 applyLang();
 if(go==="comp"||go==="sugg"||go==="vote"||go==="meet")show(go==="vote"?"vote1":go);
