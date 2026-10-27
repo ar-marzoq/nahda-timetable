@@ -79,7 +79,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
   <section id="t-teachers" class="card">
     <div class="row noprint" style="justify-content:space-between">
       <div class="row"><label data-t="classL"></label><select id="fClass"></select></div>
-      <div class="row"><button class="btn ghost" id="csv" data-t="csv"></button><button class="btn ghost" id="refresh" data-t="refresh"></button><button class="btn ghost" onclick="print()" data-t="print"></button></div>
+      <div class="row"><button class="btn ghost" id="csv" data-t="csv"></button><button class="btn ghost" id="refresh" data-t="refresh"></button><button class="btn ghost" onclick="print()" data-t="print"></button><button class="btn ghost" id="logout" data-t="logout"></button></div>
     </div>
     <div class="tblwrap" style="margin-top:12px"><table id="tbl"></table></div>
     <div class="legend" id="legend"></div>
@@ -104,9 +104,9 @@ tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
 <script>
 const API="https://ttbzddqkiwzvwxzqkplm.supabase.co/rest/v1/rpc/";
 const KEY="sb_publishable_TwoP6f7968_xGpTpDRwl7g_olvo-ftO";
-const CLASS_ORDER=["7-W","7-D","8","9","10","11","12","13"];
-const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","13":"الثالث عشر"},
- en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","13":"Year 13"}};
+const CLASS_ORDER=["7-W","7-D","8","9","10","11","12-A","12-D","12","13"];
+const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","12-A":"الثاني عشر — A Level","12-D":"الثاني عشر — دبلوم","13":"الثالث عشر"},
+ en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","12-A":"Year 12 — A Level","12-D":"Year 12 — Diploma","13":"Year 13"}};
 const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Tahir:"طاهر",Jose:"خوسيه",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان"};
 const T_EN={Francios:"Francois"};
 const CRIT={ar:[["c1","يحب المادة بسببه"],["c2","تواصل واضح"],["c3","احترام وعدل"],["c4","متابعة التقدم"],["c5","سرعة التجاوب"],["c6","أثر أخلاقي وسلوكي"],["c7","وضوح الواجبات"]],
@@ -121,17 +121,17 @@ const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subt
  classL:"الفصل:",allClasses:"كل الفصول",csv:"تصدير CSV",refresh:"تحديث",print:"طباعة",teacherL:"المعلم:",allTeachers:"كل المعلمين",printFor:"طباعة للمعلم",statusL:"الحالة:",all:"الكل",
  tVotes:"تقييم مكتمل",tThanks:"رسالة شكر",tSugg:"مقترح",tComp:"ملاحظة/شكوى",tOpen:"بانتظار المتابعة",
  hTeacher:"المعلم",hResp:"ردود من فصوله",hTotal:"الإجمالي",hLift:"الأثر",hThanks:"شكر",of:"من",
- legend:"النسبة = من اختاروا المعلم في المعيار ÷ أولياء أمور فصوله الذين أجابوا عن المعيار (دون «لا أستطيع الحكم»). يستطيع ولي الأمر اختيار حتى ٣ معلمين في كل معيار. <b>الأثر</b> = عدد مرات اختيار المعلم ÷ العدد المتوقع بالصدفة (عدد من اختارهم ولي الأمر ÷ عدد معلمي الفصل)، فـ ١٫٠ تعني متوسطاً و٢٫٠ ضعف المتوقع — وهو المقياس الأعدل للمقارنة بين معلمين يدرّسون فصولاً مختلفة. اضغط على أي معلم لعرض رسائل الشكر له.",
+ legend:"المعلمون الذين لديهم أقل من ٥ ردود يظهرون باهتين في آخر الجدول لأن نتائجهم غير كافية للحكم. النسبة = من اختاروا المعلم في المعيار ÷ أولياء أمور فصوله الذين أجابوا عن المعيار (دون «لا أستطيع الحكم»). يستطيع ولي الأمر اختيار حتى ٣ معلمين في كل معيار. <b>الأثر</b> = عدد مرات اختيار المعلم ÷ العدد المتوقع بالصدفة (عدد من اختارهم ولي الأمر ÷ عدد معلمي الفصل)، فـ ١٫٠ تعني متوسطاً و٢٫٠ ضعف المتوقع — وهو المقياس الأعدل للمقارنة بين معلمين يدرّسون فصولاً مختلفة. اضغط على أي معلم لعرض رسائل الشكر له.",
  noThanks:"لا توجد رسائل بعد.",noComp:"لا توجد ملاحظات.",noSugg:"لا توجد مقترحات بعد.",anon:"بدون اسم",note:"ملاحظة الإدارة / الإجراء المتخذ",save:"حفظ",saved:"✓ حُفظ",saveErr:"تعذّر الحفظ",
- hClass:"الفصل",hCount:"عدد التقييمات",hTeachers:"عدد المعلمين",hThanksN:"رسائل شكر",hComp:"شكاوى",hSugg:"مقترحات",na:"لا أستطيع الحكم",lang:"English"},
+ hClass:"الفصل",hCount:"عدد التقييمات",hTeachers:"عدد المعلمين",hThanksN:"رسائل شكر",hComp:"شكاوى",hSugg:"مقترحات",na:"لا أستطيع الحكم",lang:"English",logout:"خروج"},
 en:{title:"Parents' Meeting Results",subtitle:"Leadership only · Teacher ratings, suggestions and concerns",loginP:"Enter the admin code to view results.",pin:"Code",enter:"Sign in",
  badPin:"Incorrect code.",net:"Couldn't connect.",tabTeachers:"Teachers",tabThanks:"Thank-you notes",tabComplaints:"Concerns & complaints",tabSuggestions:"Suggestions",tabClasses:"Classes",tabMeeting:"Meeting rating",meetComments:"Parents' comments on the meeting",noMeet:"No meeting ratings yet.",tMeet:"Meeting ratings",avg:"Average",responses:"ratings",overallAvg:"Overall average",hStudent:"Student",
  classL:"Class:",allClasses:"All classes",csv:"Export CSV",refresh:"Refresh",print:"Print",teacherL:"Teacher:",allTeachers:"All teachers",printFor:"Print for teacher",statusL:"Status:",all:"All",
  tVotes:"Ratings",tThanks:"Thank-you notes",tSugg:"Suggestions",tComp:"Concerns",tOpen:"Awaiting follow-up",
  hTeacher:"Teacher",hResp:"Responses from their classes",hTotal:"Overall",hLift:"Impact",hThanks:"Thanks",of:"of",
- legend:"Rate = parents who chose the teacher for a quality ÷ parents in that teacher's classes who answered it (excluding “Can't judge”). Parents can choose up to 3 teachers per quality. <b>Impact</b> = times chosen ÷ times expected by chance (teachers the parent picked ÷ teachers in the class), so 1.0 is average and 2.0 is double — the fairest way to compare teachers of different classes. Click a teacher to see their thank-you notes.",
+ legend:"Teachers with fewer than 5 responses are faded and listed last, as their results are too few to judge. Rate = parents who chose the teacher for a quality ÷ parents in that teacher's classes who answered it (excluding “Can't judge”). Parents can choose up to 3 teachers per quality. <b>Impact</b> = times chosen ÷ times expected by chance (teachers the parent picked ÷ teachers in the class), so 1.0 is average and 2.0 is double — the fairest way to compare teachers of different classes. Click a teacher to see their thank-you notes.",
  noThanks:"No notes yet.",noComp:"No concerns.",noSugg:"No suggestions yet.",anon:"Anonymous",note:"Leadership note / action taken",save:"Save",saved:"✓ Saved",saveErr:"Couldn't save",
- hClass:"Class",hCount:"Ratings",hTeachers:"Teachers",hThanksN:"Thank-you notes",hComp:"Concerns",hSugg:"Suggestions",na:"Can't judge",lang:"العربية"}};
+ hClass:"Class",hCount:"Ratings",hTeachers:"Teachers",hThanksN:"Thank-you notes",hComp:"Concerns",hSugg:"Suggestions",na:"Can't judge",lang:"العربية",logout:"Sign out"}};
 let lang="ar";try{const v=localStorage.getItem("nahda_admin_lang");if(v==="en")lang="en";}catch(e){}
 const L=k=>I[lang][k];
 const $=id=>document.getElementById(id);
@@ -163,7 +163,7 @@ async function load(){
 }
 $("go").onclick=()=>{PIN=$("pin").value.trim();$("lerr").textContent="";load().catch(()=>$("lerr").textContent=L("net"));};
 $("pin").onkeydown=e=>{if(e.key==="Enter")$("go").click();};
-$("refresh").onclick=()=>load();
+$("refresh").onclick=()=>{const b=$("refresh");b.disabled=true;load().catch(()=>alert(L("net"))).finally(()=>b.disabled=false);};
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===b));
   document.querySelectorAll("section[id^=t-]").forEach(s=>s.classList.toggle("hidden",s.id!=="t-"+b.dataset.tab));});
 
@@ -177,29 +177,32 @@ function stats(filter){
     ts.forEach(t=>{const s=get(t);s.resp++;
       CRIT.ar.forEach(([k])=>{const p=pickList(v.p[k]);if(!p.length)return;const c=s.crit[k]=s.crit[k]||{num:0,den:0,exp:0};
         const e=Math.min(1,p.length/ts.length);c.den++;c.exp+=e;s.den++;s.exp+=e;if(p.includes(t)){c.num++;s.num++;}});});
-    if(v.tt&&S[v.tt])S[v.tt].thanks++;
+    if(v.tt&&v.tx&&S[v.tt])S[v.tt].thanks++;
   });
   Object.values(S).forEach(s=>{s.lift=s.exp?s.num/s.exp:null;s.rate=s.den?s.num/s.den:null;});
   return Object.values(S).filter(s=>s.classes.size);
 }
 function heat(r){if(r==null)return"#f4f1ec";const a=Math.min(1,r*1.6);return`rgba(129,33,70,${(0.08+a*0.8).toFixed(2)})`;}
 
-function render(){
-  const ct=classTeachers();
+function renderTiles(){
   const open=D.complaints.filter(c=>c.status!=="closed").length;
   $("tiles").innerHTML=[[D.votes.length,L("tVotes")],[D.votes.filter(v=>v.tx).length,L("tThanks")],[D.suggestions.length,L("tSugg")],[D.complaints.length,L("tComp")],[open,L("tOpen")],[(D.meeting||[]).length,L("tMeet")]]
     .map(([n,l])=>`<div class="tile"><b>${n}</b><span>${l}</span></div>`).join("");
+}
+function render(){
+  const ct=classTeachers();
+  renderTiles();
   const fc=$("fClass");const keep=fc.value;
-  fc.innerHTML=`<option value="">${L("allClasses")}</option>`+CLASS_ORDER.map(c=>`<option value="${c}">${cn(c)}</option>`).join("");fc.value=keep;
+  fc.innerHTML=`<option value="">${L("allClasses")}</option>`+CLASS_ORDER.filter(c=>ct[c]).map(c=>`<option value="${c}">${cn(c)}</option>`).join("");fc.value=keep;
   renderTeachers();renderThanks();renderComplaints();renderSuggestions();renderClasses(ct);renderMeeting();
 }
 $("fClass").onchange=()=>renderTeachers();
 
 function renderTeachers(){
-  const f=$("fClass").value;const rows=stats(f).sort((a,b)=>(b.lift??-1)-(a.lift??-1)||b.resp-a.resp);
+  const f=$("fClass").value;const MIN_N=5;const rows=stats(f).sort((a,b)=>((b.resp>=MIN_N)-(a.resp>=MIN_N))||(b.lift??-1)-(a.lift??-1)||b.resp-a.resp);
   const crit=CRIT[lang];
   $("tbl").innerHTML=`<thead><tr><th style="text-align:start">${L("hTeacher")}</th><th>${L("hResp")}</th>${crit.map(([k,l])=>`<th>${l}</th>`).join("")}<th>${L("hTotal")}</th><th>${L("hLift")}</th><th>${L("hThanks")}</th></tr></thead><tbody>`+
-  rows.map(s=>`<tr class="click" data-t="${esc(s.t)}"><td class="n">${esc(tn(s.t))}<small>${[...s.classes].sort((a,b)=>CLASS_ORDER.indexOf(a)-CLASS_ORDER.indexOf(b)).map(cn).join(lang==="ar"?"، ":", ")}</small></td><td>${s.resp}</td>`+
+  rows.map(s=>`<tr class="click" data-t="${esc(s.t)}"${s.resp<MIN_N?' style="opacity:.55"':""}><td class="n">${esc(tn(s.t))}<small>${[...s.classes].sort((a,b)=>CLASS_ORDER.indexOf(a)-CLASS_ORDER.indexOf(b)).map(cn).join(lang==="ar"?"، ":", ")}</small></td><td>${s.resp}</td>`+
    crit.map(([k])=>{const c=s.crit[k];const r=c&&c.den?c.num/c.den:null;return`<td><span class="cell" style="background:${heat(r)};color:${r!=null&&r>.4?"#fff":"inherit"}" title="${c?c.num+" "+L("of")+" "+c.den:""}">${pct(r)}</span></td>`;}).join("")+
    `<td>${pct(s.rate)}</td><td><b>${s.lift==null?"—":s.lift.toFixed(1)}</b></td><td>${s.thanks||""}</td></tr>`).join("")+`</tbody>`;
   document.querySelectorAll("#tbl tr.click").forEach(tr=>tr.onclick=()=>{$("fThank").value=tr.dataset.t;renderThanks();document.querySelector('[data-tab="thanks"]').click();});
@@ -225,7 +228,7 @@ function bindSave(){document.querySelectorAll("[data-save]").forEach(b=>b.onclic
   const key=b.dataset.save;const[kind,id]=key.split(":");const status=document.querySelector(`[data-st="${key}"]`).value;const note=document.querySelector(`[data-note="${key}"]`).value;
   const ok=document.querySelector(`[data-ok="${key}"]`);ok.textContent="…";
   try{const r=await rpc("admin_update",{p_pin:PIN,p_kind:kind,p_id:+id,p_status:status,p_note:note});
-    if(r==="ok"){const arr=kind==="complaint"?D.complaints:D.suggestions;const x=arr.find(i=>i.id==id);x.status=status;x.admin_note=note;render();const o=document.querySelector(`[data-ok="${key}"]`);if(o)o.textContent=L("saved");}else ok.textContent=L("saveErr");}
+    if(r==="ok"){const arr=kind==="complaint"?D.complaints:D.suggestions;const x=arr.find(i=>i.id==id);x.status=status;x.admin_note=note;const pill=b.closest(".item").querySelector(".pill");pill.className="pill "+status;pill.textContent=STATUS[lang][status];ok.textContent=L("saved");renderTiles();}else ok.textContent=L("saveErr");}
   catch(e){ok.textContent=L("saveErr");}});}
 function renderComplaints(){const f=$("fCStatus").value;const l=D.complaints.filter(c=>!f||c.status===f);
   $("compList").innerHTML=l.length?l.map(c=>itemHTML(c,"complaint")).join(""):`<p class="muted">${L("noComp")}</p>`;bindSave();}
@@ -233,7 +236,7 @@ $("fCStatus").onchange=renderComplaints;
 function renderSuggestions(){$("suggList").innerHTML=D.suggestions.length?D.suggestions.map(s=>itemHTML(s,"suggestion")).join(""):`<p class="muted">${L("noSugg")}</p>`;bindSave();}
 function renderClasses(ct){
   $("clsTbl").innerHTML=`<thead><tr><th style="text-align:start">${L("hClass")}</th><th>${L("hCount")}</th><th>${L("hTeachers")}</th><th>${L("hThanksN")}</th><th>${L("hComp")}</th><th>${L("hSugg")}</th></tr></thead><tbody>`+
-  CLASS_ORDER.map(c=>`<tr><td class="n">${cn(c)}</td><td>${D.votes.filter(v=>v.c===c).length}</td><td>${(ct[c]||[]).length}</td><td>${D.votes.filter(v=>v.c===c&&v.tx).length}</td><td>${D.complaints.filter(x=>x.class_id===c).length}</td><td>${D.suggestions.filter(x=>x.class_id===c).length}</td></tr>`).join("")+`</tbody>`;
+  CLASS_ORDER.filter(c=>ct[c]||D.complaints.some(x=>x.class_id===c)||D.suggestions.some(x=>x.class_id===c)).map(c=>`<tr><td class="n">${cn(c)}</td><td>${D.votes.filter(v=>v.c===c).length}</td><td>${(ct[c]||[]).length}</td><td>${D.votes.filter(v=>v.c===c&&v.tx).length}</td><td>${D.complaints.filter(x=>x.class_id===c).length}</td><td>${D.suggestions.filter(x=>x.class_id===c).length}</td></tr>`).join("")+`</tbody>`;
 }
 function renderMeeting(){
   const M=D.meeting||[];
@@ -248,13 +251,15 @@ function renderMeeting(){
   const cm=M.filter(m=>m.cm);
   $("meetList").innerHTML=cm.length?cm.map(m=>`<div class="thank" dir="auto"><div class="muted" style="font-size:12.5px">${dt(m.at)}</div>${esc(m.cm)}</div>`).join(""):`<p class="muted">—</p>`;
 }
+const safeCsv=x=>{let v=String(x??"");if(/^[=+\-@\t\r]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"';};
 $("csv").onclick=()=>{
   const crit=CRIT[lang];
   const head=["id",lang==="ar"?"التاريخ":"date",L("hClass"),L("hStudent"),...crit.map(c=>c[1]),L("hThanks"),lang==="ar"?"نص الشكر":"thanks_text"];
   const rows=D.votes.map(v=>[v.id,v.at,cn(v.c),v.s||"",...crit.map(([k])=>v.p[k]==="na"?L("na"):pickList(v.p[k]).map(tn).join(" | ")),v.tt?tn(v.tt):"",v.tx||""]);
-  const csv="﻿"+[head,...rows].map(r=>r.map(x=>`"${String(x??"").replace(/"/g,'""')}"`).join(",")).join("\n");
+  const csv="﻿"+[head,...rows].map(r=>r.map(safeCsv).join(",")).join("\n");
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="nahda-parent-votes.csv";a.click();
 };
+$("logout").onclick=()=>{try{sessionStorage.removeItem("nahda_admin_pin")}catch(e){};PIN="";D=null;$("pin").value="";$("app").classList.add("hidden");$("login").classList.remove("hidden");};
 applyLang();
 if(PIN)load().catch(()=>{});
 </script>

@@ -94,6 +94,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
   <div class="card">
     <label class="fl" data-t="pickClass"></label>
     <div class="chips" id="classChips"></div>
+    <div id="trackBox" class="hidden"><label class="fl" data-t="track"></label><div class="chips" id="trackChips"></div></div>
     <label class="fl" for="vStudent" data-t="studentV"></label>
     <input type="text" id="vStudent" maxlength="80" autocomplete="off">
     <div class="hint" data-t="studentHint"></div>
@@ -214,7 +215,8 @@ const TEACH={"7-W":{"Ebrahim":["English"],"Robert":["Maths"],"Abdullah":["Islami
 "9":{"Tahir":["ICT"],"Huthaifa":["Islamic"],"Neil":["GP"],"Zaher":["Arabic","Social Studies"],"Robert":["Maths"],"Michael":["Science"],"Hamza":["English"],"Jose":["Business Studies"]},
 "10":{"Hamza":["English"],"Neil":["EM"],"Tahir":["ICT"],"Robert":["Maths"],"Huthaifa":["Islamic"],"Francios":["GP"],"Jose":["Business Studies"],"Medhat":["Arabic"],"Zaher":["Social Studies"],"Michael":["Science"]},
 "11":{"Jose":["Business Studies"],"Medhat":["Arabic"],"Zaher":["Arabic","Social Studies"],"Justin":["Science"],"Neil":["EM"],"Ayman":["Maths"],"Francios":["GP"],"Huthaifa":["Islamic"],"Ebrahim":["English"],"Hamza":["English"]},
-"12":{"Justin":["Physics"],"Jose":["Business Studies"],"Huthaifa":["Islamic","Social Studies"],"Medhat":["Arabic"],"Ayman":["Maths"],"Robert":["Maths"],"Nabil":["Chemistry"],"Hamza":["English"],"Michael":["Biology"],"Neil":["Extended Project"],"Tahir":["ICT"]},
+"12-A":{"Justin":["Physics"],"Jose":["Business Studies"],"Huthaifa":["Islamic","Social Studies"],"Medhat":["Arabic"],"Ayman":["Maths"],"Nabil":["Chemistry"],"Hamza":["English"],"Michael":["Biology"]},
+"12-D":{"Justin":["Physics"],"Hamza":["English"],"Huthaifa":["Islamic","Social Studies"],"Medhat":["Arabic"],"Ayman":["Maths"],"Robert":["Maths"],"Nabil":["Chemistry"],"Michael":["Biology"],"Neil":["Extended Project"],"Tahir":["ICT"]},
 "13":{"Ayman":["Maths"],"Justin":["Physics"],"Tahir":["ICT"],"Nabil":["Chemistry"],"Ebrahim":["English"],"Huthaifa":["Islamic","Social Studies"],"Neil":["Extended Project"],"Michael":["Biology"],"Medhat":["Arabic"]}};
 const CLASS_ORDER=["7-W","7-D","8","9","10","11","12","13"];
 const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","13":"الثالث عشر"},
@@ -245,7 +247,7 @@ const CATS_C={ar:[["teaching","التدريس والتقييم"],["treatment","�
 
 const I18N={ar:{
 homeTitle:"صوتك يصنع الفرق",homeLead:"في نهضة نحن مجتمع متعلّم شغوف، وأنتم شركاؤنا فيه. رأيكم الصادق يكرّم المتميزين من معلمينا، ويعيننا على بلوغ التميّز الذي يستحقه أبناؤكم. دقيقتان منكم تصنعان فرقاً.",
-c1t:"قيّم معلمي ابنك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c4t:"قيّم لقاء أولياء الأمور",c4s:"٥ أسئلة بالنجوم — ٣٠ ثانية",meetLead:"رأيك يساعدنا على تحسين اللقاءات القادمة. اختر من ١ إلى ٥ نجوم.",meetComment:"ما أهم شيء نحسّنه في اللقاء القادم؟ (اختياري)",inviteT:"بقي سؤال واحد: كيف كان اللقاء؟",inviteS:"٥ أسئلة بالنجوم — ٣٠ ثانية",inviteB:"قيّم اللقاء",doneM:"شكراً لتقييمك",doneMMsg:"سنأخذ ملاحظاتك بعين الاعتبار في اللقاء القادم.",e_stars:"قيّم المعايير الخمسة بالنجوم.",studentV:"اسم الطالب",studentHint:"الاسم واسم الأب على الأقل، مثل: محمد أحمد",e_name:"اكتب اسم الطالب واسم أبيه على الأقل.",c3t:"ملاحظة أو شكوى",c3s:"تصل لإدارة المدرسة ونتابعها معك",
+c1t:"قيّم معلمي ابنك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c4t:"قيّم لقاء أولياء الأمور",c4s:"٥ أسئلة بالنجوم — ٣٠ ثانية",meetLead:"رأيك يساعدنا على تحسين اللقاءات القادمة. اختر من ١ إلى ٥ نجوم.",meetComment:"ما أهم شيء نحسّنه في اللقاء القادم؟ (اختياري)",inviteT:"بقي سؤال واحد: كيف كان اللقاء؟",inviteS:"٥ أسئلة بالنجوم — ٣٠ ثانية",inviteB:"قيّم اللقاء",doneM:"شكراً لتقييمك",doneMMsg:"سنأخذ ملاحظاتك بعين الاعتبار في اللقاء القادم.",e_stars:"قيّم المعايير الخمسة بالنجوم.",studentV:"اسم الطالب",studentHint:"الاسم واسم الأب على الأقل، مثل: محمد أحمد. لا يطّلع على التقييمات إلا إدارة المدرسة.",e_name:"اكتب اسم الطالب واسم أبيه على الأقل.",c3t:"ملاحظة أو شكوى",c3s:"تصل لإدارة المدرسة ونتابعها معك",
 back:"→ رجوع",step1:"الخطوة ١ من ٣",step3:"الخطوة ٣ من ٣",pickClass:"صف ابنك",phone:"رقم جوال ولي الأمر",
 phoneHint:"لمنع تكرار التقييم فقط؛ يُحفظ كرمز مشفّر ولا يظهر مع إجاباتك.",next:"التالي",
 critTitle:"من الأبرز في كل معيار؟",critLead:"لكل عبارة، اختر المعلم أو المعلمين (حتى ٣) الذين تراهم يطبّقونها أكثر مع ابنك. إن لم تكن متأكداً فاختر «لا أستطيع الحكم».",
@@ -259,12 +261,12 @@ another:"تقييم معلمي ابن آخر",toHome:"العودة للبداي�
 doneVote:"شكراً لك",doneVoteMsg:"وصل تقييمك. رأيك يساعدنا على تكريم المتميزين وتطوير الأداء.",
 doneS:"شكراً على مقترحك",doneSMsg:"سيُعرض على إدارة المدرسة، وسننشر ما نُفِّذ من مقترحاتكم.",
 doneC:"وصلتنا ملاحظتك",doneCMsg:"ستتابعها إدارة المدرسة ويتواصل معك أحد أعضائها.",
-e_class:"اختر صف ابنك.",e_phone:"أدخل رقم جوال صحيحاً يبدأ بـ 05.",e_crit:"بقي معيار أو أكثر بدون اختيار (مميّز بالأحمر).",max3:"يمكنك اختيار ٣ معلمين كحد أقصى في كل معيار.",upto:"حتى ٣",
+e_class:"اختر صف ابنك.",e_track:"اختر مسار ابنك في الصف الثاني عشر.",track:"المسار",e_phone:"أدخل رقم جوال صحيحاً يبدأ بـ 05.",e_crit:"بقي معيار أو أكثر بدون اختيار (مميّز بالأحمر).",max3:"يمكنك اختيار ٣ معلمين كحد أقصى في كل معيار.",upto:"حتى ٣",
 e_dup:"سبق تقييم معلمي هذا الطالب. شكراً لك!",e_net:"تعذّر الإرسال. تأكد من الاتصال بالإنترنت وحاول مرة أخرى.",e_empty:"اكتب النص أولاً.",e_missing:"أكمل اسم الطالب واسم ولي الأمر.",
 crit:"معيار",of:"من",foot:"أكاديمية نهضة العالمية · لقاء أولياء الأمور 2026–2027",choose:"— اختر —"},
 en:{
 homeTitle:"Your voice makes a difference",homeLead:"At Nahda, we are a community of passionately engaged learners — and you are part of it. Your honest view recognises our outstanding teachers and helps us reach the excellence your children deserve. Two minutes of your time make a real difference.",
-c1t:"Rate your son's teachers",c1s:"Pick the standout teacher for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c4t:"Rate the parents' meeting",c4s:"5 star questions — 30 seconds",meetLead:"Your feedback helps us improve future meetings. Choose 1 to 5 stars.",meetComment:"What is the one thing we should improve next time? (optional)",inviteT:"One last question: how was the meeting?",inviteS:"5 star questions — 30 seconds",inviteB:"Rate the meeting",doneM:"Thank you for your feedback",doneMMsg:"We'll take your comments into account for the next meeting.",e_stars:"Please rate all five questions.",studentV:"Student's name",studentHint:"At least first and father's name, e.g. Mohammed Ahmed",e_name:"Please enter at least the student's first and father's name.",c3t:"Concern or complaint",c3s:"Goes to the school leadership, who follow up with you",
+c1t:"Rate your son's teachers",c1s:"Pick the standout teacher for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c4t:"Rate the parents' meeting",c4s:"5 star questions — 30 seconds",meetLead:"Your feedback helps us improve future meetings. Choose 1 to 5 stars.",meetComment:"What is the one thing we should improve next time? (optional)",inviteT:"One last question: how was the meeting?",inviteS:"5 star questions — 30 seconds",inviteB:"Rate the meeting",doneM:"Thank you for your feedback",doneMMsg:"We'll take your comments into account for the next meeting.",e_stars:"Please rate all five questions.",studentV:"Student's name",studentHint:"At least first and father's name, e.g. Mohammed Ahmed. Ratings are seen only by the school leadership.",e_name:"Please enter at least the student's first and father's name.",c3t:"Concern or complaint",c3s:"Goes to the school leadership, who follow up with you",
 back:"← Back",step1:"Step 1 of 3",step3:"Step 3 of 3",pickClass:"Your son's class",phone:"Parent's mobile number",
 phoneHint:"Used only to prevent duplicate ratings; stored as an encrypted code, never shown with your answers.",next:"Next",
 critTitle:"Who stands out for each quality?",critLead:"For each statement, choose up to 3 teachers who do this most for your son. If you're not sure, choose “Can't judge”.",
@@ -278,7 +280,7 @@ another:"Rate another child's teachers",toHome:"Back to start",
 doneVote:"Thank you",doneVoteMsg:"Your rating has been received. It helps us recognise excellence and keep improving.",
 doneS:"Thank you for your suggestion",doneSMsg:"It will go to the school leadership, and we'll share what we've acted on.",
 doneC:"We've received your message",doneCMsg:"The school leadership will follow up and a member of the team will contact you.",
-e_class:"Please choose your son's class.",e_phone:"Please enter a valid mobile number starting with 05.",e_crit:"One or more qualities still need an answer (marked in red).",max3:"You can choose up to 3 teachers per quality.",upto:"up to 3",
+e_class:"Please choose your son's class.",e_track:"Please choose your son's Year 12 track.",track:"Track",e_phone:"Please enter a valid mobile number starting with 05.",e_crit:"One or more qualities still need an answer (marked in red).",max3:"You can choose up to 3 teachers per quality.",upto:"up to 3",
 e_dup:"This student's teachers have already been rated. Thank you!",e_net:"Couldn't submit. Check your connection and try again.",e_empty:"Please write your message first.",e_missing:"Please add the student's and parent's names.",
 crit:"Quality",of:"of",foot:"Nahda International Academy · Parents' Meeting 2026–2027",choose:"— Choose —"}};
 
@@ -290,7 +292,8 @@ const $=id=>document.getElementById(id);
 const t=k=>I18N[lang][k]||k;
 const num=n=>lang==="ar"?String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]):String(n);
 const tName=n=>lang==="ar"?"أ. "+(T_AR[n]||n):(T_EN[n]||n);
-const tSubj=n=>{const s=TEACH[st.cls]?.[n]||[];return s.map(x=>lang==="ar"?(SUBJ_AR[x]||x):(SUBJ_EN[x]||x)).join(" · ");};
+const cc=()=>st.cls==="12"?st.track:st.cls;
+const tSubj=n=>{const s=TEACH[cc()]?.[n]||[];return s.map(x=>lang==="ar"?(SUBJ_AR[x]||x):(SUBJ_EN[x]||x)).join(" · ");};
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 const validName=n=>{const w=(n||"").trim().split(/\s+/).filter(Boolean);return w.length>=2&&w.join("").length>=4;};
 const validPhone=p=>{const d=(p||"").replace(/\D/g,"");const r=d.slice(-9);return r.length===9&&r[0]==="5";};
@@ -314,7 +317,11 @@ $("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("n
 function renderClassChips(){
   const box=$("classChips");box.innerHTML="";
   CLASS_ORDER.forEach(c=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.cls===c?" on":"");b.textContent=CLASS_NAME[lang][c];
-    b.onclick=()=>{if(st.cls!==c){st.cls=c;st.picks={};st.order={};st.thanks=null;}renderClassChips();};box.appendChild(b);});
+    b.onclick=()=>{if(st.cls!==c){st.cls=c;st.track=null;st.picks={};st.order={};st.thanks=null;}renderClassChips();};box.appendChild(b);});
+  $("trackBox").classList.toggle("hidden",st.cls!=="12");
+  const tb=$("trackChips");tb.innerHTML="";
+  [["12-A","A Level"],["12-D",lang==="ar"?"الدبلوم":"Diploma"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.track===k?" on":"");b.textContent=l;
+    b.onclick=()=>{if(st.track!==k){st.track=k;st.picks={};st.order={};st.thanks=null;}renderClassChips();};tb.appendChild(b);});
 }
 function fillSelects(){
   const opt=(sel,list,keep)=>{const v=sel.value;sel.innerHTML="";list.forEach(([k,l])=>{const o=document.createElement("option");o.value=k;o.textContent=l;sel.appendChild(o);});if(keep&&v)sel.value=v;};
@@ -325,12 +332,13 @@ function fillSelects(){
 $("next1").onclick=()=>{
   $("err1").textContent="";
   if(!st.cls){$("err1").textContent=t("e_class");return;}
+  if(st.cls==="12"&&!st.track){$("err1").textContent=t("e_track");return;}
   if(!validName($("vStudent").value)){$("err1").textContent=t("e_name");return;}
   show("vote2");
 };
 
 function renderCrit(){
-  const box=$("critBox");box.innerHTML="";const teachers=Object.keys(TEACH[st.cls]||{});
+  const box=$("critBox");box.innerHTML="";const teachers=Object.keys(TEACH[cc()]||{});
   CRIT.forEach(([k,ar,en],i)=>{
     if(!st.order[k])st.order[k]=shuffle(teachers);
     const d=document.createElement("div");d.className="crit";d.id="crit-"+k;
@@ -357,7 +365,7 @@ $("next2").onclick=()=>{
 };
 function renderThanks(){
   const box=$("thanksChips");box.innerHTML="";
-  Object.keys(TEACH[st.cls]||{}).sort((a,b)=>tName(a).localeCompare(tName(b),lang)).forEach(n=>{
+  Object.keys(TEACH[cc()]||{}).sort((a,b)=>tName(a).localeCompare(tName(b),lang)).forEach(n=>{
     const b=document.createElement("button");b.type="button";b.className="chip"+(st.thanks===n?" on":"");
     b.innerHTML="<span></span><small></small>";b.firstChild.textContent=tName(n);b.lastChild.textContent=tSubj(n);
     b.onclick=()=>{st.thanks=st.thanks===n?null:n;renderThanks();};box.appendChild(b);});
@@ -379,15 +387,15 @@ $("sendVote").onclick=async()=>{
   const tx=$("thanksTx").value.trim();
   busy(btn,true);
   try{
-    const res=await rpc("submit_vote_v2",{p_class:st.cls,p_student:$("vStudent").value,p_picks:st.picks,p_thanks_teacher:st.thanks||"",p_thanks_text:tx});
+    const res=await rpc("submit_vote_v2",{p_class:cc(),p_student:$("vStudent").value,p_picks:st.picks,p_thanks_teacher:st.thanks||"",p_thanks_text:tx});
     if(res==="ok"){done("vote");}
-    else if(res==="duplicate"){$("err3").textContent=t("e_dup");}
+    else if(res==="duplicate"){done("vote");$("doneMsg").textContent=t("e_dup");}
     else if(res==="bad_name"){show("vote1");$("err1").textContent=t("e_name");}
     else $("err3").textContent=t("e_net");
   }catch(e){$("err3").textContent=t("e_net");}
   busy(btn,false);
 };
-$("anotherChild").onclick=()=>{$("vStudent").value="";st.cls=null;st.picks={};st.order={};st.thanks=null;$("thanksTx").value="";renderClassChips();show("vote1");};
+$("anotherChild").onclick=()=>{$("vStudent").value="";st.cls=null;st.track=null;st.picks={};st.order={};st.thanks=null;$("thanksTx").value="";renderClassChips();show("vote1");};
 
 $("sendS").onclick=async()=>{
   const btn=$("sendS");$("errS").textContent="";const body=$("sBody").value.trim();
