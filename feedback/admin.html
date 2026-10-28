@@ -96,7 +96,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
   </section>
 
   <section id="t-suggestions" class="card hidden"><div id="suggList"></div></section>
-  <section id="t-meeting" class="card hidden"><div id="meetSum"></div><h3 data-t="meetComments" style="color:var(--maroon);font-size:16px;margin:18px 0 6px"></h3><div id="meetList"></div></section>
+  <section id="t-meeting" class="card hidden"><div class="row noprint" style="margin-bottom:10px"><label data-t="gradeL"></label><select id="fGrade"></select></div><div id="meetSum"></div><h3 data-t="byGrade" style="color:var(--maroon);font-size:16px;margin:18px 0 6px"></h3><div class="tblwrap"><table id="gradeTbl"></table></div><h3 data-t="meetComments" style="color:var(--maroon);font-size:16px;margin:18px 0 6px"></h3><div id="meetList"></div></section>
   <section id="t-classes" class="card hidden"><div class="tblwrap"><table id="clsTbl"></table></div></section>
 </div>
 </div>
@@ -108,6 +108,9 @@ const CLASS_ORDER=["7-W","7-D","8","9","10","11","12-A","12-D","12","13","G7-H",
 const secOf=c=>c&&c[0]==="G"?"G":"B";
 const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","12-A":"الثاني عشر — A Level","12-D":"الثاني عشر — دبلوم","13":"الثالث عشر","G7-H":"السابع — الحِجر","G7-J":"السابع — جبل الفيل","G8":"الثامن — نيوم","G9":"التاسع — إثراء","G10":"العاشر — نخيل الزيت","G11":"الحادي عشر — الأخدود","G12":"الثاني عشر — دبلوم"},
  en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","12-A":"Year 12 — A Level","12-D":"Year 12 — Diploma","13":"Year 13","G7-H":"Year 7 — Al Hijr","G7-J":"Year 7 — Jabal Al Fil","G8":"Year 8 — NEOM","G9":"Year 9 — Ithra","G10":"Year 10 — Nakhil Al Zayt","G11":"Year 11 — Al Ukhdood","G12":"Year 12 — Diploma"}};
+const GRADE_AR=["","الأول","الثاني","الثالث","الرابع","الخامس","السادس","السابع","الثامن","التاسع","العاشر","الحادي عشر","الثاني عشر","الثالث عشر"];
+const gn=g=>{const m=/^([BG])-(\d+)$/.exec(g||"");if(!m)return g;return SEC_NAME[lang][m[1]]+" — "+(lang==="ar"?"الصف "+GRADE_AR[+m[2]]:"Year "+m[2]);};
+const GRADE_KEYS=["B","G"].flatMap(x=>Array.from({length:13},(_,i)=>x+"-"+(i+1)));
 const SEC_NAME={ar:{B:"بنين",G:"بنات"},en:{B:"Boys",G:"Girls"}};
 const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Tahir:"طاهر",Jose:"خوسيه",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان",Sidney:"سيدني",Reem:"ريم",Isra:"إسراء",Cashara:"كاشارا","Fatima T":"فاطمة","Muna A":"منى أ.","Muna S":"منى س.",Hanan:"حنان",Hind:"هند",Najwa:"نجوى",Tomather:"تماضر",Zeina:"زينة"};
 const T_EN={Francios:"Francois","Fatima T":"Fatima","Muna A":"Muna A.","Muna S":"Muna S."};
@@ -119,7 +122,7 @@ const MEET={ar:[["m1","سهولة الوصول إلى القاعات"],["m2","ا
  en:[["m1","Finding teachers' rooms"],["m2","Organisation & waiting"],["m3","Time with each teacher"],["m4","Usefulness of information"],["m5","Welcome & courtesy"]]};
 const STATUS={ar:{new:"جديد",in_progress:"قيد المتابعة",closed:"مغلقة"},en:{new:"New",in_progress:"In progress",closed:"Closed"}};
 const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subtitle:"للإدارة فقط · تقييم المعلمين والمقترحات والملاحظات",loginP:"أدخل رمز الإدارة لعرض النتائج.",pin:"الرمز",enter:"دخول",
- badPin:"الرمز غير صحيح.",net:"تعذّر الاتصال.",tabTeachers:"المعلمون والمعلمات",tabThanks:"رسائل الشكر",tabComplaints:"الملاحظات والشكاوى",tabSuggestions:"المقترحات",tabClasses:"الفصول",tabMeeting:"تقييم اللقاء",meetComments:"ملاحظات أولياء الأمور على اللقاء",noMeet:"لا توجد تقييمات للقاء بعد.",tMeet:"تقييم اللقاء",avg:"المتوسط",responses:"تقييم",overallAvg:"المتوسط العام",hStudent:"الطالب/الطالبة",
+ badPin:"الرمز غير صحيح.",net:"تعذّر الاتصال.",tabTeachers:"المعلمون والمعلمات",tabThanks:"رسائل الشكر",tabComplaints:"الملاحظات والشكاوى",tabSuggestions:"المقترحات",tabClasses:"الفصول",tabMeeting:"تقييم اللقاء",gradeL:"الصف:",allGrades:"كل الصفوف",allBoysG:"قسم البنين — كل الصفوف",allGirlsG:"قسم البنات — كل الصفوف",byGrade:"حسب الصف",meetComments:"ملاحظات أولياء الأمور على اللقاء",noMeet:"لا توجد تقييمات للقاء بعد.",tMeet:"تقييم اللقاء",avg:"المتوسط",responses:"تقييم",overallAvg:"المتوسط العام",hStudent:"الطالب/الطالبة",
  classL:"الفصل:",allClasses:"كل الفصول",allBoys:"قسم البنين — كل الفصول",allGirls:"قسم البنات — كل الفصول",csv:"تصدير CSV",refresh:"تحديث",print:"طباعة",teacherL:"المعلم/المعلمة:",allTeachers:"كل المعلمين والمعلمات",printFor:"طباعة للمعلم/المعلمة",statusL:"الحالة:",all:"الكل",
  tVotes:"تقييم مكتمل",tThanks:"رسالة شكر",tSugg:"مقترح",tComp:"ملاحظة/شكوى",tOpen:"بانتظار المتابعة",
  hTeacher:"المعلم/المعلمة",hResp:"ردود من فصوله/فصولها",hTotal:"الإجمالي",hLift:"الأثر",hThanks:"شكر",of:"من",
@@ -127,7 +130,7 @@ const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subt
  noThanks:"لا توجد رسائل بعد.",noComp:"لا توجد ملاحظات.",noSugg:"لا توجد مقترحات بعد.",anon:"بدون اسم",note:"ملاحظة الإدارة / الإجراء المتخذ",save:"حفظ",saved:"✓ حُفظ",saveErr:"تعذّر الحفظ",
  hClass:"الفصل",hCount:"عدد التقييمات",hTeachers:"عدد المعلمين",hThanksN:"رسائل شكر",hComp:"شكاوى",hSugg:"مقترحات",na:"لا أستطيع الحكم",lang:"English",logout:"خروج"},
 en:{title:"Parents' Meeting Results",subtitle:"Leadership only · Teacher ratings, suggestions and concerns",loginP:"Enter the admin code to view results.",pin:"Code",enter:"Sign in",
- badPin:"Incorrect code.",net:"Couldn't connect.",tabTeachers:"Teachers",tabThanks:"Thank-you notes",tabComplaints:"Concerns & complaints",tabSuggestions:"Suggestions",tabClasses:"Classes",tabMeeting:"Meeting rating",meetComments:"Parents' comments on the meeting",noMeet:"No meeting ratings yet.",tMeet:"Meeting ratings",avg:"Average",responses:"ratings",overallAvg:"Overall average",hStudent:"Student",
+ badPin:"Incorrect code.",net:"Couldn't connect.",tabTeachers:"Teachers",tabThanks:"Thank-you notes",tabComplaints:"Concerns & complaints",tabSuggestions:"Suggestions",tabClasses:"Classes",tabMeeting:"Meeting rating",gradeL:"Year:",allGrades:"All years",allBoysG:"Boys — all years",allGirlsG:"Girls — all years",byGrade:"By year group",meetComments:"Parents' comments on the meeting",noMeet:"No meeting ratings yet.",tMeet:"Meeting ratings",avg:"Average",responses:"ratings",overallAvg:"Overall average",hStudent:"Student",
  classL:"Class:",allClasses:"All classes",allBoys:"Boys — all classes",allGirls:"Girls — all classes",csv:"Export CSV",refresh:"Refresh",print:"Print",teacherL:"Teacher:",allTeachers:"All teachers",printFor:"Print for teacher",statusL:"Status:",all:"All",
  tVotes:"Ratings",tThanks:"Thank-you notes",tSugg:"Suggestions",tComp:"Concerns",tOpen:"Awaiting follow-up",
  hTeacher:"Teacher",hResp:"Responses from their classes",hTotal:"Overall",hLift:"Impact",hThanks:"Thanks",of:"of",
@@ -222,7 +225,7 @@ $("fThank").onchange=renderThanks;
 function itemHTML(x,kind){
   const who=kind==="complaint"?`<div class="row" style="margin-top:4px"><span>👤 ${esc(x.parent_name)}</span><span>🎓 ${esc(x.student_name)}</span><a href="tel:${esc(x.phone)}" dir="ltr">${esc(x.phone)}</a></div>`
     :(x.parent_name||x.phone?`<div class="row" style="margin-top:4px">${x.parent_name?`<span>👤 ${esc(x.parent_name)}</span>`:""}${x.phone?`<a href="tel:${esc(x.phone)}" dir="ltr">${esc(x.phone)}</a>`:""}</div>`:`<div class="muted" style="font-size:12.5px">${L("anon")}</div>`);
-  return `<div class="item"><div class="meta"><span class="pill ${x.status}">${STATUS[lang][x.status]||esc(x.status)}</span><span>#${x.id}</span><span>${CAT[lang][x.category]||esc(x.category)}</span>${x.class_id?`<span>${esc(cn(x.class_id))}</span>`:""}<span>${dt(x.created_at)}</span></div>
+  return `<div class="item"><div class="meta"><span class="pill ${x.status}">${STATUS[lang][x.status]||esc(x.status)}</span><span>#${x.id}</span><span>${CAT[lang][x.category]||esc(x.category)}</span>${x.grade?`<span>${esc(gn(x.grade))}</span>`:x.class_id?`<span>${esc(cn(x.class_id))}</span>`:""}<span>${dt(x.created_at)}</span></div>
   ${who}<div class="body" dir="auto">${esc(x.body)}</div>
   <div class="row noprint"><select data-st="${kind}:${x.id}">${Object.entries(STATUS[lang]).map(([k,l])=>`<option value="${k}"${k===x.status?" selected":""}>${l}</option>`).join("")}</select>
   <input data-note="${kind}:${x.id}" style="flex:1;min-width:180px" placeholder="${L("note")}" value="${esc(x.admin_note||"")}"><button class="btn ghost" data-save="${kind}:${x.id}">${L("save")}</button><span class="muted" data-ok="${kind}:${x.id}"></span></div></div>`;
@@ -238,11 +241,20 @@ function renderComplaints(){const f=$("fCStatus").value;const l=D.complaints.fil
 $("fCStatus").onchange=renderComplaints;
 function renderSuggestions(){$("suggList").innerHTML=D.suggestions.length?D.suggestions.map(s=>itemHTML(s,"suggestion")).join(""):`<p class="muted">${L("noSugg")}</p>`;bindSave();}
 function renderClasses(ct){
+  const gt=GRADE_KEYS.filter(g=>D.complaints.some(x=>x.grade===g)||D.suggestions.some(x=>x.grade===g));
   $("clsTbl").innerHTML=`<thead><tr><th style="text-align:start">${L("hClass")}</th><th>${L("hCount")}</th><th>${L("hTeachers")}</th><th>${L("hThanksN")}</th><th>${L("hComp")}</th><th>${L("hSugg")}</th></tr></thead><tbody>`+
-  CLASS_ORDER.filter(c=>ct[c]||D.complaints.some(x=>x.class_id===c)||D.suggestions.some(x=>x.class_id===c)).map(c=>`<tr><td class="n">${cn(c)}</td><td>${D.votes.filter(v=>v.c===c).length}</td><td>${(ct[c]||[]).length}</td><td>${D.votes.filter(v=>v.c===c&&v.tx).length}</td><td>${D.complaints.filter(x=>x.class_id===c).length}</td><td>${D.suggestions.filter(x=>x.class_id===c).length}</td></tr>`).join("")+`</tbody>`;
+  CLASS_ORDER.filter(c=>ct[c]||D.complaints.some(x=>x.class_id===c)||D.suggestions.some(x=>x.class_id===c)).map(c=>`<tr><td class="n">${cn(c)}</td><td>${D.votes.filter(v=>v.c===c).length}</td><td>${(ct[c]||[]).length}</td><td>${D.votes.filter(v=>v.c===c&&v.tx).length}</td><td>${D.complaints.filter(x=>x.class_id===c).length}</td><td>${D.suggestions.filter(x=>x.class_id===c).length}</td></tr>`).join("")+`</tbody>`+(gt.length?`<tbody>`+gt.map(g=>`<tr><td class="n">${esc(gn(g))}</td><td>—</td><td>—</td><td>—</td><td>${D.complaints.filter(x=>x.grade===g).length}</td><td>${D.suggestions.filter(x=>x.grade===g).length}</td></tr>`).join("")+`</tbody>`:"");
 }
+$("fGrade").onchange=()=>renderMeeting();
 function renderMeeting(){
-  const M=D.meeting||[];
+  const fg=$("fGrade");const keep=fg.value;
+  fg.innerHTML=`<option value="">${L("allGrades")}</option><option value="S:B">${L("allBoysG")}</option><option value="S:G">${L("allGirlsG")}</option>`+GRADE_KEYS.map(g=>`<option value="${g}">${gn(g)}</option>`).join("");fg.value=keep;
+  const f=fg.value;const ALL=D.meeting||[];
+  const M=ALL.filter(m=>!f||(m.g||[]).some(g=>f.startsWith("S:")?g[0]===f[2]:g===f));
+  const avg=(arr)=>{let s=0,n=0;arr.forEach(m=>MEET.ar.forEach(([k])=>{if(m.r[k]){s+=m.r[k];n++;}}));return n?s/n:null;};
+  $("gradeTbl").innerHTML=`<thead><tr><th style="text-align:start">${L("gradeL").replace(":","")}</th><th>${L("responses")}</th><th>${L("avg")}</th>${MEET[lang].map(([k,l])=>`<th>${l}</th>`).join("")}</tr></thead><tbody>`+
+    GRADE_KEYS.map(g=>{const sub=ALL.filter(m=>(m.g||[]).includes(g));if(!sub.length)return"";const a=avg(sub);
+      return `<tr><td class="n">${esc(gn(g))}</td><td>${sub.length}</td><td><b>${a.toFixed(1)}</b></td>${MEET.ar.map(([k])=>{const v=sub.map(m=>m.r[k]).filter(Boolean);return`<td>${v.length?(v.reduce((x,y)=>x+y,0)/v.length).toFixed(1):"—"}</td>`;}).join("")}</tr>`;}).join("")+`</tbody>`;
   if(!M.length){$("meetSum").innerHTML=`<p class="muted">${L("noMeet")}</p>`;$("meetList").innerHTML="";return;}
   let tot=0,totN=0;
   const rows=MEET[lang].map(([k,l])=>{const vals=M.map(m=>m.r[k]).filter(Boolean);const n=vals.length;const a=n?vals.reduce((x,y)=>x+y,0)/n:0;tot+=a*n;totN+=n;
@@ -252,7 +264,7 @@ function renderMeeting(){
     <div class="row muted" style="font-size:12.5px;gap:12px">${dist.map((c,j)=>`<span>${"★".repeat(5-j)} ${c}</span>`).join("")}</div></div>`;});
   $("meetSum").innerHTML=`<div class="tile" style="margin-bottom:6px"><b dir="ltr">${totN?(tot/totN).toFixed(1):"—"} / 5</b><span>${L("overallAvg")} · ${M.length} ${L("responses")}</span></div>`+rows.join("");
   const cm=M.filter(m=>m.cm);
-  $("meetList").innerHTML=cm.length?cm.map(m=>`<div class="thank" dir="auto"><div class="muted" style="font-size:12.5px">${dt(m.at)}</div>${esc(m.cm)}</div>`).join(""):`<p class="muted">—</p>`;
+  $("meetList").innerHTML=cm.length?cm.map(m=>`<div class="thank" dir="auto"><div class="muted" style="font-size:12.5px">${(m.g||[]).map(gn).map(esc).join("، ")} · ${dt(m.at)}</div>${esc(m.cm)}</div>`).join(""):`<p class="muted">—</p>`;
 }
 const safeCsv=x=>{let v=String(x??"");if(/^[=+\-@\t\r]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"';};
 $("csv").onclick=()=>{
