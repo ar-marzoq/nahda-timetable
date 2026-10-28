@@ -94,8 +94,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
   <h2 data-t="c1t"></h2>
   <div class="progress"><i style="width:15%"></i></div><div class="pmeta" data-t="step1"></div>
   <div class="card">
-    <div class="fl" id="lblClass" data-t="pickClass"></div>
-    <div class="chips" id="classChips" role="group" aria-labelledby="lblClass"></div>
+    <div class="fl" id="lblSec" data-t="pickSec"></div>
+    <div class="chips" id="secChips" role="group" aria-labelledby="lblSec"></div>
+    <div id="classBox" class="hidden"><div class="fl" id="lblClass" data-t="pickClass"></div>
+    <div class="chips" id="classChips" role="group" aria-labelledby="lblClass"></div></div>
     <div id="trackBox" class="hidden"><label class="fl" data-t="track"></label><div class="chips" id="trackChips"></div></div>
     <label class="fl" for="vStudent" data-t="studentV"></label>
     <input type="text" id="vStudent" maxlength="80" autocomplete="off">
@@ -219,16 +221,29 @@ const TEACH={"7-W":{"Ebrahim":["English"],"Robert":["Maths"],"Abdullah":["Islami
 "11":{"Jose":["Business Studies"],"Medhat":["Arabic"],"Zaher":["Arabic","Social Studies"],"Justin":["Science"],"Neil":["EM"],"Ayman":["Maths"],"Francios":["GP"],"Huthaifa":["Islamic"],"Ebrahim":["English"],"Hamza":["English"]},
 "12-A":{"Justin":["Physics"],"Jose":["Business Studies"],"Huthaifa":["Islamic","Social Studies"],"Medhat":["Arabic"],"Ayman":["Maths"],"Nabil":["Chemistry"],"Hamza":["English"],"Michael":["Biology"]},
 "12-D":{"Justin":["Physics"],"Hamza":["English"],"Huthaifa":["Islamic","Social Studies"],"Medhat":["Arabic"],"Ayman":["Maths"],"Robert":["Maths"],"Nabil":["Chemistry"],"Michael":["Biology"],"Neil":["Extended Project"],"Tahir":["ICT"]},
+/* قسم البنات — من جدول البنات 2026–27، دون الفنون والبدنية والموسيقى؛ مواد ثاني عشر عن بُعد بأسماء معلمي البنين */
+"G7-H":{"Muna A":["Science","Maths"],"Tomather":["Arabic"],"Reem":["English"],"Zeina":["ICT"],"Hanan":["Islamic","Social Studies"],"Isra":["GP"],"Muna S":["Maths"]},
+"G7-J":{"Zeina":["ICT"],"Muna A":["Science","Maths"],"Hanan":["Islamic","Social Studies"],"Tomather":["Arabic"],"Reem":["English"],"Isra":["GP"],"Muna S":["Maths"]},
+"G8":{"Reem":["English"],"Tomather":["Arabic"],"Muna S":["Maths"],"Muna A":["Science"],"Hanan":["Social Studies","Islamic"],"Isra":["GP"],"Cashara":["Business Studies"],"Zeina":["ICT"]},
+"G9":{"Fatima T":["Science"],"Najwa":["Arabic"],"Hind":["Islamic"],"Zeina":["ICT"],"Sidney":["English"],"Muna S":["Maths"],"Cashara":["Business Studies"],"Isra":["GP"]},
+"G10":{"Najwa":["Arabic"],"Muna S":["Maths"],"Cashara":["EM","Business Studies"],"Zeina":["ICT"],"Fatima T":["Science"],"Hind":["Islamic","Social Studies"],"Isra":["GP"],"Sidney":["English"]},
+"G11":{"Cashara":["EM","Business Studies"],"Zeina":["ICT"],"Fatima T":["Science"],"Isra":["GP"],"Muna S":["Maths"],"Najwa":["Arabic"],"Tomather":["Arabic"],"Reem":["English"],"Sidney":["English"],"Hind":["Islamic","Social Studies"]},
+"G12":{"Sidney":["Extended Project"],"Robert":["Maths"],"Hind":["Islamic"],"Medhat":["Arabic"],"Huthaifa":["Social Studies"],"Hamza":["English"],"Muna A":["Physics"],"Zeina":["ICT"],"Michael":["Biology"],"Nabil":["Chemistry"],"Fatima T":["Extended Project"]},
 "13":{"Ayman":["Maths"],"Justin":["Physics"],"Tahir":["ICT"],"Nabil":["Chemistry"],"Ebrahim":["English"],"Huthaifa":["Islamic","Social Studies"],"Neil":["Extended Project"],"Michael":["Biology"],"Medhat":["Arabic"]}};
-const CLASS_ORDER=["7-W","7-D","8","9","10","11","12","13"];
-const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","13":"الثالث عشر"},
- en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","13":"Year 13"}};
-const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Tahir:"طاهر",Jose:"خوسيه",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان"};
-const T_EN={Francios:"Francois"};
-const SUBJ_AR={"English":"اللغة الإنجليزية","Maths":"الرياضيات","Islamic":"التربية الإسلامية","Arabic":"اللغة العربية","Social Studies":"الدراسات الاجتماعية","Science":"العلوم","ICT":"الحاسب الآلي","PE":"التربية البدنية","GP":"المنظورات العالمية","Art":"الفنون","Business Studies":"الدراسات التجارية","EM":"EM","Physics":"الفيزياء","Chemistry":"الكيمياء","Biology":"الأحياء","Extended Project":"المشروع البحثي"};
-const SUBJ_EN={"GP":"Global Perspectives","Islamic":"Islamic Studies","ICT":"ICT","PE":"PE"};
+const SEC_ORDER={B:["7-W","7-D","8","9","10","11","12","13"],G:["G7-H","G7-J","G8","G9","G10","G11","G12"]};
+const CLASS_ORDER=SEC_ORDER.B.concat(SEC_ORDER.G);
+const secOf=c=>c&&c[0]==="G"?"G":"B";
+const FEM=new Set(["Sidney","Reem","Isra","Cashara","Fatima T","Muna A","Muna S","Hanan","Hind","Najwa","Tomather","Zeina"]);
+const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","13":"الثالث عشر","G7-H":"السابع — الحِجر","G7-J":"السابع — جبل الفيل","G8":"الثامن — نيوم","G9":"التاسع — إثراء","G10":"العاشر — نخيل الزيت","G11":"الحادي عشر — الأخدود","G12":"الثاني عشر — دبلوم"},
+ en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","13":"Year 13","G7-H":"Year 7 — Al Hijr","G7-J":"Year 7 — Jabal Al Fil","G8":"Year 8 — NEOM","G9":"Year 9 — Ithra","G10":"Year 10 — Nakhil Al Zayt","G11":"Year 11 — Al Ukhdood","G12":"Year 12 — Diploma"}};
+const SEC_NAME={ar:{B:"بنين",G:"بنات"},en:{B:"Boys",G:"Girls"}};
+const clsLabel=c=>SEC_NAME[lang][secOf(c)]+" — "+CLASS_NAME[lang][c];
+const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Tahir:"طاهر",Jose:"خوسيه",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان",Sidney:"سيدني",Reem:"ريم",Isra:"إسراء",Cashara:"كاشارا","Fatima T":"فاطمة","Muna A":"منى أ.","Muna S":"منى س.",Hanan:"حنان",Hind:"هند",Najwa:"نجوى",Tomather:"تماضر",Zeina:"زينة"};
+const T_EN={Francios:"Francois","Fatima T":"Fatima","Muna A":"Muna A.","Muna S":"Muna S."};
+const SUBJ_AR={"English":"اللغة الإنجليزية","Maths":"الرياضيات","Islamic":"التربية الإسلامية","Arabic":"اللغة العربية","Social Studies":"الدراسات الاجتماعية","Science":"العلوم","ICT":"الحاسب الآلي","PE":"التربية البدنية","GP":"المنظورات العالمية","Art":"الفنون","Business Studies":"الدراسات التجارية","EM":"الإدارة البيئية","Physics":"الفيزياء","Chemistry":"الكيمياء","Biology":"الأحياء","Extended Project":"المشروع البحثي"};
+const SUBJ_EN={"EM":"Environmental Management","GP":"Global Perspectives","Islamic":"Islamic Studies","ICT":"ICT","PE":"PE"};
 
-const CRIT=[
+const CRIT_B=[
  ["c1","ابني يحب المادة ويتحمّس لها بسببه","My son enjoys the subject because of this teacher"],
  ["c2","يتواصل معي بوضوح عن مستوى ابني","Communicates clearly with me about my son's progress"],
  ["c3","يعامل ابني باحترام وعدل","Treats my son with respect and fairness"],
@@ -236,45 +251,64 @@ const CRIT=[
  ["c5","يتجاوب سريعاً مع استفساراتي","Responds promptly to my questions"],
  ["c6","أرى أثره الإيجابي على أخلاق ابني وسلوكه","I see a positive impact on my son's character and behaviour"],
  ["c7","يجعل الواجبات والتقييمات واضحة ومفهومة","Makes homework and assessments clear"]];
-const MEET=[["m1","سهولة الوصول إلى قاعات المعلمين ووضوح الإرشادات","Finding teachers' rooms & clear signposting"],
+/* بنات — معلمات */
+const CRIT_GF=[
+ ["c1","ابنتي تحب المادة وتتحمّس لها بسببها","My daughter enjoys the subject because of this teacher"],
+ ["c2","تتواصل معي بوضوح عن مستوى ابنتي","Communicates clearly with me about my daughter's progress"],
+ ["c3","تعامل ابنتي باحترام وعدل","Treats my daughter with respect and fairness"],
+ ["c4","تتابع تقدّم ابنتي وتعينها على تجاوز صعوباتها","Follows my daughter's progress and helps her overcome difficulties"],
+ ["c5","تتجاوب سريعاً مع استفساراتي","Responds promptly to my questions"],
+ ["c6","أرى أثرها الإيجابي على أخلاق ابنتي وسلوكها","I see a positive impact on my daughter's character and behaviour"],
+ ["c7","تجعل الواجبات والتقييمات واضحة ومفهومة","Makes homework and assessments clear"]];
+/* بنات — معلمون ومعلمات (ثاني عشر) */
+const CRIT_GM=[
+ ["c1","ابنتي تحب المادة وتتحمّس لها بسبب معلّمها","My daughter enjoys the subject because of this teacher"],
+ ["c2","يتواصل معي بوضوح عن مستوى ابنتي","Communicates clearly with me about my daughter's progress"],
+ ["c3","يعامل ابنتي باحترام وعدل","Treats my daughter with respect and fairness"],
+ ["c4","يتابع تقدّم ابنتي ويعينها على تجاوز صعوباتها","Follows my daughter's progress and helps her overcome difficulties"],
+ ["c5","يتجاوب سريعاً مع استفساراتي","Responds promptly to my questions"],
+ ["c6","أرى أثر المعلّم الإيجابي على أخلاق ابنتي وسلوكها","I see a positive impact on my daughter's character and behaviour"],
+ ["c7","يجعل الواجبات والتقييمات واضحة ومفهومة","Makes homework and assessments clear"]];
+let CRIT=CRIT_B;
+const MEET=[["m1","سهولة الوصول إلى قاعات المعلمين والمعلمات ووضوح الإرشادات","Finding teachers' rooms & clear signposting"],
  ["m2","التنظيم وانسيابية الانتظار","Organisation & waiting flow"],
- ["m3","كفاية الوقت المتاح مع كل معلم","Enough time with each teacher"],
- ["m4","فائدة المعلومات التي حصلت عليها عن مستوى ابني","Usefulness of information about my son's progress"],
+ ["m3","كفاية الوقت المتاح مع كل معلم ومعلمة","Enough time with each teacher"],
+ ["m4","فائدة المعلومات التي حصلت عليها عن مستوى أبنائي","Usefulness of information about my children's progress"],
  ["m5","حسن الاستقبال والتعامل","Welcome & courtesy"]];
 const STAR_L={ar:["","ضعيف","مقبول","جيد","جيد جداً","ممتاز"],en:["","Poor","Fair","Good","Very good","Excellent"]};
 const CATS_S={ar:[["learning","التعليم والتعلّم"],["comm","التواصل مع الأسرة"],["activities","الأنشطة والفعاليات"],["other","أخرى"]],
  en:[["learning","Teaching & learning"],["comm","Communication with families"],["activities","Activities & events"],["other","Other"]]};
-const CATS_C={ar:[["teaching","التدريس والتقييم"],["treatment","التعامل مع الطالب"],["behaviour","السلوك والانضباط"],["comm","التواصل"],["admin","الإدارة"],["other","أخرى"]],
- en:[["teaching","Teaching & assessment"],["treatment","How my son is treated"],["behaviour","Behaviour & discipline"],["comm","Communication"],["admin","Administration"],["other","Other"]]};
+const CATS_C={ar:[["teaching","التدريس والتقييم"],["treatment","التعامل مع الطالب أو الطالبة"],["behaviour","السلوك والانضباط"],["comm","التواصل"],["admin","الإدارة"],["other","أخرى"]],
+ en:[["teaching","Teaching & assessment"],["treatment","How my child is treated"],["behaviour","Behaviour & discipline"],["comm","Communication"],["admin","Administration"],["other","Other"]]};
 
 const I18N={ar:{
-homeTitle:"صوتك يصنع الفرق",homeLead:"في نهضة نحن مجتمع متعلّم شغوف، وأنتم شركاؤنا فيه. رأيكم الصادق يكرّم المتميزين من معلمينا، ويعيننا على بلوغ التميّز الذي يستحقه أبناؤكم. دقائق معدودة منكم تصنع أثراً كبيراً.",
-c1t:"قيّم معلمي ابنك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c4t:"قيّم لقاء أولياء الأمور",c4s:"٥ أسئلة بالنجوم — ٣٠ ثانية",meetLead:"رأيك يساعدنا على تحسين اللقاءات القادمة. اختر من ١ إلى ٥ نجوم.",meetComment:"ما أهم شيء نحسّنه في اللقاء القادم؟ (اختياري)",inviteT:"خطوة أخيرة: كيف كان اللقاء؟",inviteS:"٥ أسئلة بالنجوم — ٣٠ ثانية",inviteB:"قيّم اللقاء",doneM:"شكراً لتقييمك",doneMMsg:"سنأخذ ملاحظاتك بعين الاعتبار في اللقاء القادم.",e_stars:"قيّم المعايير الخمسة بالنجوم.",studentV:"اسم الطالب",studentHint:"الاسم واسم الأب على الأقل، مثل: محمد أحمد. تقييمك سري ولا يطّلع عليه المعلم؛ نطلب الاسم لمنع التكرار فقط.",e_name:"اكتب اسم الطالب واسم أبيه على الأقل.",c3t:"ملاحظة أو شكوى",c3s:"تصل إلى إدارة المدرسة وتتابعها معك",
-back:"→ رجوع",step1:"الخطوة ١ من ٣",step3:"الخطوة ٣ من ٣",pickClass:"صف ابنك",phone:"رقم جوال ولي الأمر",
+homeTitle:"صوتك يصنع الفرق",homeLead:"في نهضة نحن مجتمع متعلّم شغوف، وأنتم شركاؤنا فيه. رأيكم الصادق يكرّم المتميزين من معلمينا ومعلماتنا، ويعيننا على بلوغ التميّز الذي يستحقه أبناؤكم. دقائق معدودة منكم تصنع أثراً كبيراً.",
+c1t:"قيّم معلمي أبنائك",c1s:"اختر الأبرز في ٧ معايير، واكتب كلمة شكر",c2t:"شاركنا مقترحاً",c2s:"فكرة لتطوير المدرسة — يمكن بدون اسم",c4t:"قيّم لقاء أولياء الأمور",c4s:"٥ أسئلة بالنجوم — ٣٠ ثانية",meetLead:"رأيك يساعدنا على تحسين اللقاءات القادمة. اختر من ١ إلى ٥ نجوم.",meetComment:"ما أهم شيء نحسّنه في اللقاء القادم؟ (اختياري)",inviteT:"خطوة أخيرة: كيف كان اللقاء؟",inviteS:"٥ أسئلة بالنجوم — ٣٠ ثانية",inviteB:"قيّم اللقاء",doneM:"شكراً لتقييمك",doneMMsg:"سنأخذ ملاحظاتك بعين الاعتبار في اللقاء القادم.",e_stars:"قيّم المعايير الخمسة بالنجوم.",studentV:"اسم الطالب",studentV_G:"اسم الطالبة",studentHint:"الاسم واسم الأب على الأقل، مثل: محمد أحمد. تقييمك سري ولا يطّلع عليه المعلم؛ نطلب الاسم لمنع التكرار فقط.",studentHint_G:"الاسم واسم الأب على الأقل، مثل: سارة أحمد. تقييمك سري ولا يطّلع عليه المعلمون والمعلمات؛ نطلب الاسم لمنع التكرار فقط.",e_name:"اكتب اسم الطالب واسم أبيه على الأقل.",e_name_G:"اكتب اسم الطالبة واسم أبيها على الأقل.",c3t:"ملاحظة أو شكوى",c3s:"تصل إلى إدارة المدرسة وتتابعها معك",
+back:"→ رجوع",step1:"الخطوة ١ من ٣",step3:"الخطوة ٣ من ٣",pickSec:"القسم",pickClass:"صف ابنك",pickClass_G:"صف ابنتك",phone:"رقم جوال ولي الأمر",
 next:"التالي",
-critTitle:"من الأبرز في كل معيار؟",critLead:"لكل عبارة، اختر المعلم أو المعلمين (حتى ٣) الذين تراهم يطبّقونها أكثر مع ابنك. إن لم تكن متأكداً فاختر «لا أستطيع الحكم».",
-na:"لا أستطيع الحكم",thanksTitle:"كلمة شكر",thanksLead:"هل هناك معلم تودّ أن تشكره بموقف أو أثر رأيته؟ سنوصل رسالتك إليه.",
-thanksWho:"المعلم (اختياري)",thanksMsg:"رسالتك",thanksHint:"اختياري — تُسلَّم رسالتك للمعلم كما كتبتها مع اسم ابنك.",send:"إرسال",
-topic:"الموضوع",classOpt:"الصف (اختياري)",classReq:"صف ابنك",suggBody:"مقترحك",nameOpt:"الاسم (اختياري)",phoneOpt:"الجوال (اختياري)",
+critTitle:"من الأبرز في كل معيار؟",critLead:"لكل عبارة، اختر المعلم أو المعلمين (حتى ٣) الذين تراهم يطبّقونها أكثر مع ابنك. إن لم تكن متأكداً فاختر «لا أستطيع الحكم».",critLead_G:"لكل عبارة، اختر المعلمة أو المعلمات (حتى ٣) اللاتي تراهنّ يطبّقنها أكثر مع ابنتك. إن لم تكن متأكداً فاختر «لا أستطيع الحكم».",critLead_GM:"لكل عبارة، اختر حتى ٣ من المعلمين والمعلمات الذين تراهم يطبّقونها أكثر مع ابنتك. إن لم تكن متأكداً فاختر «لا أستطيع الحكم».",
+na:"لا أستطيع الحكم",thanksTitle:"كلمة شكر",thanksLead:"هل هناك معلم تودّ أن تشكره بموقف أو أثر رأيته؟ سنوصل رسالتك إليه.",thanksLead_G:"هل هناك معلمة تودّ أن تشكرها بموقف أو أثر رأيته؟ سنوصل رسالتك إليها.",thanksLead_GM:"هل هناك معلم أو معلمة تودّ شكره بموقف أو أثر رأيته؟ سنوصل رسالتك.",
+thanksWho:"المعلم (اختياري)",thanksWho_G:"المعلمة (اختياري)",thanksWho_GM:"المعلم أو المعلمة (اختياري)",thanksMsg:"رسالتك",thanksHint:"اختياري — تُسلَّم رسالتك للمعلم كما كتبتها مع اسم ابنك.",thanksHint_G:"اختياري — تُسلَّم رسالتك للمعلمة كما كتبتها مع اسم ابنتك.",thanksHint_GM:"اختياري — تُسلَّم رسالتك كما كتبتها مع اسم ابنتك.",send:"إرسال",
+topic:"الموضوع",classOpt:"الصف (اختياري)",classReq:"الصف",suggBody:"مقترحك",nameOpt:"الاسم (اختياري)",phoneOpt:"الجوال (اختياري)",
 anonHint:"يمكنك ترك الاسم والجوال فارغين. إن كتبتهما نستطيع إبلاغك بما تم.",
 compNote:"نتعامل مع كل ملاحظة بسرية تامة، ولا تطّلع عليها إلا إدارة المدرسة. نحتاج بيانات التواصل لنتابعها معك.",
-student:"اسم الطالب",parentName:"اسم ولي الأمر",compBody:"تفاصيل الملاحظة أو الشكوى",
-another:"تقييم معلمي ابن آخر",toHome:"العودة للبداية",
+student:"اسم الطالب أو الطالبة",parentName:"اسم ولي الأمر",compBody:"تفاصيل الملاحظة أو الشكوى",
+another:"تقييم معلمي ابن أو ابنة أخرى",toHome:"العودة للبداية",
 doneVote:"شكراً لك",doneVoteMsg:"وصل تقييمك. رأيك يساعدنا على تكريم المتميزين وتطوير الأداء.",
 doneS:"شكراً على مقترحك",doneSMsg:"سيُعرض على إدارة المدرسة، وسننشر ما نُفِّذ من مقترحاتكم.",
 doneC:"وصلتنا ملاحظتك",doneCMsg:"ستتابعها إدارة المدرسة ويتواصل معك أحد أعضائها.",
-e_class:"اختر صف ابنك.",e_track:"اختر مسار ابنك في الصف الثاني عشر.",track:"المسار",e_phone:"أدخل رقم جوال صحيحاً يبدأ بـ 05.",e_crit:"بقي معيار أو أكثر بدون اختيار (مميّز بالأحمر).",req:"مطلوب",answered:"أُجيب",crits:"معايير",starOf:"من ٥ نجوم",max3:"يمكنك اختيار ٣ معلمين كحد أقصى في كل معيار.",upto:"حتى ٣",
-e_dup:"سبق تقييم معلمي هذا الطالب. شكراً لك!",e_net:"تعذّر الإرسال. تأكد من الاتصال بالإنترنت وحاول مرة أخرى.",e_empty:"اكتب النص أولاً.",e_missing:"أكمل اسم الطالب واسم ولي الأمر.",
+e_sec:"اختر القسم: بنين أو بنات.",e_class:"اختر صف ابنك.",e_class_G:"اختر صف ابنتك.",e_classC:"اختر الصف.",e_track:"اختر مسار ابنك في الصف الثاني عشر.",track:"المسار",e_phone:"أدخل رقم جوال صحيحاً يبدأ بـ 05.",e_crit:"بقي معيار أو أكثر بدون اختيار (مميّز بالأحمر).",req:"مطلوب",answered:"أُجيب",crits:"معايير",starOf:"من ٥ نجوم",max3:"يمكنك اختيار ٣ معلمين كحد أقصى في كل معيار.",max3_G:"يمكنك اختيار ٣ معلمات كحد أقصى في كل معيار.",max3_GM:"يمكنك اختيار ٣ كحد أقصى في كل معيار.",upto:"حتى ٣",
+e_dup:"سبق تقييم معلمي هذا الطالب. شكراً لك!",e_dup_G:"سبق تقييم معلمات هذه الطالبة. شكراً لك!",e_dup_GM:"سبق تقييم معلمي هذه الطالبة. شكراً لك!",e_data:"تعذّر حفظ التقييم بسبب خطأ في بيانات الصف. فضلاً أبلغ إدارة المدرسة.",e_net:"تعذّر الإرسال. تأكد من الاتصال بالإنترنت وحاول مرة أخرى.",e_empty:"اكتب النص أولاً.",e_missing:"أكمل اسم الطالب أو الطالبة واسم ولي الأمر.",
 crit:"معيار",of:"من",foot:"أكاديمية نهضة العالمية · لقاء أولياء الأمور 2026–2027",choose:"— اختر —"},
 en:{
 homeTitle:"Your voice makes a difference",homeLead:"At Nahda, we are a community of passionately engaged learners — and you are part of it. Your honest view recognises our outstanding teachers and helps us reach the excellence your children deserve. A few minutes of your time go a long way.",
-c1t:"Rate your son's teachers",c1s:"Pick standout teachers for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c4t:"Rate the parents' meeting",c4s:"5 star questions — 30 seconds",meetLead:"Your feedback helps us improve future meetings. Choose 1 to 5 stars.",meetComment:"What is the one thing we should improve next time? (optional)",inviteT:"One last step: how was the meeting?",inviteS:"5 star questions — 30 seconds",inviteB:"Rate the meeting",doneM:"Thank you for your feedback",doneMMsg:"We'll take your comments into account for the next meeting.",e_stars:"Please rate all five questions.",studentV:"Student's name",studentHint:"At least first and father's name, e.g. Mohammed Ahmed. Your rating is confidential and not shown to teachers; the name only prevents duplicates.",e_name:"Please enter at least the student's first and father's name.",c3t:"Concern or complaint",c3s:"Goes to the school leadership, who follow up with you",
-back:"← Back",step1:"Step 1 of 3",step3:"Step 3 of 3",pickClass:"Your son's class",phone:"Parent's mobile number",
+c1t:"Rate your children's teachers",c1s:"Pick standout teachers for 7 qualities and leave a thank-you",c2t:"Share a suggestion",c2s:"An idea to improve the school — can be anonymous",c4t:"Rate the parents' meeting",c4s:"5 star questions — 30 seconds",meetLead:"Your feedback helps us improve future meetings. Choose 1 to 5 stars.",meetComment:"What is the one thing we should improve next time? (optional)",inviteT:"One last step: how was the meeting?",inviteS:"5 star questions — 30 seconds",inviteB:"Rate the meeting",doneM:"Thank you for your feedback",doneMMsg:"We'll take your comments into account for the next meeting.",e_stars:"Please rate all five questions.",studentV:"Student's name",studentHint_G:"At least first and father's name, e.g. Sara Ahmed. Your rating is confidential and not shown to teachers; the name only prevents duplicates.",studentHint:"At least first and father's name, e.g. Mohammed Ahmed. Your rating is confidential and not shown to teachers; the name only prevents duplicates.",e_name:"Please enter at least the student's first and father's name.",c3t:"Concern or complaint",c3s:"Goes to the school leadership, who follow up with you",
+back:"← Back",step1:"Step 1 of 3",step3:"Step 3 of 3",pickSec:"Section",pickClass:"Your son's class",pickClass_G:"Your daughter's class",phone:"Parent's mobile number",
 next:"Next",
-critTitle:"Who stands out for each quality?",critLead:"For each statement, choose up to 3 teachers who do this most for your son. If you're not sure, choose “Can't judge”.",
+critTitle:"Who stands out for each quality?",critLead:"For each statement, choose up to 3 teachers who do this most for your son. If you're not sure, choose “Can't judge”.",critLead_G:"For each statement, choose up to 3 teachers who do this most for your daughter. If you're not sure, choose “Can't judge”.",
 na:"Can't judge",thanksTitle:"A word of thanks",thanksLead:"Is there a teacher you'd like to thank for something you've seen? We'll pass your message on.",
-thanksWho:"Teacher (optional)",thanksMsg:"Your message",thanksHint:"Optional — your message is passed to the teacher as written, with your son's name.",send:"Submit",
-topic:"Topic",classOpt:"Class (optional)",classReq:"Your son's class",suggBody:"Your suggestion",nameOpt:"Name (optional)",phoneOpt:"Mobile (optional)",
+thanksWho:"Teacher (optional)",thanksMsg:"Your message",thanksHint:"Optional — your message is passed to the teacher as written, with your son's name.",thanksHint_G:"Optional — your message is passed to the teacher as written, with your daughter's name.",send:"Submit",
+topic:"Topic",classOpt:"Class (optional)",classReq:"Class",suggBody:"Your suggestion",nameOpt:"Name (optional)",phoneOpt:"Mobile (optional)",
 anonHint:"You may leave name and mobile blank. If you add them, we can tell you what was done.",
 compNote:"Every concern is handled in strict confidence and seen only by the school leadership. We need your contact details to follow up with you.",
 student:"Student's name",parentName:"Parent's name",compBody:"Details",
@@ -282,16 +316,17 @@ another:"Rate another child's teachers",toHome:"Back to start",
 doneVote:"Thank you",doneVoteMsg:"Your rating has been received. It helps us recognise excellence and keep improving.",
 doneS:"Thank you for your suggestion",doneSMsg:"It will go to the school leadership, and we'll share what we've acted on.",
 doneC:"We've received your message",doneCMsg:"The school leadership will follow up and a member of the team will contact you.",
-e_class:"Please choose your son's class.",e_track:"Please choose your son's Year 12 track.",track:"Track",e_phone:"Please enter a valid mobile number starting with 05.",e_crit:"One or more qualities still need an answer (marked in red).",req:"Required",answered:"answered",crits:"",starOf:"of 5 stars",max3:"You can choose up to 3 teachers per quality.",upto:"up to 3",
-e_dup:"This student's teachers have already been rated. Thank you!",e_net:"Couldn't submit. Check your connection and try again.",e_empty:"Please write your message first.",e_missing:"Please add the student's and parent's names.",
+e_sec:"Please choose a section: Boys or Girls.",e_class:"Please choose your son's class.",e_class_G:"Please choose your daughter's class.",e_classC:"Please choose the class.",e_track:"Please choose your son's Year 12 track.",track:"Track",e_phone:"Please enter a valid mobile number starting with 05.",e_crit:"One or more qualities still need an answer (marked in red).",req:"Required",answered:"answered",crits:"",starOf:"of 5 stars",max3:"You can choose up to 3 teachers per quality.",upto:"up to 3",
+e_dup:"This student's teachers have already been rated. Thank you!",e_data:"The rating couldn't be saved because of a class data error. Please tell the school office.",e_net:"Couldn't submit. Check your connection and try again.",e_empty:"Please write your message first.",e_missing:"Please add the student's and parent's names.",
 crit:"Quality",of:"of",foot:"Nahda International Academy · Parents' Meeting 2026–2027",choose:"— Choose —"}};
 
 let lang="ar";
 try{const s=localStorage.getItem("nahda_fb_lang");if(s==="en"||s==="ar")lang=s;}catch(e){}
-const st={cls:null,picks:{},order:{},thanks:null,meet:{}};
+const st={sec:null,cls:null,picks:{},order:{},thanks:null,meet:{}};
 let meetDone=false,lastDone=null,lastDup=false;try{meetDone=localStorage.getItem("nahda_meet_done")==="1"}catch(e){}
 const $=id=>document.getElementById(id);
-const t=k=>I18N[lang][k]||k;
+const variant=()=>st.sec==="G"?(cc()==="G12"?"GM":"G"):"";
+const t=k=>{const v=variant();if(v){const d=I18N[lang];if(d[k+"_"+v]!=null)return d[k+"_"+v];if(v==="GM"&&d[k+"_G"]!=null)return d[k+"_G"];}return I18N[lang][k]||k;};
 const num=n=>lang==="ar"?String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]):String(n);
 const tName=n=>lang==="ar"?"أ. "+(T_AR[n]||n):(T_EN[n]||n);
 const cc=()=>st.cls==="12"?st.track:st.cls;
@@ -319,10 +354,17 @@ function applyLang(){
 }
 $("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("nahda_fb_lang",lang)}catch(e){};applyLang();};
 
+function resetVote(){st.cls=null;st.track=null;st.picks={};st.order={};st.thanks=null;st.tried=false;}
+function setCrit(){CRIT=st.sec==="G"?(cc()==="G12"?CRIT_GM:CRIT_GF):CRIT_B;}
+function refreshVoteText(){document.querySelectorAll("#v-vote1 [data-t],#v-vote2 [data-t],#v-vote3 [data-t],#v-done [data-t]").forEach(el=>el.textContent=t(el.dataset.t));}
 function renderClassChips(){
+  const sb=$("secChips");sb.innerHTML="";
+  ["B","G"].forEach(x=>{const b=document.createElement("button");b.type="button";b.className="chip";b.style.minWidth="96px";if(st.sec===x)b.classList.add("on");b.setAttribute("aria-pressed",st.sec===x);b.textContent=SEC_NAME[lang][x];
+    b.onclick=()=>{if(st.sec!==x){st.sec=x;resetVote();}renderClassChips();refreshVoteText();};sb.appendChild(b);});
+  $("classBox").classList.toggle("hidden",!st.sec);
   const box=$("classChips");box.innerHTML="";
-  CLASS_ORDER.forEach(c=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.cls===c?" on":"");b.setAttribute("aria-pressed",st.cls===c);b.textContent=CLASS_NAME[lang][c];
-    b.onclick=()=>{if(st.cls!==c){st.cls=c;st.track=null;st.picks={};st.order={};st.thanks=null;st.tried=false;}renderClassChips();};box.appendChild(b);});
+  (SEC_ORDER[st.sec]||[]).forEach(c=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.cls===c?" on":"");b.setAttribute("aria-pressed",st.cls===c);b.textContent=CLASS_NAME[lang][c];
+    b.onclick=()=>{if(st.cls!==c){st.cls=c;st.track=null;st.picks={};st.order={};st.thanks=null;st.tried=false;}renderClassChips();refreshVoteText();};box.appendChild(b);});
   $("trackBox").classList.toggle("hidden",st.cls!=="12");$("trackChips").setAttribute("role","group");
   const tb=$("trackChips");tb.innerHTML="";
   [["12-A","A Level"],["12-D",lang==="ar"?"الدبلوم":"Diploma"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.className="chip"+(st.track===k?" on":"");b.setAttribute("aria-pressed",st.track===k);b.textContent=l;
@@ -331,18 +373,19 @@ function renderClassChips(){
 function fillSelects(){
   const opt=(sel,list,keep)=>{const v=sel.value;sel.innerHTML="";list.forEach(([k,l])=>{const o=document.createElement("option");o.value=k;o.textContent=l;sel.appendChild(o);});if(keep&&v)sel.value=v;};
   opt($("sCat"),CATS_S[lang],1);opt($("cCat"),CATS_C[lang],1);
-  const cl=[["",t("choose")]].concat(CLASS_ORDER.map(c=>[c,CLASS_NAME[lang][c]]));opt($("sClass"),cl,1);opt($("cClass"),cl,1);
+  const cl=[["",t("choose")]].concat(CLASS_ORDER.map(c=>[c,clsLabel(c)]));opt($("sClass"),cl,1);opt($("cClass"),cl,1);
 }
 
 $("next1").onclick=()=>{
   $("err1").textContent="";
+  if(!st.sec){$("err1").textContent=t("e_sec");return;}
   if(!st.cls){$("err1").textContent=t("e_class");return;}
   if(st.cls==="12"&&!st.track){$("err1").textContent=t("e_track");return;}
   if(!validName($("vStudent").value)){$("err1").textContent=t("e_name");return;}
   show("vote2");
 };
 
-function renderCrit(){
+function renderCrit(){setCrit();
   const box=$("critBox");box.innerHTML="";const teachers=Object.keys(TEACH[cc()]||{});
   CRIT.forEach(([k,ar,en],i)=>{
     if(!st.order._all)st.order._all=shuffle(teachers);st.order[k]=st.order._all;
@@ -363,9 +406,9 @@ function renderCrit(){
 }
 function refocus(f){const el=document.querySelector(`[data-f="${CSS.escape(f)}"]`);if(el)el.focus({preventScroll:true});}
 function flash(k){const h=$("h-"+k);if(h){h.textContent=t("max3");h.style.color="#b42318";}}
-function updateProg(){const n=CRIT.filter(([k])=>st.picks[k]).length;$("pbar").style.width=(30+n/CRIT.length*50)+"%";
+function updateProg(){setCrit();const n=CRIT.filter(([k])=>st.picks[k]).length;$("pbar").style.width=(30+n/CRIT.length*50)+"%";
   $("pmeta").textContent=lang==="ar"?"الخطوة ٢ من ٣ · أُجيب "+num(n)+" من "+num(CRIT.length)+" معايير":"Step 2 of 3 · "+n+" of "+CRIT.length+" answered";}
-$("next2").onclick=()=>{
+$("next2").onclick=()=>{setCrit();
   $("err2").textContent="";st.tried=true;let first=null;
   CRIT.forEach(([k])=>{const el=$("crit-"+k);const miss=!st.picks[k];el.classList.toggle("miss",miss);if(miss&&!first)first=el;});
   if(first){$("err2").textContent=t("e_crit");first.scrollIntoView({behavior:"smooth",block:"center"});return;}
@@ -399,11 +442,12 @@ $("sendVote").onclick=async()=>{
     if(res==="ok"){lastDup=false;done("vote");}
     else if(res==="duplicate"){done("vote");lastDup=true;$("doneMsg").textContent=t("e_dup");}
     else if(res==="bad_name"){show("vote1");$("err1").textContent=t("e_name");}
+    else if(res==="bad_teacher"||res==="bad_class"||res==="bad_picks"){$("err3").textContent=t("e_data");}
     else $("err3").textContent=t("e_net");
   }catch(e){$("err3").textContent=t("e_net");}
   busy(btn,false);
 };
-$("anotherChild").onclick=()=>{$("vStudent").value="";st.cls=null;st.track=null;st.picks={};st.order={};st.thanks=null;st.tried=false;$("thanksTx").value="";renderClassChips();show("vote1");};
+$("anotherChild").onclick=()=>{$("vStudent").value="";st.sec=null;resetVote();$("thanksTx").value="";renderClassChips();refreshVoteText();show("vote1");};
 
 $("sendS").onclick=async()=>{
   const btn=$("sendS");$("errS").textContent="";const body=$("sBody").value.trim();
@@ -417,7 +461,7 @@ $("sendS").onclick=async()=>{
 $("sendC").onclick=async()=>{
   const btn=$("sendC");const err=$("errC");err.textContent="";
   const body=$("cBody").value.trim();
-  if(!$("cClass").value){err.textContent=t("e_class");return;}
+  if(!$("cClass").value){err.textContent=t("e_classC");return;}
   if($("cStudent").value.trim().length<2||$("cName").value.trim().length<2){err.textContent=t("e_missing");return;}
   if(!validPhone($("cPhone").value)){err.textContent=t("e_phone");return;}
   if(body.length<3){err.textContent=t("e_empty");return;}

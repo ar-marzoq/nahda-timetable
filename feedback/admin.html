@@ -104,29 +104,31 @@ tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
 <script>
 const API="https://ttbzddqkiwzvwxzqkplm.supabase.co/rest/v1/rpc/";
 const KEY="sb_publishable_TwoP6f7968_xGpTpDRwl7g_olvo-ftO";
-const CLASS_ORDER=["7-W","7-D","8","9","10","11","12-A","12-D","12","13"];
-const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","12-A":"الثاني عشر — A Level","12-D":"الثاني عشر — دبلوم","13":"الثالث عشر"},
- en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","12-A":"Year 12 — A Level","12-D":"Year 12 — Diploma","13":"Year 13"}};
-const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Tahir:"طاهر",Jose:"خوسيه",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان"};
-const T_EN={Francios:"Francois"};
+const CLASS_ORDER=["7-W","7-D","8","9","10","11","12-A","12-D","12","13","G7-H","G7-J","G8","G9","G10","G11","G12"];
+const secOf=c=>c&&c[0]==="G"?"G":"B";
+const CLASS_NAME={ar:{"7-W":"السابع — الواحة","7-D":"السابع — دادان","8":"الثامن","9":"التاسع","10":"العاشر","11":"الحادي عشر","12":"الثاني عشر","12-A":"الثاني عشر — A Level","12-D":"الثاني عشر — دبلوم","13":"الثالث عشر","G7-H":"السابع — الحِجر","G7-J":"السابع — جبل الفيل","G8":"الثامن — نيوم","G9":"التاسع — إثراء","G10":"العاشر — نخيل الزيت","G11":"الحادي عشر — الأخدود","G12":"الثاني عشر — دبلوم"},
+ en:{"7-W":"Year 7 — Al Waha","7-D":"Year 7 — Dadan","8":"Year 8","9":"Year 9","10":"Year 10","11":"Year 11","12":"Year 12","12-A":"Year 12 — A Level","12-D":"Year 12 — Diploma","13":"Year 13","G7-H":"Year 7 — Al Hijr","G7-J":"Year 7 — Jabal Al Fil","G8":"Year 8 — NEOM","G9":"Year 9 — Ithra","G10":"Year 10 — Nakhil Al Zayt","G11":"Year 11 — Al Ukhdood","G12":"Year 12 — Diploma"}};
+const SEC_NAME={ar:{B:"بنين",G:"بنات"},en:{B:"Boys",G:"Girls"}};
+const T_AR={Neil:"نيل",Ayman:"أيمن",Zaher:"زاهر",Ebrahim:"إبراهيم",Nabil:"نبيل",Abdullah:"عبدالله",Tahir:"طاهر",Jose:"خوسيه",Huthaifa:"حذيفة",Robert:"روبرت",Michael:"مايكل",Hamza:"حمزة",Francios:"فرانسوا",Medhat:"مدحت",Justin:"جاستن",Yaman:"يمان",Sidney:"سيدني",Reem:"ريم",Isra:"إسراء",Cashara:"كاشارا","Fatima T":"فاطمة","Muna A":"منى أ.","Muna S":"منى س.",Hanan:"حنان",Hind:"هند",Najwa:"نجوى",Tomather:"تماضر",Zeina:"زينة"};
+const T_EN={Francios:"Francois","Fatima T":"Fatima","Muna A":"Muna A.","Muna S":"Muna S."};
 const CRIT={ar:[["c1","يحب المادة بسببه"],["c2","تواصل واضح"],["c3","احترام وعدل"],["c4","متابعة التقدم"],["c5","سرعة التجاوب"],["c6","أثر أخلاقي وسلوكي"],["c7","وضوح الواجبات"]],
  en:[["c1","Enjoys the subject"],["c2","Clear communication"],["c3","Respect & fairness"],["c4","Follows progress"],["c5","Responsiveness"],["c6","Character impact"],["c7","Clear homework"]]};
 const CAT={ar:{learning:"التعليم والتعلّم",comm:"التواصل",activities:"الأنشطة",facilities:"المرافق",transport:"النقل",teaching:"التدريس والتقييم",treatment:"التعامل مع الطالب",behaviour:"السلوك والانضباط",admin:"الإدارة",other:"أخرى"},
  en:{learning:"Teaching & learning",comm:"Communication",activities:"Activities",facilities:"Facilities",transport:"Transport",teaching:"Teaching & assessment",treatment:"Treatment of student",behaviour:"Behaviour & discipline",admin:"Administration",other:"Other"}};
-const MEET={ar:[["m1","سهولة الوصول إلى قاعات المعلمين"],["m2","التنظيم وانسيابية الانتظار"],["m3","كفاية الوقت مع كل معلم"],["m4","فائدة المعلومات عن مستوى الابن"],["m5","حسن الاستقبال والتعامل"]],
+const MEET={ar:[["m1","سهولة الوصول إلى القاعات"],["m2","التنظيم وانسيابية الانتظار"],["m3","كفاية الوقت مع كل معلم ومعلمة"],["m4","فائدة المعلومات عن مستوى الأبناء"],["m5","حسن الاستقبال والتعامل"]],
  en:[["m1","Finding teachers' rooms"],["m2","Organisation & waiting"],["m3","Time with each teacher"],["m4","Usefulness of information"],["m5","Welcome & courtesy"]]};
 const STATUS={ar:{new:"جديد",in_progress:"قيد المتابعة",closed:"مغلقة"},en:{new:"New",in_progress:"In progress",closed:"Closed"}};
 const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subtitle:"للإدارة فقط · تقييم المعلمين والمقترحات والملاحظات",loginP:"أدخل رمز الإدارة لعرض النتائج.",pin:"الرمز",enter:"دخول",
- badPin:"الرمز غير صحيح.",net:"تعذّر الاتصال.",tabTeachers:"المعلمون",tabThanks:"رسائل الشكر",tabComplaints:"الملاحظات والشكاوى",tabSuggestions:"المقترحات",tabClasses:"الفصول",tabMeeting:"تقييم اللقاء",meetComments:"ملاحظات أولياء الأمور على اللقاء",noMeet:"لا توجد تقييمات للقاء بعد.",tMeet:"تقييم اللقاء",avg:"المتوسط",responses:"تقييم",overallAvg:"المتوسط العام",hStudent:"الطالب",
- classL:"الفصل:",allClasses:"كل الفصول",csv:"تصدير CSV",refresh:"تحديث",print:"طباعة",teacherL:"المعلم:",allTeachers:"كل المعلمين",printFor:"طباعة للمعلم",statusL:"الحالة:",all:"الكل",
+ badPin:"الرمز غير صحيح.",net:"تعذّر الاتصال.",tabTeachers:"المعلمون والمعلمات",tabThanks:"رسائل الشكر",tabComplaints:"الملاحظات والشكاوى",tabSuggestions:"المقترحات",tabClasses:"الفصول",tabMeeting:"تقييم اللقاء",meetComments:"ملاحظات أولياء الأمور على اللقاء",noMeet:"لا توجد تقييمات للقاء بعد.",tMeet:"تقييم اللقاء",avg:"المتوسط",responses:"تقييم",overallAvg:"المتوسط العام",hStudent:"الطالب",
+ classL:"الفصل:",allClasses:"كل الفصول",allBoys:"قسم البنين — كل الفصول",allGirls:"قسم البنات — كل الفصول",csv:"تصدير CSV",refresh:"تحديث",print:"طباعة",teacherL:"المعلم:",allTeachers:"كل المعلمين",printFor:"طباعة للمعلم",statusL:"الحالة:",all:"الكل",
  tVotes:"تقييم مكتمل",tThanks:"رسالة شكر",tSugg:"مقترح",tComp:"ملاحظة/شكوى",tOpen:"بانتظار المتابعة",
- hTeacher:"المعلم",hResp:"ردود من فصوله",hTotal:"الإجمالي",hLift:"الأثر",hThanks:"شكر",of:"من",
+ hTeacher:"المعلم/المعلمة",hResp:"ردود من فصوله/فصولها",hTotal:"الإجمالي",hLift:"الأثر",hThanks:"شكر",of:"من",
  legend:"المعلمون الذين لديهم أقل من ٥ ردود يظهرون باهتين في آخر الجدول لأن نتائجهم غير كافية للحكم. النسبة = من اختاروا المعلم في المعيار ÷ أولياء أمور فصوله الذين أجابوا عن المعيار (دون «لا أستطيع الحكم»). يستطيع ولي الأمر اختيار حتى ٣ معلمين في كل معيار. <b>الأثر</b> = عدد مرات اختيار المعلم ÷ العدد المتوقع بالصدفة (عدد من اختارهم ولي الأمر ÷ عدد معلمي الفصل)، فـ ١٫٠ تعني متوسطاً و٢٫٠ ضعف المتوقع — وهو المقياس الأعدل للمقارنة بين معلمين يدرّسون فصولاً مختلفة. اضغط على أي معلم لعرض رسائل الشكر له.",
  noThanks:"لا توجد رسائل بعد.",noComp:"لا توجد ملاحظات.",noSugg:"لا توجد مقترحات بعد.",anon:"بدون اسم",note:"ملاحظة الإدارة / الإجراء المتخذ",save:"حفظ",saved:"✓ حُفظ",saveErr:"تعذّر الحفظ",
  hClass:"الفصل",hCount:"عدد التقييمات",hTeachers:"عدد المعلمين",hThanksN:"رسائل شكر",hComp:"شكاوى",hSugg:"مقترحات",na:"لا أستطيع الحكم",lang:"English",logout:"خروج"},
 en:{title:"Parents' Meeting Results",subtitle:"Leadership only · Teacher ratings, suggestions and concerns",loginP:"Enter the admin code to view results.",pin:"Code",enter:"Sign in",
  badPin:"Incorrect code.",net:"Couldn't connect.",tabTeachers:"Teachers",tabThanks:"Thank-you notes",tabComplaints:"Concerns & complaints",tabSuggestions:"Suggestions",tabClasses:"Classes",tabMeeting:"Meeting rating",meetComments:"Parents' comments on the meeting",noMeet:"No meeting ratings yet.",tMeet:"Meeting ratings",avg:"Average",responses:"ratings",overallAvg:"Overall average",hStudent:"Student",
- classL:"Class:",allClasses:"All classes",csv:"Export CSV",refresh:"Refresh",print:"Print",teacherL:"Teacher:",allTeachers:"All teachers",printFor:"Print for teacher",statusL:"Status:",all:"All",
+ classL:"Class:",allClasses:"All classes",allBoys:"Boys — all classes",allGirls:"Girls — all classes",csv:"Export CSV",refresh:"Refresh",print:"Print",teacherL:"Teacher:",allTeachers:"All teachers",printFor:"Print for teacher",statusL:"Status:",all:"All",
  tVotes:"Ratings",tThanks:"Thank-you notes",tSugg:"Suggestions",tComp:"Concerns",tOpen:"Awaiting follow-up",
  hTeacher:"Teacher",hResp:"Responses from their classes",hTotal:"Overall",hLift:"Impact",hThanks:"Thanks",of:"of",
  legend:"Teachers with fewer than 5 responses are faded and listed last, as their results are too few to judge. Rate = parents who chose the teacher for a quality ÷ parents in that teacher's classes who answered it (excluding “Can't judge”). Parents can choose up to 3 teachers per quality. <b>Impact</b> = times chosen ÷ times expected by chance (teachers the parent picked ÷ teachers in the class), so 1.0 is average and 2.0 is double — the fairest way to compare teachers of different classes. Click a teacher to see their thank-you notes.",
@@ -137,7 +139,7 @@ const L=k=>I[lang][k];
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const tn=n=>lang==="ar"?"أ. "+(T_AR[n]||n):(T_EN[n]||n);
-const cn=c=>CLASS_NAME[lang][c]||c;
+const cn=c=>CLASS_NAME[lang][c]?SEC_NAME[lang][secOf(c)]+" — "+CLASS_NAME[lang][c]:c;
 const pct=x=>x==null?"—":Math.round(x*100)+"%";
 const dt=s=>new Date(s).toLocaleString(lang==="ar"?"ar-SA-u-nu-latn-ca-gregory":"en-GB",{dateStyle:"medium",timeStyle:"short"});
 const pickList=v=>Array.isArray(v)?v:(v&&v!=="na"?[v]:[]);
@@ -171,9 +173,10 @@ function classTeachers(){const m={};D.teachers.forEach(({c,t})=>{(m[c]=m[c]||[])
 function stats(filter){
   const ct=classTeachers();const S={};
   const get=t=>S[t]=S[t]||{t,classes:new Set(),resp:0,crit:{},num:0,den:0,exp:0,thanks:0};
-  D.teachers.forEach(({c,t})=>{if(!filter||filter===c)get(t).classes.add(c);});
+  const inF=c=>!filter||filter===c||(filter==='SEC:B'&&secOf(c)==='B')||(filter==='SEC:G'&&secOf(c)==='G');
+  D.teachers.forEach(({c,t})=>{if(inF(c))get(t).classes.add(c);});
   D.votes.forEach(v=>{
-    if(filter&&v.c!==filter)return;const ts=ct[v.c]||[];if(!ts.length)return;
+    if(!inF(v.c))return;const ts=ct[v.c]||[];if(!ts.length)return;
     ts.forEach(t=>{const s=get(t);s.resp++;
       CRIT.ar.forEach(([k])=>{const p=pickList(v.p[k]);if(!p.length)return;const c=s.crit[k]=s.crit[k]||{num:0,den:0,exp:0};
         const e=Math.min(1,p.length/ts.length);c.den++;c.exp+=e;s.den++;s.exp+=e;if(p.includes(t)){c.num++;s.num++;}});});
@@ -193,7 +196,7 @@ function render(){
   const ct=classTeachers();
   renderTiles();
   const fc=$("fClass");const keep=fc.value;
-  fc.innerHTML=`<option value="">${L("allClasses")}</option>`+CLASS_ORDER.filter(c=>ct[c]).map(c=>`<option value="${c}">${cn(c)}</option>`).join("");fc.value=keep;
+  fc.innerHTML=`<option value="">${L("allClasses")}</option><option value="SEC:B">${L("allBoys")}</option><option value="SEC:G">${L("allGirls")}</option>`+CLASS_ORDER.filter(c=>ct[c]).map(c=>`<option value="${c}">${cn(c)}</option>`).join("");fc.value=keep;
   renderTeachers();renderThanks();renderComplaints();renderSuggestions();renderClasses(ct);renderMeeting();
 }
 $("fClass").onchange=()=>renderTeachers();
