@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>لوحة نتائج أولياء الأمور — أكاديمية نهضة</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--maroon:#812146;--beige:#E3D2AA;--grey:#555859;--bg:#f7f4ef;--card:#fff;--ink:#2a2426;--muted:#6f6769;--line:#e6ddd2;--soft:#f5ede3}
@@ -79,7 +80,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:#fbf8f4}
   <section id="t-teachers" class="card">
     <div class="row noprint" style="justify-content:space-between">
       <div class="row"><label data-t="classL"></label><select id="fClass"></select></div>
-      <div class="row"><button class="btn ghost" id="csv" data-t="csv"></button><button class="btn ghost" id="refresh" data-t="refresh"></button><button class="btn ghost" onclick="print()" data-t="print"></button><button class="btn ghost" id="logout" data-t="logout"></button></div>
+      <div class="row"><button class="btn" id="xlsx" data-t="xlsx"></button><button class="btn ghost" id="csv" data-t="csv"></button><button class="btn ghost" id="refresh" data-t="refresh"></button><button class="btn ghost" onclick="print()" data-t="print"></button><button class="btn ghost" id="logout" data-t="logout"></button></div>
     </div>
     <div class="tblwrap" style="margin-top:12px"><table id="tbl"></table></div>
     <div class="legend" id="legend"></div>
@@ -123,7 +124,7 @@ const MEET={ar:[["m1","سهولة الوصول إلى القاعات"],["m2","ا
 const STATUS={ar:{new:"جديد",in_progress:"قيد المتابعة",closed:"مغلقة"},en:{new:"New",in_progress:"In progress",closed:"Closed"}};
 const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subtitle:"للإدارة فقط · تقييم المعلمين والمقترحات والملاحظات",loginP:"أدخل رمز الإدارة لعرض النتائج.",pin:"الرمز",enter:"دخول",
  badPin:"الرمز غير صحيح.",net:"تعذّر الاتصال.",tabTeachers:"المعلمون والمعلمات",tabThanks:"رسائل الشكر",tabComplaints:"الملاحظات والشكاوى",tabSuggestions:"المقترحات",tabClasses:"الفصول",tabMeeting:"تقييم اللقاء",gradeL:"الصف:",allGrades:"كل الصفوف",allBoysG:"قسم البنين — كل الصفوف",allGirlsG:"قسم البنات — كل الصفوف",byGrade:"حسب الصف",meetComments:"ملاحظات أولياء الأمور على اللقاء",noMeet:"لا توجد تقييمات للقاء بعد.",tMeet:"تقييم اللقاء",avg:"المتوسط",responses:"تقييم",overallAvg:"المتوسط العام",hStudent:"الطالب/الطالبة",
- classL:"الفصل:",allClasses:"كل الفصول",allBoys:"قسم البنين — كل الفصول",allGirls:"قسم البنات — كل الفصول",csv:"تصدير CSV",refresh:"تحديث",print:"طباعة",teacherL:"المعلم/المعلمة:",allTeachers:"كل المعلمين والمعلمات",printFor:"طباعة للمعلم/المعلمة",statusL:"الحالة:",all:"الكل",
+ classL:"الفصل:",xlsx:"تنزيل كل البيانات (Excel)",allClasses:"كل الفصول",allBoys:"قسم البنين — كل الفصول",allGirls:"قسم البنات — كل الفصول",csv:"تصدير CSV",refresh:"تحديث",print:"طباعة",teacherL:"المعلم/المعلمة:",allTeachers:"كل المعلمين والمعلمات",printFor:"طباعة للمعلم/المعلمة",statusL:"الحالة:",all:"الكل",
  tVotes:"تقييم مكتمل",tThanks:"رسالة شكر",tSugg:"مقترح",tComp:"ملاحظة/شكوى",tOpen:"بانتظار المتابعة",
  hTeacher:"المعلم/المعلمة",hResp:"ردود من فصوله/فصولها",hTotal:"الإجمالي",hLift:"الأثر",hThanks:"شكر",of:"من",
  legend:"المعلمون الذين لديهم أقل من ٥ ردود يظهرون باهتين في آخر الجدول لأن نتائجهم غير كافية للحكم. النسبة = من اختاروا المعلم في المعيار ÷ أولياء أمور فصوله الذين أجابوا عن المعيار (دون «لا أستطيع الحكم»). يستطيع ولي الأمر اختيار حتى ٣ معلمين في كل معيار. <b>الأثر</b> = عدد مرات اختيار المعلم ÷ العدد المتوقع بالصدفة (عدد من اختارهم ولي الأمر ÷ عدد معلمي الفصل)، فـ ١٫٠ تعني متوسطاً و٢٫٠ ضعف المتوقع — وهو المقياس الأعدل للمقارنة بين معلمين يدرّسون فصولاً مختلفة. اضغط على أي معلم لعرض رسائل الشكر له.",
@@ -131,7 +132,7 @@ const I={ar:{title:"لوحة نتائج لقاء أولياء الأمور",subt
  hClass:"الفصل",hCount:"عدد التقييمات",hTeachers:"عدد المعلمين",hThanksN:"رسائل شكر",hComp:"شكاوى",hSugg:"مقترحات",na:"لا أستطيع الحكم",lang:"English",logout:"خروج"},
 en:{title:"Parents' Meeting Results",subtitle:"Leadership only · Teacher ratings, suggestions and concerns",loginP:"Enter the admin code to view results.",pin:"Code",enter:"Sign in",
  badPin:"Incorrect code.",net:"Couldn't connect.",tabTeachers:"Teachers",tabThanks:"Thank-you notes",tabComplaints:"Concerns & complaints",tabSuggestions:"Suggestions",tabClasses:"Classes",tabMeeting:"Meeting rating",gradeL:"Year:",allGrades:"All years",allBoysG:"Boys — all years",allGirlsG:"Girls — all years",byGrade:"By year group",meetComments:"Parents' comments on the meeting",noMeet:"No meeting ratings yet.",tMeet:"Meeting ratings",avg:"Average",responses:"ratings",overallAvg:"Overall average",hStudent:"Student",
- classL:"Class:",allClasses:"All classes",allBoys:"Boys — all classes",allGirls:"Girls — all classes",csv:"Export CSV",refresh:"Refresh",print:"Print",teacherL:"Teacher:",allTeachers:"All teachers",printFor:"Print for teacher",statusL:"Status:",all:"All",
+ classL:"Class:",xlsx:"Download all data (Excel)",allClasses:"All classes",allBoys:"Boys — all classes",allGirls:"Girls — all classes",csv:"Export CSV",refresh:"Refresh",print:"Print",teacherL:"Teacher:",allTeachers:"All teachers",printFor:"Print for teacher",statusL:"Status:",all:"All",
  tVotes:"Ratings",tThanks:"Thank-you notes",tSugg:"Suggestions",tComp:"Concerns",tOpen:"Awaiting follow-up",
  hTeacher:"Teacher",hResp:"Responses from their classes",hTotal:"Overall",hLift:"Impact",hThanks:"Thanks",of:"of",
  legend:"Teachers with fewer than 5 responses are faded and listed last, as their results are too few to judge. Rate = parents who chose the teacher for a quality ÷ parents in that teacher's classes who answered it (excluding “Can't judge”). Parents can choose up to 3 teachers per quality. <b>Impact</b> = times chosen ÷ times expected by chance (teachers the parent picked ÷ teachers in the class), so 1.0 is average and 2.0 is double — the fairest way to compare teachers of different classes. Click a teacher to see their thank-you notes.",
@@ -267,6 +268,19 @@ function renderMeeting(){
   $("meetList").innerHTML=cm.length?cm.map(m=>`<div class="thank" dir="auto"><div class="muted" style="font-size:12.5px">${(m.g||[]).map(gn).map(esc).join("، ")} · ${dt(m.at)}</div>${esc(m.cm)}</div>`).join(""):`<p class="muted">—</p>`;
 }
 const safeCsv=x=>{let v=String(x??"");if(/^[=+\-@\t\r]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"';};
+$("xlsx").onclick=()=>{
+  if(!window.XLSX){alert(L("net"));return;}
+  const S=x=>{let v=x==null?"":String(x);return /^[=+\-@\t\r]/.test(v)?"'"+v:v;};
+  const d=s=>new Date(s).toLocaleString("en-GB",{timeZone:"Asia/Riyadh",hour12:false});
+  const m=MEET.ar, M=D.meeting||[];
+  const meet=M.slice().reverse().map(r=>{const o={"رقم":r.id,"التاريخ (توقيت السعودية)":d(r.at),"صفوف الأبناء":(r.g||[]).map(gn).join("، ")};m.forEach(([k,l])=>o[l]=r.r[k]);
+    o["المتوسط"]=+(m.reduce((a,[k])=>a+(r.r[k]||0),0)/m.length).toFixed(2);o["ملاحظة ولي الأمر"]=S(r.cm);return o;});
+  const sug=D.suggestions.slice().reverse().map(x=>({"رقم":x.id,"التاريخ":d(x.created_at),"القسم والصف":x.grade?gn(x.grade):"","الموضوع":CAT.ar[x.category]||x.category,"المقترح":S(x.body),"اسم ولي الأمر":S(x.parent_name),"الجوال":S(x.phone),"الحالة":STATUS.ar[x.status]||x.status,"ملاحظة الإدارة":S(x.admin_note)}));
+  const com=D.complaints.slice().reverse().map(x=>({"رقم":x.id,"التاريخ":d(x.created_at),"القسم والصف":x.grade?gn(x.grade):"","الموضوع":CAT.ar[x.category]||x.category,"التفاصيل":S(x.body),"اسم ولي الأمر":S(x.parent_name),"اسم الطالب/الطالبة":S(x.student_name),"الجوال":S(x.phone),"الحالة":STATUS.ar[x.status]||x.status,"ملاحظة الإدارة":S(x.admin_note)}));
+  const wb=XLSX.utils.book_new();wb.Workbook={Views:[{RTL:true}]};
+  [["تقييم اللقاء",meet],["المقترحات",sug],["الملاحظات والشكاوى",com]].forEach(([n,rows])=>{const ws=XLSX.utils.json_to_sheet(rows.length?rows:[{"—":""}]);ws["!cols"]=Object.keys(rows[0]||{a:1}).map(k=>({wch:/ملاحظة|المقترح|التفاصيل/.test(k)?60:18}));XLSX.utils.book_append_sheet(wb,ws,n);});
+  XLSX.writeFile(wb,"nahda-parents-feedback-"+new Date().toISOString().slice(0,10)+".xlsx");
+};
 $("csv").onclick=()=>{
   const crit=CRIT[lang];
   const head=["id",lang==="ar"?"التاريخ":"date",L("hClass"),L("hStudent"),...crit.map(c=>c[1]),L("hThanks"),lang==="ar"?"نص الشكر":"thanks_text"];
